@@ -4,7 +4,13 @@ import os
 import decimal
 from bitcoinrpc.authproxy import AuthServiceProxy
 
+from dotenv import load_dotenv
 
+load_dotenv(dotenv_path="../../.env")
+
+RPC_USER = os.getenv("RPC_USER")
+RPC_PASSWORD = os.getenv("RPC_PASSWORD")
+RPC_PORT = os.getenv("RPC_PORT")
 
 SAVE_DIR = "./blocks"
 os.makedirs(SAVE_DIR, exist_ok=True)
@@ -32,7 +38,7 @@ def main():
     # Attendi RPC
     while True:
         try:
-            rpc = AuthServiceProxy(f"http://{RPC_USER}:{RPC_PASS}@127.0.0.1:{RPC_PORT}")
+            rpc = AuthServiceProxy(f"http://{RPC_USER}:{RPC_PASSWORD}@127.0.0.1:{RPC_PORT}")
             rpc.getblockchaininfo()
             break
         except:
