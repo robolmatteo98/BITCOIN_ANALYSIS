@@ -107,6 +107,13 @@ for height in range():
 
                 tx_outs.append((transaction_id, index, amount, address))
 
+                # insert into address
+                cur.execute(
+                    """
+                        INSERT INTO bitcoin_address
+                    """
+                )
+
             if tx_outs:
                 cur.executemany(
                     """

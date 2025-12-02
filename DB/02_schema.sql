@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS bitcoin_transaction (
 );
 
 CREATE TABLE IF NOT EXISTS bitcoin_address (
-  code TEXT PRIMARY KEY
+  code TEXT PRIMARY KEY,
+  region_id INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS bitcoin_tx_input (
@@ -44,4 +45,10 @@ ALTER TABLE bitcoin_tx_input ADD CONSTRAINT FK_prev_bitcoin_transaction_tx_in FO
 ALTER TABLE bitcoin_tx_output ADD CONSTRAINT FK_bitcoin_transaction_tx_out FOREIGN KEY (fk_transaction_id) REFERENCES bitcoin_transaction (id);
 
 ALTER TABLE bitcoin_tx_output ADD CONSTRAINT FK_bitcoin_address_tx_out FOREIGN KEY (fk_address_code) REFERENCES bitcoin_address (code);
-ALTER TABLE bitcoin_address ADD CONSTRAINT FK_region FOREIGN KEY (fk_address_code) REFERENCES bitcoin_address (code);
+--ALTER TABLE bitcoin_address ADD CONSTRAINT FK_region FOREIGN KEY (fk_address_code) REFERENCES bitcoin_address (code);
+
+INSERT INTO bitcoin_address (code)
+SELECT DISTINCT fk_address_code
+FROM bitcoin_tx_output
+WHERE fk_address_code IS NOT NULL
+ON CONFLICT (code) DO NOTHING;
