@@ -45,10 +45,11 @@ CREATE VIEW wallet AS (
 SELECT
     from_address,
     to_address,
-    SUM(flow_amount) AS total_btc_sent
+    SUM(flow_amount) AS total_btc_sent,
+    COUNT(*) AS total_tx_sent
 FROM flows
 WHERE from_address IS NOT NULL
   AND to_address IS NOT NULL
   AND from_address <> to_address
 GROUP BY from_address, to_address
-ORDER BY total_btc_sent DESC;
+ORDER BY total_tx_sent DESC;
