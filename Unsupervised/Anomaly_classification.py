@@ -1,40 +1,84 @@
-def classify_suspicious_node(addr, df):
-    edges = df[(df["from_address"] == addr) | (df["to_address"] == addr)]
+import pandas as pd
+import numpy as np
 
-    out_edges = edges[edges["from_address"] == addr]
-    in_edges  = edges[edges["to_address"] == addr]
+def classify_suspicious_node(address: str, df_edges: pd.DataFrame) -> str:
+    """
+    Classificazione semantica di un indirizzo Bitcoin-like
+    basata su pattern strutturali delle transazioni.
+    """
+
+    node_edges = df_edges[
+        (df_edges["from_address"] == address) |
+        (df_edges["to_address"] == address)
+    ]
+
+    if len(node_edges) == 0:
+        return "Inactive / no observed behavior"
+
+    out_edges = node_edges[node_edges["from_address"] == address]
+    in_edges  = node_edges[node_edges["to_address"] == address]
 
     out_deg = len(out_edges)
-    in_deg = len(in_edges)
+    in_deg  = len(in_edges)
 
-    # ==========================
-    # 1) HUB / SPRAY PATTERN
-    # ==========================
+    out_sum = out_edges["flow_amount"].sum()
+    in_sum  = in_edges["flow_amount"].sum()
+
+    times_out = out_edges["time"].values
+    times_in  = in_edges["time"].values
+
+    # ------------------------------------------------------------------
+    # 1) PEELING CHAIN
+    # ------------------------------------------------------------------
+    if (
+        out_deg >= 2 and
+        in_deg <= 1 and
+        out_sum < in_sum * 1.05 and
+        np.all(np.diff(np.sort(times_out)) < 10_000)
+    ):
+        return "Peeling chain behavior (controlled fund spending)"
+
+    # ------------------------------------------------------------------
+    # 2) HUB / SPRAY
+    # ------------------------------------------------------------------
     if out_deg >= 5 and in_deg <= 2:
-        return "Hub/Spray (many outputs) — possible mixer or fund splitting"
+        return "Fund distribution hub (spray / payout pattern)"
 
-    # ==========================
-    # 2) PEELING CHAIN
-    # ==========================
-    if out_deg == 1 and in_deg == 1:
-        amounts = out_edges["flow_amount"].values
-        if len(amounts) == 1:
-            return "Peeling chain step (1-in 1-out transaction with structured amount)"
+    # ------------------------------------------------------------------
+    # 3) AGGREGATION
+    # ------------------------------------------------------------------
+    if in_deg >= 5 and out_deg <= 2:
+        return "Fund aggregation node (collection wallet)"
 
-    # ==========================
-    # 3) SELF SHUFFLE
-    # ==========================
-    # check if both outgoing and incoming with same address
-    for _, row in out_edges.iterrows():
-        if ((df["from_address"] == row["to_address"]) & 
-            (df["to_address"] == addr)).any():
-            return "Self-shuffle / round-trip — mixer-like pattern"
+    # ------------------------------------------------------------------
+    # 4) SELF-CHURN / CYCLIC
+    # ------------------------------------------------------------------
+    mutuals = set(out_edges["to_address"]).intersection(
+        set(in_edges["from_address"])
+    )
 
-    # ==========================
-    # 4) TOPOLOGICAL OUTLIER
-    # ==========================
-    if out_deg + in_deg <= 1:
-        return "Topological outlier — isolated or rare-flow node"
+    if len(mutuals) > 0 and out_deg <= 3 and in_deg <= 3:
+        return "Self-churn / cyclic transfers (obfuscation-like)"
 
-    # default
-    return "Generic anomaly — unusual embedding"
+    # ------------------------------------------------------------------
+    # 5) MIXER-LIKE
+    # ------------------------------------------------------------------
+    if (
+        in_deg >= 3 and out_deg >= 3 and
+        abs(in_sum - out_sum) / max(in_sum, 1e-9) < 0.15
+    ):
+        return "Mixer-like behavior (fund reshuffling)"
+
+    # ------------------------------------------------------------------
+    # 6) EXCHANGE-LIKE
+    # ------------------------------------------------------------------
+    if (
+        in_deg >= 10 and out_deg >= 10 and
+        abs(in_sum - out_sum) / max(in_sum, 1e-9) < 0.05
+    ):
+        return "Exchange / service hot wallet behavior"
+
+    # ------------------------------------------------------------------
+    # FALLBACK
+    # ------------------------------------------------------------------
+    return "Irregular / anomalous behavior (unclassified)"
