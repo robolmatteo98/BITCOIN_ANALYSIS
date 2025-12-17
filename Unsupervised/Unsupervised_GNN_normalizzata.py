@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+import pandas as pd
 from torch_geometric.data import Data
 from torch_geometric.nn import GCNConv, VGAE
 
@@ -10,6 +11,7 @@ from Anomaly_classification import classify_suspicious_node
 # 1) CARICAMENTO DATI
 # =====================================================================
 df_edges, addresses = load_bitcoin_edges_from_db_without_warning()
+print(df_edges)
 
 # =====================================================================
 # 2) NORMALIZZAZIONE FLOW_AMOUNT
@@ -26,8 +28,14 @@ df_edges["flow_amount_norm"] = (df_edges["flow_amount_log"] - flow_mean) / flow_
 addr_to_idx = {addr: i for i, addr in enumerate(addresses)}
 df_edges["src"] = df_edges["from_address"].map(addr_to_idx)
 df_edges["dst"] = df_edges["to_address"].map(addr_to_idx)
+df_edges["flow_amount_norm"] = pd.to_numeric(df_edges["flow_amount_norm"], errors='coerce')
+df_edges["time"] = pd.to_numeric(df_edges["time"], errors='coerce')
 
 num_nodes = len(addresses)
+
+print("Num nodes:", num_nodes)
+print("Num edges:", len(df_edges))
+print(df_edges.head())
 
 # =====================================================================
 # 4) COSTRUZIONE GRAPH DATA (PyG)
@@ -100,7 +108,7 @@ model.eval()
 z = model.encode(data.x, data.edge_index).detach()
 
 norms = torch.norm(z - z.mean(dim=0), dim=1)
-top_anomalies = norms.topk(5)   # 5 nodi sospetti
+top_anomalies = norms.topk(10)   # 10 nodi sospetti
 indices_sospetti = top_anomalies.indices.tolist()
 
 indirizzi_sospetti = [addresses[i] for i in indices_sospetti]
