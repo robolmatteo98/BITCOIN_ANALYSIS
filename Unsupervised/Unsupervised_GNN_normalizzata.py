@@ -20,7 +20,6 @@ print(df_edges)
 df_edges["flow_amount_log"] = np.log1p(df_edges["flow_amount"])
 flow_mean = df_edges["flow_amount_log"].mean()
 flow_std = df_edges["flow_amount_log"].std()
-df_edges["flow_amount_norm"] = (df_edges["flow_amount_log"] - flow_mean) / flow_std
 
 # =====================================================================
 # 3) MAPPA INDIRIZZI → NODE INDEX
@@ -28,7 +27,6 @@ df_edges["flow_amount_norm"] = (df_edges["flow_amount_log"] - flow_mean) / flow_
 addr_to_idx = {addr: i for i, addr in enumerate(addresses)}
 df_edges["src"] = df_edges["from_address"].map(addr_to_idx)
 df_edges["dst"] = df_edges["to_address"].map(addr_to_idx)
-df_edges["flow_amount_norm"] = pd.to_numeric(df_edges["flow_amount_norm"], errors='coerce')
 df_edges["time"] = pd.to_numeric(df_edges["time"], errors='coerce')
 
 num_nodes = len(addresses)
@@ -45,9 +43,9 @@ edge_index = torch.tensor(
   dtype=torch.long
 )
 
-# edge features: [flow_amount_normalized, time]
+# edge features: [flow_amount_log, time]
 edge_attr = torch.tensor(
-  df_edges[["flow_amount_norm", "time"]].values,
+  df_edges[["flow_amount_log", "time"]].values,
   dtype=torch.float
 )
 

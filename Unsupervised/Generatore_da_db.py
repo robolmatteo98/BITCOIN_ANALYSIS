@@ -88,8 +88,6 @@ def load_bitcoin_edges_from_db_without_warning():
   with engine.connect() as conn:
     df = pd.read_sql(text(query), con=conn)  # <-- qui il fix
 
-  print(df)
-
   # Lista indirizzi unici
   addresses = pd.unique(df[["from_address", "to_address"]].values.ravel())
 
