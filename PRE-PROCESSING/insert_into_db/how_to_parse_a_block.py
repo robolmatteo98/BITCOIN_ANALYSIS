@@ -4,8 +4,9 @@ import traceback
 from decimal import Decimal
 import psycopg2
 from how_to_decode_address import pubkey_to_address
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
+dotenv_path = find_dotenv()
 load_dotenv(dotenv_path="../../.env")
 
 DB_NAME = os.getenv("DB_NAME")
@@ -15,6 +16,8 @@ DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT")
 
 print(f"Connecting to {DB_HOST}:{DB_PORT} as {DB_USER} to DB {DB_NAME}")
+
+print(dotenv_path)
 
 # Connessione al DB
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST, port=DB_PORT)
@@ -34,7 +37,7 @@ def log_error(block_height, error):
         log.write(traceback.format_exc())
         log.write("============================\n")
 
-for height in range():
+for height in range(93676, 93677):
 
     try:
         filename = f"block_{height}.json"
@@ -106,18 +109,11 @@ for height in range():
             # VOUT
             tx_outs = []
             for vout_item in tx['vout']:
-                address = pubkey_to_address(vout_item["scriptPubKey"]["hex"])
+                address = pubkey_to_address(vout_item["scriptPubKey"]["hex"], vout_item["scriptPubKey"]["type"], vout_item["scriptPubKey"]["address"])
                 amount = vout_item["value"]
                 index = vout_item["n"]
 
                 tx_outs.append((transaction_id, index, amount, address))
-
-                # insert into address
-                cur.execute(
-                    """
-                        INSERT INTO bitcoin_address
-                    """
-                )
 
             if tx_outs:
                 cur.executemany(

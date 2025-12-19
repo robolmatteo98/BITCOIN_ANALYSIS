@@ -18,7 +18,7 @@ def base58_encode(b: bytes) -> str:
             break
     return '1' * n_pad + encode
 
-def pubkey_to_address(vout_hex: str, mainnet: bool = True) -> str:
+def pubkey_to_address(vout_hex: str, vout_type: str, vout_address: str | None, mainnet: bool = True) -> str:
     """
     Estrae la chiave pubblica dal vout.hex e calcola l'indirizzo Bitcoin.
     
@@ -29,19 +29,26 @@ def pubkey_to_address(vout_hex: str, mainnet: bool = True) -> str:
     Returns:
         Indirizzo Bitcoin in formato Base58Check
     """
-    # rimuove il primo byte (lunghezza) e l'ultimo byte (OP_CHECKSIG)
-    pubkey_hex = vout_hex[2:-2]  
-    pubkey_bytes = bytes.fromhex(pubkey_hex)
 
-    # hash SHA256
-    sha256 = hashlib.sha256(pubkey_bytes).digest()
-    # hash RIPEMD-160
-    ripemd160 = hashlib.new('ripemd160', sha256).digest()
-    # prefisso mainnet/testnet
-    prefix = b'\x00' if mainnet else b'\x6f'
-    payload = prefix + ripemd160
-    # checksum
-    checksum = hashlib.sha256(hashlib.sha256(payload).digest()).digest()[:4]
-    address_bytes = payload + checksum
-    # Base58Check finale
-    return base58_encode(address_bytes)
+    if vout_type == "pubkey":
+        # rimuove il primo byte (lunghezza) e l'ultimo byte (OP_CHECKSIG)
+        pubkey_hex = vout_hex[2:-2]  
+        pubkey_bytes = bytes.fromhex(pubkey_hex)
+
+        # hash SHA256
+        sha256 = hashlib.sha256(pubkey_bytes).digest()
+        # hash RIPEMD-160
+        ripemd160 = hashlib.new('ripemd160', sha256).digest()
+        # prefisso mainnet/testnet
+        prefix = b'\x00' if mainnet else b'\x6f'
+        payload = prefix + ripemd160
+        # checksum
+        checksum = hashlib.sha256(hashlib.sha256(payload).digest()).digest()[:4]
+        address_bytes = payload + checksum
+        # Base58Check finale
+        return base58_encode(address_bytes)
+    
+    if vout_type == "pubkeyhash":
+        return vout_address
+    
+    return None
