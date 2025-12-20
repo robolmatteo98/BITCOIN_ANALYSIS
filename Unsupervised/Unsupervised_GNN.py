@@ -9,8 +9,6 @@ from Anomaly_classification import classify_suspicious_node
 #from Generatore import generate_bitcoin_dataset
 from Generatore_da_db import load_bitcoin_edges_from_db
 
-import numpy as np
-
 # =====================================================================
 # 1) GENERAZIONE GRAFO FAKE
 # =====================================================================
