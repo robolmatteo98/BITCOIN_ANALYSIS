@@ -1,0 +1,50 @@
+{
+  "hash": "0000000059860e1d8e432c12f0550fd881cc2bb2705295266276a62e8d1a9a89",
+  "confirmations": 49184,
+  "height": 3914,
+  "version": 1,
+  "versionHex": "00000001",
+  "merkleroot": "23e28eb1e910804faa5a5569ad961dc70841f9938cd01e6d256eaa585ef78054",
+  "time": 1234380941,
+  "mediantime": 1234376630,
+  "nonce": 2845772290,
+  "bits": "1d00ffff",
+  "difficulty": 1,
+  "chainwork": "00000000000000000000000000000000000000000000000000000f4b0f4b0f4b",
+  "nTx": 1,
+  "previousblockhash": "00000000d6c33f5cbda7b31d2c21360391703144bfe017c9bd62a35e28a919af",
+  "nextblockhash": "00000000980ec95db6c9bb4d009162a2925e6de788ef63138baa99abbcaa82e7",
+  "strippedsize": 216,
+  "size": 216,
+  "weight": 864,
+  "tx": [
+    {
+      "txid": "23e28eb1e910804faa5a5569ad961dc70841f9938cd01e6d256eaa585ef78054",
+      "hash": "23e28eb1e910804faa5a5569ad961dc70841f9938cd01e6d256eaa585ef78054",
+      "version": 1,
+      "size": 135,
+      "vsize": 135,
+      "weight": 540,
+      "locktime": 0,
+      "vin": [
+        {
+          "coinbase": "04ffff001d020a03",
+          "sequence": 4294967295
+        }
+      ],
+      "vout": [
+        {
+          "value": 50.0,
+          "n": 0,
+          "scriptPubKey": {
+            "asm": "046d21eae48dc429aad8b4e3afd8bb617012b1e7c23e32545d833133d55910bf94779c80cfa0e82f5ea800dd01f26c84e102e39ea3099673aac70022966eb6f250 OP_CHECKSIG",
+            "desc": "pk(046d21eae48dc429aad8b4e3afd8bb617012b1e7c23e32545d833133d55910bf94779c80cfa0e82f5ea800dd01f26c84e102e39ea3099673aac70022966eb6f250)#ayvx9xd9",
+            "hex": "41046d21eae48dc429aad8b4e3afd8bb617012b1e7c23e32545d833133d55910bf94779c80cfa0e82f5ea800dd01f26c84e102e39ea3099673aac70022966eb6f250ac",
+            "type": "pubkey"
+          }
+        }
+      ],
+      "hex": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0804ffff001d020a03ffffffff0100f2052a010000004341046d21eae48dc429aad8b4e3afd8bb617012b1e7c23e32545d833133d55910bf94779c80cfa0e82f5ea800dd01f26c84e102e39ea3099673aac70022966eb6f250ac00000000"
+    }
+  ]
+}

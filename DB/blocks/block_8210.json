@@ -1,0 +1,50 @@
+{
+  "hash": "0000000086410b1e0521711c177bd8975ce0f6f4fb06dd7d2eeb0bfffb2dbbf7",
+  "confirmations": 44888,
+  "height": 8210,
+  "version": 1,
+  "versionHex": "00000001",
+  "merkleroot": "53ea47da7e03623d92821e970a44975339de74b59f9521b0bfcb48f1ac38691d",
+  "time": 1237611952,
+  "mediantime": 1237608936,
+  "nonce": 16070195,
+  "bits": "1d00ffff",
+  "difficulty": 1,
+  "chainwork": "0000000000000000000000000000000000000000000000000000201320132013",
+  "nTx": 1,
+  "previousblockhash": "000000006a51d284f0ea70af2bf905863887c908e718fe9bdfb5c1f98e6f0ca7",
+  "nextblockhash": "00000000d14ed5bff1d83c8fadccbdb206de78167a4c477330ca4da1e50ac6f2",
+  "strippedsize": 216,
+  "size": 216,
+  "weight": 864,
+  "tx": [
+    {
+      "txid": "53ea47da7e03623d92821e970a44975339de74b59f9521b0bfcb48f1ac38691d",
+      "hash": "53ea47da7e03623d92821e970a44975339de74b59f9521b0bfcb48f1ac38691d",
+      "version": 1,
+      "size": 135,
+      "vsize": 135,
+      "weight": 540,
+      "locktime": 0,
+      "vin": [
+        {
+          "coinbase": "04ffff001d02df02",
+          "sequence": 4294967295
+        }
+      ],
+      "vout": [
+        {
+          "value": 50.0,
+          "n": 0,
+          "scriptPubKey": {
+            "asm": "04e88343ddad46c0cf32aec5f6b75d8a074bcedfa9a514a1775797c6d843f1490a4927bef00307c4eeca02b1e024f834bf52dff124713782955733828270046fc0 OP_CHECKSIG",
+            "desc": "pk(04e88343ddad46c0cf32aec5f6b75d8a074bcedfa9a514a1775797c6d843f1490a4927bef00307c4eeca02b1e024f834bf52dff124713782955733828270046fc0)#shc2yqys",
+            "hex": "4104e88343ddad46c0cf32aec5f6b75d8a074bcedfa9a514a1775797c6d843f1490a4927bef00307c4eeca02b1e024f834bf52dff124713782955733828270046fc0ac",
+            "type": "pubkey"
+          }
+        }
+      ],
+      "hex": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0804ffff001d02df02ffffffff0100f2052a01000000434104e88343ddad46c0cf32aec5f6b75d8a074bcedfa9a514a1775797c6d843f1490a4927bef00307c4eeca02b1e024f834bf52dff124713782955733828270046fc0ac00000000"
+    }
+  ]
+}

@@ -57,7 +57,7 @@ for height in range(93676, 93677):
         # INSERT BLOCK
         cur.execute(
             """
-            INSERT INTO bitcoin_block (id, hash, time)
+            INSERT INTO block (id, hash, time)
             VALUES (%s, %s, %s)
             """,
             (height, hash_block, time)
@@ -69,7 +69,7 @@ for height in range(93676, 93677):
 
             cur.execute(
                 """
-                INSERT INTO bitcoin_transaction (txid, fk_block_id)
+                INSERT INTO transaction (txid, fk_block_id)
                 VALUES (%s, %s)
                 RETURNING id
                 """,
@@ -80,15 +80,16 @@ for height in range(93676, 93677):
 
             # VIN
             tx_ins = []
+            is_coinbase = False
             for vin_item in tx['vin']:
                 if 'coinbase' in vin_item:
-                    continue
+                    is_coinbase = True
 
                 prev_txid = vin_item['txid']
                 prev_vout = vin_item['vout']
 
                 cur.execute(
-                    "SELECT id FROM bitcoin_transaction WHERE txid = %s",
+                    "SELECT id FROM transaction WHERE txid = %s",
                     (prev_txid,)
                 )
                 result = cur.fetchone()
@@ -99,7 +100,7 @@ for height in range(93676, 93677):
             if tx_ins:
                 cur.executemany(
                     """
-                    INSERT INTO bitcoin_tx_input
+                    INSERT INTO tx_input
                     (fk_transaction_id, prev_transaction_id, prev_vout)
                     VALUES (%s, %s, %s)
                     """,
@@ -115,11 +116,31 @@ for height in range(93676, 93677):
 
                 tx_outs.append((transaction_id, index, amount, address))
 
+                # se è una coinbase allora lo inserisce come indirizzo provvisorio, altrimenti come indirizzo reale
+                if is_coinbase:
+                    cur.execute(
+                        """
+                        INSERT INTO address ()
+                        VALUES (%s, %s)
+                        RETURNING id
+                        """,
+                        (txid, height)
+                    )
+                else:
+                    cur.execute(
+                        """
+                        INSERT INTO address ()
+                        VALUES (%s, %s)
+                        RETURNING id
+                        """,
+                        (txid, height)
+                    )
+
             if tx_outs:
                 cur.executemany(
                     """
-                    INSERT INTO bitcoin_tx_output
-                    (fk_transaction_id, n, amount, fk_address_code)
+                    INSERT INTO tx_output
+                    (fk_transaction_id, n, amount, fk_address_id)
                     VALUES (%s, %s, %s, %s)
                     """,
                     tx_outs

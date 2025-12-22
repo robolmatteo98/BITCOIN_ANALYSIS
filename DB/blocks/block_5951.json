@@ -1,0 +1,50 @@
+{
+  "hash": "000000001dbc678d1ca75d45178db84af4436393f14aa4af5b9ac0975913e5d0",
+  "confirmations": 47147,
+  "height": 5951,
+  "version": 1,
+  "versionHex": "00000001",
+  "merkleroot": "45db864fada380428618932740dd045f30552689f139f2122b93e48d23425d82",
+  "time": 1235889234,
+  "mediantime": 1235885082,
+  "nonce": 28003363,
+  "bits": "1d00ffff",
+  "difficulty": 1,
+  "chainwork": "0000000000000000000000000000000000000000000000000000174017401740",
+  "nTx": 1,
+  "previousblockhash": "000000003d5f612df33fd402bdf9b8aa21249d31af996003cbd5276af86b2cb0",
+  "nextblockhash": "00000000ddd70c8bad8786e0685762584b0c110b8615b37cc5f85a59df8f4177",
+  "strippedsize": 216,
+  "size": 216,
+  "weight": 864,
+  "tx": [
+    {
+      "txid": "45db864fada380428618932740dd045f30552689f139f2122b93e48d23425d82",
+      "hash": "45db864fada380428618932740dd045f30552689f139f2122b93e48d23425d82",
+      "version": 1,
+      "size": 135,
+      "vsize": 135,
+      "weight": 540,
+      "locktime": 0,
+      "vin": [
+        {
+          "coinbase": "04ffff001d020104",
+          "sequence": 4294967295
+        }
+      ],
+      "vout": [
+        {
+          "value": 50.0,
+          "n": 0,
+          "scriptPubKey": {
+            "asm": "0424648e53b89b0746636ca9cc2adf89f904ab9efc6093f40f2d450efa8b8df41afa41e3a73e06c9cad3ae286518112c30af26031560b704bddea367661383bdfd OP_CHECKSIG",
+            "desc": "pk(0424648e53b89b0746636ca9cc2adf89f904ab9efc6093f40f2d450efa8b8df41afa41e3a73e06c9cad3ae286518112c30af26031560b704bddea367661383bdfd)#a2vc2048",
+            "hex": "410424648e53b89b0746636ca9cc2adf89f904ab9efc6093f40f2d450efa8b8df41afa41e3a73e06c9cad3ae286518112c30af26031560b704bddea367661383bdfdac",
+            "type": "pubkey"
+          }
+        }
+      ],
+      "hex": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0804ffff001d020104ffffffff0100f2052a0100000043410424648e53b89b0746636ca9cc2adf89f904ab9efc6093f40f2d450efa8b8df41afa41e3a73e06c9cad3ae286518112c30af26031560b704bddea367661383bdfdac00000000"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "hash": "00000000ed62b53eecaa6da3feb43d84937f0d8b82cae4f77a78163f4dbd94fb",
+  "confirmations": 44559,
+  "height": 8539,
+  "version": 1,
+  "versionHex": "00000001",
+  "merkleroot": "21d3a9bee81fadeaa17f9c28227d33e716146b99a1814e1ddd1aad1a82613708",
+  "time": 1237901809,
+  "mediantime": 1237898418,
+  "nonce": 535938598,
+  "bits": "1d00ffff",
+  "difficulty": 1,
+  "chainwork": "0000000000000000000000000000000000000000000000000000215c215c215c",
+  "nTx": 1,
+  "previousblockhash": "000000008ef6e157c9c48a0d7c41d403e9d61ffe56499ed0f2ea1f6d8fb21bb7",
+  "nextblockhash": "00000000911afceb9077f749a2a13b7b29dc3ba50707c5d9dfba246405fd1066",
+  "strippedsize": 216,
+  "size": 216,
+  "weight": 864,
+  "tx": [
+    {
+      "txid": "21d3a9bee81fadeaa17f9c28227d33e716146b99a1814e1ddd1aad1a82613708",
+      "hash": "21d3a9bee81fadeaa17f9c28227d33e716146b99a1814e1ddd1aad1a82613708",
+      "version": 1,
+      "size": 135,
+      "vsize": 135,
+      "weight": 540,
+      "locktime": 0,
+      "vin": [
+        {
+          "coinbase": "04ffff001d027c08",
+          "sequence": 4294967295
+        }
+      ],
+      "vout": [
+        {
+          "value": 50.0,
+          "n": 0,
+          "scriptPubKey": {
+            "asm": "040521e3cecd92a73d0aded6a4bcf1d404dadde4cb0691f10a9db09f391c0a54bb657f502c52dd1b16f5e8f316c0ba8c53064ae63286c502443bf13400c0999a5a OP_CHECKSIG",
+            "desc": "pk(040521e3cecd92a73d0aded6a4bcf1d404dadde4cb0691f10a9db09f391c0a54bb657f502c52dd1b16f5e8f316c0ba8c53064ae63286c502443bf13400c0999a5a)#s4ag7xt3",
+            "hex": "41040521e3cecd92a73d0aded6a4bcf1d404dadde4cb0691f10a9db09f391c0a54bb657f502c52dd1b16f5e8f316c0ba8c53064ae63286c502443bf13400c0999a5aac",
+            "type": "pubkey"
+          }
+        }
+      ],
+      "hex": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0804ffff001d027c08ffffffff0100f2052a010000004341040521e3cecd92a73d0aded6a4bcf1d404dadde4cb0691f10a9db09f391c0a54bb657f502c52dd1b16f5e8f316c0ba8c53064ae63286c502443bf13400c0999a5aac00000000"
+    }
+  ]
+}

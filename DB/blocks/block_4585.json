@@ -1,0 +1,50 @@
+{
+  "hash": "000000006e74e8941f04a90638127208a729f3dcd77e1f0eb658df9998101b51",
+  "confirmations": 48513,
+  "height": 4585,
+  "version": 1,
+  "versionHex": "00000001",
+  "merkleroot": "84b1fd5182c99ea456f5e30d0ac2830e985eb5240b4ca610ddfc64f6c0be8079",
+  "time": 1234844715,
+  "mediantime": 1234840689,
+  "nonce": 503850552,
+  "bits": "1d00ffff",
+  "difficulty": 1,
+  "chainwork": "000000000000000000000000000000000000000000000000000011ea11ea11ea",
+  "nTx": 1,
+  "previousblockhash": "000000008501e69e7fbe028b598f8cbe6652d92b3032ef701671c8c48ff5a57c",
+  "nextblockhash": "0000000057211ff1df8c40aa2d06511a4269b6ad2d435c253194548ae7167827",
+  "strippedsize": 216,
+  "size": 216,
+  "weight": 864,
+  "tx": [
+    {
+      "txid": "84b1fd5182c99ea456f5e30d0ac2830e985eb5240b4ca610ddfc64f6c0be8079",
+      "hash": "84b1fd5182c99ea456f5e30d0ac2830e985eb5240b4ca610ddfc64f6c0be8079",
+      "version": 1,
+      "size": 135,
+      "vsize": 135,
+      "weight": 540,
+      "locktime": 0,
+      "vin": [
+        {
+          "coinbase": "04ffff001d02be00",
+          "sequence": 4294967295
+        }
+      ],
+      "vout": [
+        {
+          "value": 50.0,
+          "n": 0,
+          "scriptPubKey": {
+            "asm": "04da080f7dd1c1f3add03a326277aeab840a9dc1cf29b52ac12e65249c15a0d6a31a27064320ee3779291f09074c95d371d1420081217071471f0e7534d705d391 OP_CHECKSIG",
+            "desc": "pk(04da080f7dd1c1f3add03a326277aeab840a9dc1cf29b52ac12e65249c15a0d6a31a27064320ee3779291f09074c95d371d1420081217071471f0e7534d705d391)#wa50z7dl",
+            "hex": "4104da080f7dd1c1f3add03a326277aeab840a9dc1cf29b52ac12e65249c15a0d6a31a27064320ee3779291f09074c95d371d1420081217071471f0e7534d705d391ac",
+            "type": "pubkey"
+          }
+        }
+      ],
+      "hex": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0804ffff001d02be00ffffffff0100f2052a01000000434104da080f7dd1c1f3add03a326277aeab840a9dc1cf29b52ac12e65249c15a0d6a31a27064320ee3779291f09074c95d371d1420081217071471f0e7534d705d391ac00000000"
+    }
+  ]
+}

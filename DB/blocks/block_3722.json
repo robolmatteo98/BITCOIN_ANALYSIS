@@ -1,0 +1,50 @@
+{
+  "hash": "00000000b6212607842d539ad5dd946a0103651d314ab149cd4c291bffa55311",
+  "confirmations": 49376,
+  "height": 3722,
+  "version": 1,
+  "versionHex": "00000001",
+  "merkleroot": "dc3867ca51a8ae1e8c0395e2ddc7dc6e5231bc03ce98997167d62ed2c27078c2",
+  "time": 1234248464,
+  "mediantime": 1234244211,
+  "nonce": 3315024431,
+  "bits": "1d00ffff",
+  "difficulty": 1,
+  "chainwork": "00000000000000000000000000000000000000000000000000000e8b0e8b0e8b",
+  "nTx": 1,
+  "previousblockhash": "0000000090adb31fc879d5379a5ac986f9800e840fd73bc6bba824fabf3ad225",
+  "nextblockhash": "00000000c6724d4f30b87ba3c61a83b5ac004188ddc12d8e789da073623ae472",
+  "strippedsize": 215,
+  "size": 215,
+  "weight": 860,
+  "tx": [
+    {
+      "txid": "dc3867ca51a8ae1e8c0395e2ddc7dc6e5231bc03ce98997167d62ed2c27078c2",
+      "hash": "dc3867ca51a8ae1e8c0395e2ddc7dc6e5231bc03ce98997167d62ed2c27078c2",
+      "version": 1,
+      "size": 134,
+      "vsize": 134,
+      "weight": 536,
+      "locktime": 0,
+      "vin": [
+        {
+          "coinbase": "04ffff001d011a",
+          "sequence": 4294967295
+        }
+      ],
+      "vout": [
+        {
+          "value": 50.0,
+          "n": 0,
+          "scriptPubKey": {
+            "asm": "045e6aebbd8c7d84ac83f6dff07b5c0e58bc5337502da481aada1b48c1916e4cf5c77e6788991ecf54f2ffba880d9a4ec9d1df3dfed0312daeafad336550a2b163 OP_CHECKSIG",
+            "desc": "pk(045e6aebbd8c7d84ac83f6dff07b5c0e58bc5337502da481aada1b48c1916e4cf5c77e6788991ecf54f2ffba880d9a4ec9d1df3dfed0312daeafad336550a2b163)#gas6r0fg",
+            "hex": "41045e6aebbd8c7d84ac83f6dff07b5c0e58bc5337502da481aada1b48c1916e4cf5c77e6788991ecf54f2ffba880d9a4ec9d1df3dfed0312daeafad336550a2b163ac",
+            "type": "pubkey"
+          }
+        }
+      ],
+      "hex": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0704ffff001d011affffffff0100f2052a010000004341045e6aebbd8c7d84ac83f6dff07b5c0e58bc5337502da481aada1b48c1916e4cf5c77e6788991ecf54f2ffba880d9a4ec9d1df3dfed0312daeafad336550a2b163ac00000000"
+    }
+  ]
+}
