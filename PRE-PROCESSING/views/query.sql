@@ -5,7 +5,7 @@ CREATE VIEW input_values AS (
         prev_out.amount AS input_amount
     FROM bitcoin_tx_input inp
     JOIN bitcoin_tx_output prev_out
-         ON prev_out.fk_transaction_id = inp.prev_transaction_id
+        ON prev_out.fk_transaction_id = inp.prev_transaction_id
         AND prev_out.n = inp.prev_vout
 );
 
@@ -29,10 +29,14 @@ CREATE VIEW flows AS (
     SELECT
         i.from_address,
         o.to_address,
-        (i.input_amount / t.total_input_amount) * o.output_amount AS flow_amount
+        (i.input_amount / t.total_input_amount) * o.output_amount AS flow_amount,
+        i.txid,
+        b.time
     FROM input_values i
     JOIN total_input t ON t.txid = i.txid
     JOIN outputs o ON o.txid = i.txid
+    JOIN bitcoin_transaction tra ON i.txid = tra.id
+    JOIN bitcoin_block b ON tra.fk_block_id = b.id
 );
 
 -- calcola il portafoglio totale di ogni indirizzo

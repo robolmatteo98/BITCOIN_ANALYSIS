@@ -18,26 +18,8 @@ def load_bitcoin_edges_from_db(limit=None):
     )
 
     query = f"""
-    SELECT
-      prev_out.fk_address_code  AS from_address,
-      txo.fk_address_code       AS to_address,
-      txo.amount                AS flow_amount,
-      b.time                    AS time,
-      tx.txid                   AS txid
-    FROM bitcoin_transaction tx
-    JOIN bitcoin_block b
-      ON b.id = tx.fk_block_id
-
-    JOIN bitcoin_tx_input txi
-      ON txi.fk_transaction_id = tx.id
-      AND txi.prev_transaction_id IS NOT NULL
-
-    JOIN bitcoin_tx_output prev_out
-      ON prev_out.fk_transaction_id = txi.prev_transaction_id
-      AND prev_out.n = txi.prev_vout
-
-    JOIN bitcoin_tx_output txo
-      ON txo.fk_transaction_id = tx.id
+      SELECT *
+      FROM flows
     """
 
     if limit:
@@ -64,24 +46,8 @@ def load_bitcoin_edges_from_db_without_warning():
   )
 
   query = f"""
-    SELECT
-      prev_out.fk_address_code  AS from_address,
-      txo.fk_address_code       AS to_address,
-      txo.amount                AS flow_amount,
-      b.time                    AS time,
-      tx.txid                   AS txid
-    FROM bitcoin_transaction tx
-    JOIN bitcoin_block b
-          ON b.id = tx.fk_block_id
-    JOIN bitcoin_tx_input txi
-          ON txi.fk_transaction_id = tx.id
-          AND txi.prev_transaction_id IS NOT NULL
-    JOIN bitcoin_tx_output prev_out
-          ON prev_out.fk_transaction_id = txi.prev_transaction_id
-          AND prev_out.n = txi.prev_vout
-    JOIN bitcoin_tx_output txo
-          ON txo.fk_transaction_id = tx.id
-    WHERE prev_out.fk_address_code <> txo.fk_address_code
+    SELECT *
+    FROM flows
     """
 
   # Apri una connessione esplicita e usa sqlalchemy.text()

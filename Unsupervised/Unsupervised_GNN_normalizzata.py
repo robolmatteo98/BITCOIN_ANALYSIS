@@ -5,7 +5,7 @@ from torch_geometric.data import Data
 from torch_geometric.nn import GCNConv, VGAE
 
 from Generatore_da_db import load_bitcoin_edges_from_db, load_bitcoin_edges_from_db_without_warning
-from Anomaly_classification import classify_suspicious_node
+from Anomaly_classification import classify_suspicious_node, classify_node_with_scores
 
 # =====================================================================
 # 1) CARICAMENTO DATI
@@ -122,7 +122,7 @@ for a in indirizzi_sospetti:
 print("\n=== DETTAGLI NODI SOSPETTI ===")
 for i in indices_sospetti:
     addr = addresses[i]
-    reason = classify_suspicious_node(addr, df_edges)
+    reason = classify_node_with_scores(addr, df_edges)
     node_edges = df_edges[(df_edges['from_address'] == addr) | (df_edges['to_address'] == addr)]
     out_edges = node_edges[node_edges['from_address'] == addr]
     in_edges = node_edges[node_edges['to_address'] == addr]
@@ -130,5 +130,5 @@ for i in indices_sospetti:
     print(f"\nIndirizzo sospetto: {addr} --> {reason}")
     print(f"  Grado uscente: {len(out_edges)}, somma uscente: {out_edges['flow_amount'].sum():.2f}")
     print(f"  Grado entrante: {len(in_edges)}, somma entrante: {in_edges['flow_amount'].sum():.2f}")
-    print(node_edges[['from_address','to_address','flow_amount','time']])
+    print(node_edges[['txid', 'from_address','to_address','flow_amount','time']])
     print("---------------------------------------------------")
