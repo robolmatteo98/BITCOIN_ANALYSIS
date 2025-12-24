@@ -11,8 +11,7 @@ CREATE TABLE IF NOT EXISTS transaction (
 );
 
 CREATE TABLE IF NOT EXISTS address (
-  id SERIAL PRIMARY KEY,
-  code TEXT,
+  code TEXT PRIMARY KEY,
   region_id INTEGER
 );
 
@@ -20,10 +19,7 @@ CREATE TABLE IF NOT EXISTS tx_input (
   id SERIAL PRIMARY KEY,
   fk_transaction_id INTEGER NOT NULL,
   prev_transaction_id INTEGER,
-  prev_vout INTEGER,
-
-  -- dal scriptSig
-  pubkey_hex TEXT
+  prev_vout INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS tx_output (
@@ -31,16 +27,7 @@ CREATE TABLE IF NOT EXISTS tx_output (
   fk_transaction_id INTEGER NOT NULL,
   n INTEGER NOT NULL,
   amount DECIMAL NOT NULL,
-
-  -- script info
-  script_type TEXT NOT NULL,      -- pubkey, pubkeyhash, scripthash, witness_v0_keyhash…
-  script_hex TEXT NOT NULL,       -- scriptPubKey completo
-  pubkey_hex TEXT,                -- SOLO se P2PK
-
-  -- indirizzo (quando esiste)
-  fk_address_id INTEGER,
-
-  spent BOOLEAN DEFAULT FALSE
+  fk_address_code TEXT
 );
 
 CREATE TABLE region (
@@ -50,11 +37,9 @@ CREATE TABLE region (
   utc_end INT NOT NULL
 );
 
-ALTER TABLE address ADD COLUMN region_id INT REFERENCES region(id);
-
 ALTER TABLE transaction ADD CONSTRAINT FK_block FOREIGN KEY (fk_block_id) REFERENCES block (id);
 ALTER TABLE tx_input ADD CONSTRAINT FK_transaction_tx_in FOREIGN KEY (fk_transaction_id) REFERENCES transaction (id);
 ALTER TABLE tx_input ADD CONSTRAINT FK_prev_transaction_tx_in FOREIGN KEY (prev_transaction_id) REFERENCES transaction (id);
 ALTER TABLE tx_output ADD CONSTRAINT FK_tx_out_transaction FOREIGN KEY (fk_transaction_id) REFERENCES transaction (id);
 
-ALTER TABLE tx_output ADD CONSTRAINT FK_address_tx_out FOREIGN KEY (fk_address_id) REFERENCES address (code);
+ALTER TABLE tx_output ADD CONSTRAINT FK_address_tx_out FOREIGN KEY (fk_address_code) REFERENCES address (code);
