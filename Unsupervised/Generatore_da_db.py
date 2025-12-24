@@ -19,7 +19,7 @@ def load_bitcoin_edges_from_db(limit=None):
 
     query = f"""
       SELECT *
-      FROM flows
+      FROM flows_view
     """
 
     if limit:
@@ -47,7 +47,7 @@ def load_bitcoin_edges_from_db_without_warning():
 
   query = f"""
     SELECT *
-    FROM flows
+    FROM flows_view
     """
 
   # Apri una connessione esplicita e usa sqlalchemy.text()

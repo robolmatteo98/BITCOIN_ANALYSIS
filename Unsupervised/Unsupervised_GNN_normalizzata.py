@@ -7,6 +7,8 @@ from torch_geometric.nn import GCNConv, VGAE
 from Generatore_da_db import load_bitcoin_edges_from_db, load_bitcoin_edges_from_db_without_warning
 from Anomaly_classification import classify_suspicious_node, classify_node_with_scores
 
+from Reporting import save_anomaly_report
+
 # =====================================================================
 # 1) CARICAMENTO DATI
 # =====================================================================
@@ -106,14 +108,29 @@ model.eval()
 z = model.encode(data.x, data.edge_index).detach()
 
 norms = torch.norm(z - z.mean(dim=0), dim=1)
-top_anomalies = norms.topk(10)   # 10 nodi sospetti
-indices_sospetti = top_anomalies.indices.tolist()
 
+# METODO MAD (robusto agli outlier)
+median = norms.median()
+mad = torch.median(torch.abs(norms - median))
+
+threshold = median + 3 * mad
+mask = norms > threshold
+
+indices_sospetti = mask.nonzero(as_tuple=True)[0].tolist()
 indirizzi_sospetti = [addresses[i] for i in indices_sospetti]
 
+anomalies = [
+  (addresses[i], norms[i].item())
+  for i in indices_sospetti
+]
+
+# ordina per score decrescente
+anomalies.sort(key=lambda x: x[1], reverse=True)
+
 print("\n=== POTENZIALI INDIRIZZI SOSPETTI ===")
-for a in indirizzi_sospetti:
-    print(a)
+for indirizzo, norma in anomalies:
+  print(f"{indirizzo} - score di anomalia: {norma:.4f}")
+
 
 # =====================================================================
 # 6) ANALISI DETTAGLIATA NODI SOSPETTI
@@ -127,8 +144,23 @@ for i in indices_sospetti:
     out_edges = node_edges[node_edges['from_address'] == addr]
     in_edges = node_edges[node_edges['to_address'] == addr]
     
-    print(f"\nIndirizzo sospetto: {addr} --> {reason}")
+    print(f"\nIndirizzo sospetto: {addr}")
+    for label, score in reason:
+      print(f"  - {label}: {(score * 100):.2f} %")
     print(f"  Grado uscente: {len(out_edges)}, somma uscente: {out_edges['flow_amount'].sum():.2f}")
     print(f"  Grado entrante: {len(in_edges)}, somma entrante: {in_edges['flow_amount'].sum():.2f}")
     print(node_edges[['txid', 'from_address','to_address','flow_amount','time']])
     print("---------------------------------------------------")
+
+report_path = save_anomaly_report(
+  addresses=addresses,
+  norms=norms,
+  indices_sospetti=indices_sospetti,
+  df_edges=df_edges,
+  classify_fn=classify_node_with_scores,
+  threshold=threshold,
+  num_nodes=num_nodes,
+  output_path="./REPORTS"
+)
+
+print(f"\n✔ Report salvato in {report_path}")

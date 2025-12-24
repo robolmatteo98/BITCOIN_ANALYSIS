@@ -4,8 +4,8 @@ WITH input_values AS (
         inp.fk_transaction_id AS txid,
         prev_out.fk_address_code AS from_address,
         prev_out.amount AS input_amount
-    FROM bitcoin_tx_input inp
-    JOIN bitcoin_tx_output prev_out
+    FROM tx_input inp
+    JOIN tx_output prev_out
       ON prev_out.fk_transaction_id = inp.prev_transaction_id
      AND prev_out.n = inp.prev_vout
 ),
@@ -24,6 +24,6 @@ SELECT
     b.time
 FROM input_values i
 JOIN total_input t       ON t.txid = i.txid
-JOIN bitcoin_tx_output o ON o.fk_transaction_id = i.txid
-JOIN bitcoin_transaction tra ON tra.id = i.txid
-JOIN bitcoin_block b     ON b.id = tra.fk_block_id;
+JOIN tx_output o ON o.fk_transaction_id = i.txid
+JOIN transaction tra ON tra.id = i.txid
+JOIN block b     ON b.id = tra.fk_block_id;

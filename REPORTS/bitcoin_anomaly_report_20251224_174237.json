@@ -1,0 +1,5865 @@
+{
+  "model": {
+    "type": "VGAE",
+    "method": "MAD",
+    "threshold": 0.1576838344335556
+  },
+  "summary": {
+    "num_nodes": 634,
+    "num_edges": 657,
+    "num_anomalies": 55
+  },
+  "anomalies": [
+    {
+      "address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+      "anomaly_score": 3.098226,
+      "reasons": [
+        {
+          "label": "Self-churn / cyclic",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 10,
+        "out_sum": 177.0,
+        "in_degree": 5,
+        "in_sum": 145.0
+      },
+      "edges": [
+        {
+          "txid": 172,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "1Q2TWHE3GMdB6BZKafqwxXtWAWgFt5Jvm3",
+          "flow_amount": 10.0,
+          "time": 1231731025
+        },
+        {
+          "txid": 172,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "flow_amount": 40.0,
+          "time": 1231731025
+        },
+        {
+          "txid": 184,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "1DUDsfc23Dv9sPMEk5RsrtfzCw5ofi5sVW",
+          "flow_amount": 10.0,
+          "time": 1231740133
+        },
+        {
+          "txid": 184,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "flow_amount": 30.0,
+          "time": 1231740133
+        },
+        {
+          "txid": 186,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "1LzBzVqEeuQyjD2mRWHes3dgWrT9titxvq",
+          "flow_amount": 1.0,
+          "time": 1231740736
+        },
+        {
+          "txid": 186,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "flow_amount": 29.0,
+          "time": 1231740736
+        },
+        {
+          "txid": 188,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "13HtsYzne8xVPdGDnmJX8gHgBZerAfJGEf",
+          "flow_amount": 1.0,
+          "time": 1231742062
+        },
+        {
+          "txid": 188,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "flow_amount": 28.0,
+          "time": 1231742062
+        },
+        {
+          "txid": 256,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "1ByLSV2gLRcuqUmfdYcpPQH8Npm8cccsFg",
+          "flow_amount": 10.0,
+          "time": 1231790660
+        },
+        {
+          "txid": 256,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "flow_amount": 18.0,
+          "time": 1231790660
+        }
+      ]
+    },
+    {
+      "address": "1Q2TWHE3GMdB6BZKafqwxXtWAWgFt5Jvm3",
+      "anomaly_score": 3.424625,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 10.0
+      },
+      "edges": [
+        {
+          "txid": 172,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "1Q2TWHE3GMdB6BZKafqwxXtWAWgFt5Jvm3",
+          "flow_amount": 10.0,
+          "time": 1231731025
+        }
+      ]
+    },
+    {
+      "address": "1DUDsfc23Dv9sPMEk5RsrtfzCw5ofi5sVW",
+      "anomaly_score": 3.424625,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 10.0
+      },
+      "edges": [
+        {
+          "txid": 184,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "1DUDsfc23Dv9sPMEk5RsrtfzCw5ofi5sVW",
+          "flow_amount": 10.0,
+          "time": 1231740133
+        }
+      ]
+    },
+    {
+      "address": "1LzBzVqEeuQyjD2mRWHes3dgWrT9titxvq",
+      "anomaly_score": 3.442909,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 1.0,
+        "in_degree": 1,
+        "in_sum": 1.0
+      },
+      "edges": [
+        {
+          "txid": 186,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "1LzBzVqEeuQyjD2mRWHes3dgWrT9titxvq",
+          "flow_amount": 1.0,
+          "time": 1231740736
+        },
+        {
+          "txid": 228,
+          "from_address": "1LzBzVqEeuQyjD2mRWHes3dgWrT9titxvq",
+          "to_address": "1BDvQZjaAJH4ecZ8aL3fYgTi7rnn3o2thE",
+          "flow_amount": 1.0,
+          "time": 1231770060
+        }
+      ]
+    },
+    {
+      "address": "13HtsYzne8xVPdGDnmJX8gHgBZerAfJGEf",
+      "anomaly_score": 3.442909,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 1.0,
+        "in_degree": 1,
+        "in_sum": 1.0
+      },
+      "edges": [
+        {
+          "txid": 188,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "13HtsYzne8xVPdGDnmJX8gHgBZerAfJGEf",
+          "flow_amount": 1.0,
+          "time": 1231742062
+        },
+        {
+          "txid": 193,
+          "from_address": "13HtsYzne8xVPdGDnmJX8gHgBZerAfJGEf",
+          "to_address": "15NUwyBYrZcnUgTagsm1A7M2yL2GntpuaZ",
+          "flow_amount": 1.0,
+          "time": 1231744600
+        }
+      ]
+    },
+    {
+      "address": "15NUwyBYrZcnUgTagsm1A7M2yL2GntpuaZ",
+      "anomaly_score": 1.446542,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 1.0,
+        "in_degree": 1,
+        "in_sum": 1.0
+      },
+      "edges": [
+        {
+          "txid": 193,
+          "from_address": "13HtsYzne8xVPdGDnmJX8gHgBZerAfJGEf",
+          "to_address": "15NUwyBYrZcnUgTagsm1A7M2yL2GntpuaZ",
+          "flow_amount": 1.0,
+          "time": 1231744600
+        },
+        {
+          "txid": 505,
+          "from_address": "15NUwyBYrZcnUgTagsm1A7M2yL2GntpuaZ",
+          "to_address": "1BBz9Z15YpELQ4QP5sEKb1SwxkcmPb5TMs",
+          "flow_amount": 1.0,
+          "time": 1231965655
+        }
+      ]
+    },
+    {
+      "address": "1BDvQZjaAJH4ecZ8aL3fYgTi7rnn3o2thE",
+      "anomaly_score": 1.406993,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 1.0
+      },
+      "edges": [
+        {
+          "txid": 228,
+          "from_address": "1LzBzVqEeuQyjD2mRWHes3dgWrT9titxvq",
+          "to_address": "1BDvQZjaAJH4ecZ8aL3fYgTi7rnn3o2thE",
+          "flow_amount": 1.0,
+          "time": 1231770060
+        }
+      ]
+    },
+    {
+      "address": "1ByLSV2gLRcuqUmfdYcpPQH8Npm8cccsFg",
+      "anomaly_score": 3.442909,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 10.0,
+        "in_degree": 1,
+        "in_sum": 10.0
+      },
+      "edges": [
+        {
+          "txid": 256,
+          "from_address": "12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S",
+          "to_address": "1ByLSV2gLRcuqUmfdYcpPQH8Npm8cccsFg",
+          "flow_amount": 10.0,
+          "time": 1231790660
+        },
+        {
+          "txid": 505,
+          "from_address": "1ByLSV2gLRcuqUmfdYcpPQH8Npm8cccsFg",
+          "to_address": "1BBz9Z15YpELQ4QP5sEKb1SwxkcmPb5TMs",
+          "flow_amount": 10.0,
+          "time": 1231965655
+        }
+      ]
+    },
+    {
+      "address": "1BBz9Z15YpELQ4QP5sEKb1SwxkcmPb5TMs",
+      "anomaly_score": 1.205316,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 3,
+        "in_sum": 61.0
+      },
+      "edges": [
+        {
+          "txid": 505,
+          "from_address": "1ByLSV2gLRcuqUmfdYcpPQH8Npm8cccsFg",
+          "to_address": "1BBz9Z15YpELQ4QP5sEKb1SwxkcmPb5TMs",
+          "flow_amount": 10.0,
+          "time": 1231965655
+        },
+        {
+          "txid": 505,
+          "from_address": "15NUwyBYrZcnUgTagsm1A7M2yL2GntpuaZ",
+          "to_address": "1BBz9Z15YpELQ4QP5sEKb1SwxkcmPb5TMs",
+          "flow_amount": 1.0,
+          "time": 1231965655
+        },
+        {
+          "txid": 505,
+          "from_address": "18SH9vwx24L5cTabfkgtGMjF8A56pD9AUJ",
+          "to_address": "1BBz9Z15YpELQ4QP5sEKb1SwxkcmPb5TMs",
+          "flow_amount": 50.0,
+          "time": 1231965655
+        }
+      ]
+    },
+    {
+      "address": "1Jhk2DHosaaZx1E4CbnTGcKM7FC88YHYv9",
+      "anomaly_score": 0.540859,
+      "reasons": [
+        {
+          "label": "Self-churn / cyclic",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 2,
+        "out_sum": 50.0,
+        "in_degree": 1,
+        "in_sum": 25.0
+      },
+      "edges": [
+        {
+          "txid": 534,
+          "from_address": "1Jhk2DHosaaZx1E4CbnTGcKM7FC88YHYv9",
+          "to_address": "1DCbY2GYVaAMCBpuBNN5GVg3a47pNK1wdi",
+          "flow_amount": 25.0,
+          "time": 1231983986
+        },
+        {
+          "txid": 534,
+          "from_address": "1Jhk2DHosaaZx1E4CbnTGcKM7FC88YHYv9",
+          "to_address": "1Jhk2DHosaaZx1E4CbnTGcKM7FC88YHYv9",
+          "flow_amount": 25.0,
+          "time": 1231983986
+        }
+      ]
+    },
+    {
+      "address": "1DCbY2GYVaAMCBpuBNN5GVg3a47pNK1wdi",
+      "anomaly_score": 0.854357,
+      "reasons": [
+        {
+          "label": "Self-churn / cyclic",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 4,
+        "out_sum": 49.0,
+        "in_degree": 2,
+        "in_sum": 49.0
+      },
+      "edges": [
+        {
+          "txid": 534,
+          "from_address": "1Jhk2DHosaaZx1E4CbnTGcKM7FC88YHYv9",
+          "to_address": "1DCbY2GYVaAMCBpuBNN5GVg3a47pNK1wdi",
+          "flow_amount": 25.0,
+          "time": 1231983986
+        },
+        {
+          "txid": 556,
+          "from_address": "1DCbY2GYVaAMCBpuBNN5GVg3a47pNK1wdi",
+          "to_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "flow_amount": 1.0,
+          "time": 1231998512
+        },
+        {
+          "txid": 556,
+          "from_address": "1DCbY2GYVaAMCBpuBNN5GVg3a47pNK1wdi",
+          "to_address": "1DCbY2GYVaAMCBpuBNN5GVg3a47pNK1wdi",
+          "flow_amount": 24.0,
+          "time": 1231998512
+        },
+        {
+          "txid": 558,
+          "from_address": "1DCbY2GYVaAMCBpuBNN5GVg3a47pNK1wdi",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 0.96,
+          "time": 1231999700
+        },
+        {
+          "txid": 558,
+          "from_address": "1DCbY2GYVaAMCBpuBNN5GVg3a47pNK1wdi",
+          "to_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "flow_amount": 23.04,
+          "time": 1231999700
+        }
+      ]
+    },
+    {
+      "address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+      "anomaly_score": 2.634912,
+      "reasons": [
+        {
+          "label": "Mixer-like behavior",
+          "score": 1.0
+        },
+        {
+          "label": "Self-churn / cyclic",
+          "score": 0.833
+        }
+      ],
+      "stats": {
+        "out_degree": 4,
+        "out_sum": 25.0,
+        "in_degree": 5,
+        "in_sum": 26.0
+      },
+      "edges": [
+        {
+          "txid": 556,
+          "from_address": "1DCbY2GYVaAMCBpuBNN5GVg3a47pNK1wdi",
+          "to_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "flow_amount": 1.0,
+          "time": 1231998512
+        },
+        {
+          "txid": 558,
+          "from_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 0.04,
+          "time": 1231999700
+        },
+        {
+          "txid": 558,
+          "from_address": "1DCbY2GYVaAMCBpuBNN5GVg3a47pNK1wdi",
+          "to_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "flow_amount": 23.04,
+          "time": 1231999700
+        },
+        {
+          "txid": 558,
+          "from_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "to_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "flow_amount": 0.96,
+          "time": 1231999700
+        },
+        {
+          "txid": 559,
+          "from_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 0.96,
+          "time": 1231999700
+        },
+        {
+          "txid": 559,
+          "from_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 23.04,
+          "time": 1231999700
+        },
+        {
+          "txid": 560,
+          "from_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "to_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "flow_amount": 0.96,
+          "time": 1231999700
+        },
+        {
+          "txid": 560,
+          "from_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "to_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "flow_amount": 0.04,
+          "time": 1231999700
+        }
+      ]
+    },
+    {
+      "address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+      "anomaly_score": 3.082371,
+      "reasons": [
+        {
+          "label": "Self-churn / cyclic",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 6,
+        "out_sum": 26.0,
+        "in_degree": 8,
+        "in_sum": 50.0
+      },
+      "edges": [
+        {
+          "txid": 558,
+          "from_address": "1DCbY2GYVaAMCBpuBNN5GVg3a47pNK1wdi",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 0.96,
+          "time": 1231999700
+        },
+        {
+          "txid": 558,
+          "from_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 0.04,
+          "time": 1231999700
+        },
+        {
+          "txid": 559,
+          "from_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 0.96,
+          "time": 1231999700
+        },
+        {
+          "txid": 559,
+          "from_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 0.04,
+          "time": 1231999700
+        },
+        {
+          "txid": 559,
+          "from_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 23.04,
+          "time": 1231999700
+        },
+        {
+          "txid": 559,
+          "from_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 0.96,
+          "time": 1231999700
+        },
+        {
+          "txid": 560,
+          "from_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "to_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "flow_amount": 0.96,
+          "time": 1231999700
+        },
+        {
+          "txid": 560,
+          "from_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "to_address": "1DZTzaBHUDM7T3QvUKBz4qXMRpkg8jsfB5",
+          "flow_amount": 0.04,
+          "time": 1231999700
+        },
+        {
+          "txid": 560,
+          "from_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 23.04,
+          "time": 1231999700
+        },
+        {
+          "txid": 560,
+          "from_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "to_address": "1KAD5EnzzLtrSo2Da2G4zzD7uZrjk8zRAv",
+          "flow_amount": 0.96,
+          "time": 1231999700
+        }
+      ]
+    },
+    {
+      "address": "19QKDUJtx9n7Vaga6nX1bVHdsnT4Khfyi6",
+      "anomaly_score": 0.437824,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 5,
+        "in_sum": 250.0
+      },
+      "edges": [
+        {
+          "txid": 601,
+          "from_address": "1LfjLrBDYyPbvGMiD9jURxyAupdYujsBdK",
+          "to_address": "19QKDUJtx9n7Vaga6nX1bVHdsnT4Khfyi6",
+          "flow_amount": 50.0,
+          "time": 1232029520
+        },
+        {
+          "txid": 601,
+          "from_address": "1ACWHyRM8rtbt96KauPJprnF2qDQSdPJ54",
+          "to_address": "19QKDUJtx9n7Vaga6nX1bVHdsnT4Khfyi6",
+          "flow_amount": 50.0,
+          "time": 1232029520
+        },
+        {
+          "txid": 601,
+          "from_address": "1ADpf5rHERc2PmVAZZFoH7WbougKvkPDVD",
+          "to_address": "19QKDUJtx9n7Vaga6nX1bVHdsnT4Khfyi6",
+          "flow_amount": 50.0,
+          "time": 1232029520
+        },
+        {
+          "txid": 601,
+          "from_address": "1ELmSkQWnqgbBZNzxAZHts3MEYCngqRBeD",
+          "to_address": "19QKDUJtx9n7Vaga6nX1bVHdsnT4Khfyi6",
+          "flow_amount": 50.0,
+          "time": 1232029520
+        },
+        {
+          "txid": 601,
+          "from_address": "1DNdPgBZRWjDj1JbVZQEYMv7jvqJF7R4Py",
+          "to_address": "19QKDUJtx9n7Vaga6nX1bVHdsnT4Khfyi6",
+          "flow_amount": 50.0,
+          "time": 1232029520
+        }
+      ]
+    },
+    {
+      "address": "1QKJnFPvRoZ7avBhxqwxhsEv62JWYoB1R9",
+      "anomaly_score": 0.179692,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 50.0
+      },
+      "edges": [
+        {
+          "txid": 602,
+          "from_address": "1E5npMTmh9PnBHxCacuqzAZRGEybkxPMAq",
+          "to_address": "1QKJnFPvRoZ7avBhxqwxhsEv62JWYoB1R9",
+          "flow_amount": 50.0,
+          "time": 1232029520
+        }
+      ]
+    },
+    {
+      "address": "153h6eE6xRhXuN3pE53gWVfXacAtfyBF8g",
+      "anomaly_score": 0.530092,
+      "reasons": [
+        {
+          "label": "Self-churn / cyclic",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 3,
+        "out_sum": 75.0,
+        "in_degree": 1,
+        "in_sum": 25.0
+      },
+      "edges": [
+        {
+          "txid": 610,
+          "from_address": "153h6eE6xRhXuN3pE53gWVfXacAtfyBF8g",
+          "to_address": "1LEWwJkDj8xriE87ALzQYcHjTmD8aqDj1f",
+          "flow_amount": 25.0,
+          "time": 1232034716
+        },
+        {
+          "txid": 610,
+          "from_address": "153h6eE6xRhXuN3pE53gWVfXacAtfyBF8g",
+          "to_address": "153h6eE6xRhXuN3pE53gWVfXacAtfyBF8g",
+          "flow_amount": 25.0,
+          "time": 1232034716
+        },
+        {
+          "txid": 1078,
+          "from_address": "153h6eE6xRhXuN3pE53gWVfXacAtfyBF8g",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 25.0,
+          "time": 1232392372
+        }
+      ]
+    },
+    {
+      "address": "1LEWwJkDj8xriE87ALzQYcHjTmD8aqDj1f",
+      "anomaly_score": 0.670812,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 25.0
+      },
+      "edges": [
+        {
+          "txid": 610,
+          "from_address": "153h6eE6xRhXuN3pE53gWVfXacAtfyBF8g",
+          "to_address": "1LEWwJkDj8xriE87ALzQYcHjTmD8aqDj1f",
+          "flow_amount": 25.0,
+          "time": 1232034716
+        }
+      ]
+    },
+    {
+      "address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+      "anomaly_score": 6.65941,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 335,
+        "in_sum": 16675.33
+      },
+      "edges": [
+        {
+          "txid": 747,
+          "from_address": "18KrJNtPVu6LWRNPQReqF29iFm7vDhirMk",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232133515
+        },
+        {
+          "txid": 747,
+          "from_address": "1Miuw7ifaTYY5qrzKYFcTDiojSFxRfAqwP",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232133515
+        },
+        {
+          "txid": 1078,
+          "from_address": "1Fz1PZ4m2PykPasegmG3oWNXTu837Buu8T",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232392372
+        },
+        {
+          "txid": 1078,
+          "from_address": "17C8uaaknVNSfGM6eeaZQzrrEuhveQPirv",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232392372
+        },
+        {
+          "txid": 1078,
+          "from_address": "1JCNTEzhK5J8dPhhsnarS3UeQe7rxgmZig",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232392372
+        },
+        {
+          "txid": 1078,
+          "from_address": "153h6eE6xRhXuN3pE53gWVfXacAtfyBF8g",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 25.0,
+          "time": 1232392372
+        },
+        {
+          "txid": 1078,
+          "from_address": "1C1QnL6oZqiRmKgaTm8XZbHccwupvJsAwG",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232392372
+        },
+        {
+          "txid": 1078,
+          "from_address": "1PEsXxy7kVSPL3Sqw9q4HPkbM368tGTYcx",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232392372
+        },
+        {
+          "txid": 1321,
+          "from_address": "19QiFoYFBf8bo6STnvdCD21ASskDGkpaSQ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232582734
+        },
+        {
+          "txid": 1321,
+          "from_address": "1DGgqqQHfwGX28FzenC2DgqX2fzgU99urQ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232582734
+        },
+        {
+          "txid": 1321,
+          "from_address": "1HaEeDfAWeo4hopjYMAx1At75uhY614C9X",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232582734
+        },
+        {
+          "txid": 1321,
+          "from_address": "1Ktq4ujHAwk8Utk1AGzCCq2aFBRbdkMeh7",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232582734
+        },
+        {
+          "txid": 1321,
+          "from_address": "1HG3byV85t3wiZ4uazZJvntRQT2Rmw4rbm",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232582734
+        },
+        {
+          "txid": 1321,
+          "from_address": "1qvpfJXzAzKJvkbBFRVEtNZw6yU31orDL",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232582734
+        },
+        {
+          "txid": 1321,
+          "from_address": "15Eto1LeCTkZGkPwr3H2BS8Nu1yadfeEH8",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232582734
+        },
+        {
+          "txid": 1321,
+          "from_address": "19NaaYCw1UBQd2gFfc77bKnVesA5d7fFzM",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232582734
+        },
+        {
+          "txid": 1321,
+          "from_address": "1CsZEWqUk95GggXg1mvxP6qWv95bCvVaZs",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232582734
+        },
+        {
+          "txid": 1321,
+          "from_address": "12V3D1ytYGZgYTgmuNh8JLAiKMF9chUoDd",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232582734
+        },
+        {
+          "txid": 1481,
+          "from_address": "1M79wfuR7Bjgeu4DgfSP8G6E5Mpx2hqUhb",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232748657
+        },
+        {
+          "txid": 1481,
+          "from_address": "1L4Ad5A1xw15cr6wkmEpHBYeMTSDEaVct4",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232748657
+        },
+        {
+          "txid": 1481,
+          "from_address": "1DGdXqZeQsMKwfEpbAuvPHt2d72jfk1VWG",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232748657
+        },
+        {
+          "txid": 1481,
+          "from_address": "1BtNBoKGgME9HCkjeHNJ6FrsZaAMTLCWED",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232748657
+        },
+        {
+          "txid": 1481,
+          "from_address": "125JeyLib4bzAkqFbcidrNqwcty6S51yCu",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232748657
+        },
+        {
+          "txid": 1481,
+          "from_address": "1D1FUseiHmbRPDCRvExrBX3C3BtFxGimMz",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1232748657
+        },
+        {
+          "txid": 1975,
+          "from_address": "1B2xDgdCGkr5UyZuiVuYBXeyGScBJco3Ty",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "13yawe8cxT5xaYLQ39rAnbUUxeFppNrBpM",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1BENJudbbZ8dfTwFtCLuJNWMTtBLE2bZa",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1GaVH6stCc4bwYkWe6VcRM24HHSszq85a4",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1LXgpvzVXBeiPaX8HLynZmib3968fiZHu7",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "114rh9hzgStCRbXWuuahe87nQdkY1Ebncr",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1BGKfxaa8rMtKAsNXGMmAXmCeUFpe7pMxB",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1JFmQAS8du4V8JvZBpwXvMnzyhEXkC4b7N",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "19NvQv8SBtfWiLqjdW7JUzZr78TwEDkz4F",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "17crXb2VbFYSRqWqqywyNUnfjB9Pb8GXEJ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1ChPe5pz2bwvK4E51NEzu81Sg4zLSXoN6c",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1M6HdzAHLDBWoHPt7qufedD5Him3y5Fpou",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1ABNbec6n9hrevc6rNnDKqYmSr9KHCue7D",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1P7wSgzChCSmVLp41Yp7HVE624T5ypEE8P",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1D6QRvDR83RQnLR9GdAD11MPwAYnbNKLQt",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1PAohTUrR2HTMRsmNbmdcL5es7CJuzvj6n",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "17nKiX7HzHZeEs3hcHKZSJaSXQ3xPKrJrC",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1PgoNWcb45PdU5LkvVq5WnMmjUD2ameDsL",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "14zHfSpU4kbiqwqAHPm669SKe6HSbyKQkB",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 1975,
+          "from_address": "1MUKXPFrGZNWeJApikyeK8VoFVTqmDLDHB",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233004161
+        },
+        {
+          "txid": 2309,
+          "from_address": "14XybX98EZQpKpcxEZFYvCEV5S53dY8nax",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 2309,
+          "from_address": "17X1kD35NaC4hveLReBJMPxQ4e2k8TKLtB",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 2309,
+          "from_address": "13AgD4FbYfjGhxe6shQAhZ7S7ZfvnhVVmo",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 2309,
+          "from_address": "1QhdLrHCki4hniFp5wd7SXy7Dk6cTWvux",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 2309,
+          "from_address": "17ATTgcpLLTCXx6AuUpoo6EGXDQexf1Jua",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 2309,
+          "from_address": "1tu8AqKF8FzUvWYaaGyYPpFtFyMWHWPCT",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 2309,
+          "from_address": "19BBY3jRJZaEP6qMF2DRnkJXGfqdZDQ7Lx",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 2309,
+          "from_address": "1GcqLQUtqnBr2Ah7ubwHSqdB7QZcDzQX2h",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 2309,
+          "from_address": "13Lw3LXCgovxkzLG6mGE1rLRMkbfKrzeig",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 2309,
+          "from_address": "1Ciy18mnng6kY7MKJVdtWtVQ1a7nWEmZMA",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 2309,
+          "from_address": "1Eo32vpEPv8SZEQVN4ZuS9QzSMfbr8L4bM",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 2309,
+          "from_address": "1MHHjLCcUQvvEpn47yfvL2F2FTTiZmSwt2",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1233264990
+        },
+        {
+          "txid": 3702,
+          "from_address": "1AzAh89xHABMMJFr4C7Pp6iFtfMneQBbiL",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1Cv6DzT7opgc12qKeaXgBYW2g9uxA8YPNv",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1FwSmy4jxBevXNjQq6PGV8GpeFx8Fwmk29",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1N1n61cKZLAZ7UzKr55jMcZ2xV8JPdk1Ce",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "15BvVdALyhVemgxHbaWGHWPaAgn5H7qmPm",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1EYfPtzz4iXFXpXip5oDV48RkurxuYiXXZ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1EhSSKmasBhDbWiuwhAGB9L4AU9h9ZhA36",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1MATWhVc8qAZyb6XMnjPmPyx18eFDg7gw8",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1NuY9u2EG2F8J1Mtpk1fBFp2tZcVkVBDZZ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "18uR9o1HdAmggGSzNPteSZvYEGRQATU1SQ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "199qY9G9AYPermPtzPFjEfigZJJ1sABjfp",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1C68iAZGXpdif64QFDFmSzqyWHoc2cf1v8",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "126jEcDoSWgGm1XAAWNMG8DPMsZARS9AJE",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1HccZ6tKrQ4aEYyaJ5fZWJ2XnFaU1Cyfrw",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1MFjSnxx2bKwPSA7ijgqaACCeFuQJanZmj",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1ADPHabNSJACDTM5CfXMqFZkN4S6rLYQz1",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "19wvVXPqmssgkyXpk6V1Gyr5J6Q7B7WrYL",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1BKZHuMctGcAaVEcmewiLBNE4kkwQqMQVn",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "13cbKDYKmFnJ9FCpyRuuU1v1Ms5ndnYgx8",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1CHvbFZGnvV12AokFAtc71WxMCJynAmVjz",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "12ZjYzK3ebPKPeJ7Hw8PyZ3A42S4fRc9Sr",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1EXKj5nbs4FymLLJAvjDMk4ea9nreGDUoC",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1L2dE82Qwzrq2aqXQGD18hMZyFLXsM9EG7",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1ExbsJ2tt685LRJvZd3XhGVgXPbFrvc4yj",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "15CMgUkRtUyGdnK9zXYt4nmxp3qqZJ2W2L",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1BwwMnnixq7H6fp6aKmLLRasGkwJc935AP",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1HWPb8CAT6NPudimHQEDVzJTrdZSZETHwH",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1CdbbQutoTUeNiH7J55feFsqsi4AaY1bJM",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "15sSq5hQU7ToXgnpPncNgnLy5GaXSzvphd",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1C55T1K1jRAXMzJ2hoB5kzYwUVhQRytNuE",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1G99p3ivRm1NXxFRauY8B2WQWdPzoKyBDW",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1MU6n4QANYDrgZ3ZrMmSnubJ7sBW4e6tgn",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1CPECS9iDQWPRfwqyYsiKLe9Hmq4vdjn7Z",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1K4wWYkkNLYpZEDqZw9bRWgVSTS2pATRfM",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1LQXPwEyy2KAL7WMhhcHhF7gPZdheEBvmX",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1CaeMUQN2wvpKEXVYxoxePCqAYjoZhDegK",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "143vizLj7Qg7SH5YYQkL3KTZVceGtFfEA3",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "17EnRMKdTB1fCrDpnbhL8NxfKibpS8hKxq",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1QHZQergVWYfQUYQ4DEhosgCdf6MBU9QqF",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "18WaG41yAQAJ1W5wt6bR2MSGwwKP76EVAo",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1wffbGR9H6H9A4L1s2UfE1MoPeLV3eeC5",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1Ku3tvX5LZ3DzVP7M2u1PF4fJXsFK7jh75",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "1BW5eBrsK2Jp8X4s45Tvmm9Xfdu8c2LyFR",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 3702,
+          "from_address": "18KvkdfPUYRZZG2vzp2Lt6rRnMysSYwg8Y",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234200634
+        },
+        {
+          "txid": 4603,
+          "from_address": "1LJdGpzmudwkSN2DKDhKmn4rPCBmy7iv7W",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1AdU3Zm2wJSuj1WRNbbp5gYYXqEh6rj1qU",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "19Pw8kcksKicrvERVXy6KtaogEg99zcWQS",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1N36ALhVgZXAZHTtjsUJM3SwB1QoG4gLp2",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1MB5iazJBFKc9vLZ9Q3qfb3vsZPt86uJD9",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1HYYQHJVW9ZHAqBAiGFDgqdwZxzFPJGrUs",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1D9cBChY8ScmpmXfMKbn7kkNrqNGWCif5b",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1G3NVEeczPkycHKG8gEbN6k2vASpeRijtZ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1N9bypNTKDAfteJGYGBVPZddys8qHHcL1N",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1EsTaq4qMLDMpudMi7y5eGU1AQMxixouo2",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1H59b4RTGi1ZsqSehAvV6wvhhQRH3yEqNX",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1EFkg6caLJQvUhDNiAkdWW5Zrz5gWG4y2f",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1BYJagWeHL1Gh4yeEZFZABnPcQaTTngaqC",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1L7mFYrM1Ehvca2QfVtNG8Wq6myDDjuHHv",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "19t8ekke5rMBk5vFHgZEXGdWeWq8Eh74g8",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1Z3Fzieg2fTJozfjaEhFAECW4Nhpepsa8",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "16CYRdprMULhCfTxHEQdnXHzfG9tZBea24",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1DpSTVaPp4HLFk8FyD768ywKwGy9QWAWS3",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "13RbuajUiB5ara9m9fb12xywUGYk1y2tmq",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1Xm9ohWg4MiPQREEfuvr11Tr5tn6Kopsi",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1Nv25yWTUfiAo1pZbWyRy4Vg4AWvQ6A89H",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1LGV8iEtahEVrGd9EccpnLvwHRcq7PeNRq",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1F95HJVyhXFoKe4xkryTERjXWRsXNQDjZU",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1Bridk59gmc6ZGLE62nVfMFJUx4R5zFuzN",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1KS6qFZR4VWZ7tLJJzFoUxtCF1U4ktBV9e",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1r51ebw3j1oMM9jy87PkosAcQmqv1Jcqi",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1oc5RYrBd7zuUTqwgvvAYoz1NkxbJsAHH",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "16v4C8CxEGRJhWhu5gpBGi3NzDeTZyimzV",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1JRokdd7vjQjJU6gWeqQd3QNMTpr9pCmob",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4603,
+          "from_address": "1A9VNjdMGHdMRhaHNj8zwRNLoutbDysvoU",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1234810654
+        },
+        {
+          "txid": 4990,
+          "from_address": "1NR9njogeHd1VAeUz5tBtrbUEbkHJ2d9Wm",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "13awze16kkdfaPaQCKkNUvpMdp5oC51VqT",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "1KeascwPZj6zvBTtTY7ZADNRLiGw7cXzPL",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "1E3ebvgdpcUfNUYLD2bAhGc2Gnvt2go5E5",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "17hVuDmYGw8GRHRp8Jft7B6bW3FcipaY35",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "17gFgP7VH3dvRfegD1LbfuKDzvpU9bQ8zG",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "1Pk69vJ4TkqduQ8JhdziCAb7QmFqeZyuMu",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "1LdtNmahVqjwanKE8RyHK9jsMC4qDrG9Rm",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "1LNkG5BWKBxava17qhK2Y1BFMEWHZnB5PQ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "14eM3jd3jLSwR4UsW6qKurejGnePkCnkRv",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "1BTT1iADguaekBbEFu5MHr46bYis8qmKR",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "14USGb4mSarP1SvZd6nCecJjs5HcxupRHn",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "1L8R7hSxsMhNvUZJN66kkujCsbfqkemg9t",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "122acrcc74diGrtY6RfpbSs5gMpTUuGMYn",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "1N4NoZsDqbdm9s1A5AFL246duFLm2vu672",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 4990,
+          "from_address": "15jE6Zez6XEnQ1PjjmbD8G5F4y1Uw7YoBd",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235087435
+        },
+        {
+          "txid": 5876,
+          "from_address": "1Lo81NrLgMU8USNxkMSfcXhKhW45EARS6X",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "18pyCChGgU4tQKNfCccf4X5UT2GP1ZKJGr",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1EppuxmBGGWzjKsQ9Nh7yQnMxMp8fWWyJZ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "12p5ffZSz8xrjXWT5xpALsCfigNoVgpwyF",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "15KNyG66L4U9MYsw11UimFKtifd6HYqRN8",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1bBBrQgchoEGhqT7WcDFkjQLnyZUESS5N",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "18hE4MYQcKFB4ZdoqZ9gzwBzrwvjGDV61L",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1qviAPm8EKEktnn2Gtkb8K7eYL9k9x1uj",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "15uwBsdAqMedRs8KBqbsJUx7ktNLJ2jgQ2",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1CmDVN5uUuPbuwyQ2jefP3tdPQrQ7emBTz",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "16QRaPkkpYHyTbW4jVJ9c8s25L7ArHxJiH",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1yZWQYuFhAn84dZS7bqGwvCgRcuD2eMCn",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "129C2XFmgjVkRxMnNDVVF5H5fb9NNFQ1Xo",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1F6zqXd7ffGfJnXjEwj5bLSzwqoahdsLK3",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1PMm4YA9JikEGs5Tpbxr3tqTr69eruWwLU",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1AaqyNyYGCtuk9JuSKuXMSjtfXkmSdB25r",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "13o2qaN3W4fAo3Vm92CJmTCEEXsgWaPiEm",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1HptjvcKrkwe4nN4kFgnYVrnJju4vTWZRu",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1MKqxZPJCpYQxhwjXU6EKk4NFKDjzcRWNb",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "17B7aFu7NnoyFFvyE37iqNCX2EcKVWeAFx",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1CJeJmkJofLQ96V4m7kYwxgoBA6dmFRhPt",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "15QqvnRXqpvxVu7mgSWHPbAEBMx9KWyLX3",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "19nRaJKQU73rVDe3q6gJqQiUMwtyCdxQbb",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1C4x3rRZggcFNRVe4uvE14tKyRNHoZyvyJ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1C8PSrCTNR1XFYDNoYh7DW19nhNhbTQpCh",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "15D8pE36nma31nNz2F3w7N369yT5nbfRER",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "13q9iTJTxoWdVgWjd7cUGgaxEQ8Ceu59m5",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1mKhgDQNc4jJsWNegtEGTEm2NV4PToK11",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1BZ59U5EkcZtwM2w3MGwxcC7c7YqU9cFZh",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1Hoagem397FdkKCMGbqyUg959kFY56BiYD",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "13SDF7iwvLAN2p7R2P47nSMJRbrbsFeibZ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1HdDCMp1Skstgc95gwRFioXcoKiaMukoi",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1PGCaMxiSzPz7ik4quv9C2PeftCosNgQU",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1E5Ev2qKbadGm3hkWi8NdGFfMWbHBvpSxp",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1GGGd9xv6U5mtBvaynpFntVsmhMHQeGZQF",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 5876,
+          "from_address": "1DMmsG639QERQhpy7TrXvnBbsRHpWFskdR",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1235764143
+        },
+        {
+          "txid": 6400,
+          "from_address": "12zUctUWWWFWi4X8S3QwpqeiVe5HGiTu4G",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "16MU3EVtAebNjvk3ihBJHiqc84rGAMp4Zw",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "16NpVm2k7FBxFzTitkLtzCZoSzsnk2tdtM",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "1MHXDCdhZnnG4iAbYE1s1bthRAnfUAWNLE",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "1MDBahoHqhdAeoxkusntbwZ5vvou2M3s5J",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "13Gtket9np9cbzw35PDiGC2RmQHmb5Zj8E",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "1ECTFTCaUZ7fvNHKwwN7EEd6CJYvF1FRwX",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "1JhPM7aGS6FZDBegbCwCvtzPW44LhA9Zbp",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "163qP7Rx8n2y4udNkum7Gi6HMSJN7cM6XS",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "13pYoHZrdCdjccTBXdXqcCRWYgg7zM7EbE",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "15bNpvnhh5fnuqGMHhKN4K8Y8oQYVMXEBh",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "15fFuVEe7x8V1Acxnp74XQf5j942EUqHJU",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "14kmfA8kzrWLJ41ijyyMuqXoCeKAx5HrhW",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "18fjQ7CXGM4LRRs5DSgAt7ES529UWePk1n",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "1CTSZSAL2nmBrnDVSZ6aoRrDXnscmxqTNW",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "1FSfsUqZp5PwF76vn2mnfveFLucaCz2Ur4",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "1J28f6UrfqAV2sYdabJDdrKHJNPqZHxrGH",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "14gGyYgK7hKHgTkBNcGsurCMdrdFWFs1MT",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "1BNP5cQzMmJoZSK7qbXfUnuPouwuExbZa4",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "15HTSrdNK6xTigmHmAVxPe9NVv2BzAacT8",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "16JmerBwo7FetH3Xqkewa7ozaU4FPFYmWp",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "1NkatgQTARqL97kjfgrwxQGq9NB6a9524M",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "1AwZZYoSMpmSFBiBRZWtVkPeTSGQwxf18d",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6400,
+          "from_address": "1nkEKjGXgsDvcDABcJ44qujD22cTrGDaS",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236194891
+        },
+        {
+          "txid": 6417,
+          "from_address": "124wRWVmAkRejjv6aPuF3B4qi5ww4uYKLy",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 0.33,
+          "time": 1236209362
+        },
+        {
+          "txid": 6531,
+          "from_address": "1HJWVdtfSuQAaHnifosi4ExCnPwsoUuNDY",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236297007
+        },
+        {
+          "txid": 6531,
+          "from_address": "1DGzbJbTNWbXinDasreiqv4vugYdfhtnLE",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236297007
+        },
+        {
+          "txid": 6531,
+          "from_address": "1GUEV1hmvnD3zeUBNMcwsn96wgmeQbJQ4N",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236297007
+        },
+        {
+          "txid": 6531,
+          "from_address": "15QY1Nh2JVhAnNrcnY6LHEfdFnpMipqbSL",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236297007
+        },
+        {
+          "txid": 6531,
+          "from_address": "1NZDEeS9gLrSFPCzVXqpB8Tq2ngDDgmYLe",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236297007
+        },
+        {
+          "txid": 6531,
+          "from_address": "1AQqJ5i3efJbD9vrp2FnfCz3bwM7pFM8K9",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236297007
+        },
+        {
+          "txid": 6531,
+          "from_address": "1376GqPFxqNJfkPGJWjrPb3xdVq4m4Uoiw",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236297007
+        },
+        {
+          "txid": 6531,
+          "from_address": "1AyEj3LukJoWkmFnvyrAyEuefyP9Z4XpCK",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1236297007
+        },
+        {
+          "txid": 7758,
+          "from_address": "1C5o3MN6a4S9Kzk3FB66mUyvTdkN4yX6vf",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1LqVEoPPoPd4uZmrox4hCCt4HJtMk5ERZH",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "17nxAvWBQbzwZXthXFww5vMfaJrY3XuZdE",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1NJzeK37nVdYdLzhEDLcgZKzrDohKwx6gv",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1FXtbBhAaLUPCpXnBNmCvUhpLL9nZLQBry",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "12YNLhpfJnpTbugCJiJoMegGXxDmQPNipC",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "164SjeZKCEyYvt4UH9PRLftFrpA9DMcQ9p",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1Pkwnv2MBP8ZbuGVx9Wpp3ai7DHqYiUrJ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1EAGxTV32WCF38RKXnBopvrFbi4pJcxENd",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1HkDLscmuMaAF1Nm9aQBPFpnsZgE7h5gCD",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1HeYkodpUSUknRMTZVZRVFJ3q447DD6rft",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1MrSzS87dtgY5MkB6hh4SWPmz4kWqgGQZC",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1ARHP8q7pwKsC71FKwFDfWH1esEdJLhtgo",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "19avmcNyrQ2VSfTnBjVqFiMPweoqg8Pn4s",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "14H4ngqC4HaykWaBqa6RsCSvfY2ZECoZBN",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1KG81ncD2eHvJ7R3dTRgXXSCRiJfGuURSt",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1Bwf3nVYfcCL7gM3ccv1Be27cyyZ7pZawu",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1QFEe89ECqkHzebeLcKtXmZcV5HvAQ5xSZ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "153CHs9DGeXjMhf7ZDDBCC58mV243jLtC5",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "125JoG7J5ZJqNrg4mrmUgkgBi6wqVyS3nq",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "19v4t5nxfyr2onR37tyKCNLfSMw1tV7nhp",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1ExoS8yPDCBzsknKsLRRA9P6xDUP8nS4xo",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "19g2ozu2E9SFTSZx534oUNgRnoUbzwHSfT",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1PzpSE34bDtMEMyL6bwX3kwQDYopAMnT5d",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1AKeoA8PcDwww3F8jackggzmownC7Rqd7y",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1LmFprWzS3zd8SuNHcPtHyjCnFwAUqstRw",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1DK8i93vo4LZCzH59ycZqUvYoV6RntJbBT",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1Mb8JdQ3ErdcdAdGHTNGJDnSqoro4QRYrX",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1Fhyq2swgsPgdsV2YzWrZwHDGyXXc2kdgh",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1RzcYQ6eFDTmnJAJ6eG2u5Mi5FPJhoPfK",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1HkApS25A3fmeVU5edJk211EYPusmzKFcn",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1AhK9v8ZznRaewdTQx6YHW69EdYDTpMJCb",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "183m3K9LrXBDhDirW4RA8W1nQ6eUMyCjac",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1JJoNjQUdEx7dCtVoKKgkPQP6nPfnA9cdC",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "13WyxRzb1vsn66NUpzaxYf3oCMHWANWJxd",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "15qgoLqr7Q7XW75BagD4AzddYVyQjXFgok",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1KfL3CGSWqPNiewx2AStwtdsXTf1aVdpXR",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1731osaYbCCfhXn72Y6ALV87kP8f9YBPsf",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1MTgoeNc1U67QHK1XaYjumx87qCf5yqLbw",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1MaWivgH7F5aBX7zPEDLevkKQdX8RyQxEm",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1HMGgpuaTm2xoncafzyh7Miqpq1v2BCh1J",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1PZmrcFoxUs6M7meYnsdwNYCqcpbVRY18w",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1JwAaaVFV8mcCHMfz3jc5m7HhGDdMhtv1p",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1CRYzVLk5Rz9HzJitxnstJiRwxqGsQb47Q",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1SEtCB9gbas6hqz5yTq96K6DA4ufYdTG6",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "15MMApqUm4P1ewQNRw3Hxqi94WM6PRK7Ak",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "17kWKNxDeBjigokSCS2eu9bHQuz6AQyKU4",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 7758,
+          "from_address": "1Aw8BMAFgwVqXjNTGegYQdS537Y94ZSiZ1",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237221615
+        },
+        {
+          "txid": 8227,
+          "from_address": "1AdssLB2qak9Vi45oZwJRA18suvPVzyMvL",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8227,
+          "from_address": "1u6riBDy1V3uff5ecLLCzHYadQqmgtSx9",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8227,
+          "from_address": "1GpkycMVhYdqL5KiJQJzP94EdJfx7z7Nqz",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8227,
+          "from_address": "1DPHP772k4NcyC5oeu62Tqhs4F7X29Vbkf",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8227,
+          "from_address": "1G1ZSy9hPHcEVoUxYzhkRPBkXwe96xAa6u",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8227,
+          "from_address": "1CojRE1HNnoJ22nY5DUxcEEkugaDW15Qo6",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8227,
+          "from_address": "1Ph44pRxBJ8hvzaQ46gkqN3snQuSesPDnA",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8227,
+          "from_address": "181cDGS7YfTSc28kLbF9n6E6rUQYn69wiS",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8227,
+          "from_address": "1K3rnNatNMw1PJEjcfo3eurSqpkAbgsQAL",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8227,
+          "from_address": "1KZcDxvsTyYSfGFLQ4qpJqd51WemA9Dvvk",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8227,
+          "from_address": "1CGP2F5Shzh4eUB227MgsE4hZpBcvGvWxy",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8227,
+          "from_address": "1HHWuFt64YhDC9dh6oJHAH8yQQKymCQXR9",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1237567953
+        },
+        {
+          "txid": 8862,
+          "from_address": "1Ha4iKXvp1Zh4CT9sry1LpdRX3HBm1C24J",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "18DVe6qz8ZLaKxeKDPpZKw4w87q7eEnUxY",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1BR44snus3SxtXiEivNhar79jeVLH7cq14",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1HTd3Q488BcrAwx7jDdDcpcyHj5nJ6z8Gz",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1795eTNVscijAj7wsRhxrDu5jmwS2XnDeW",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "12YtzoFAu3RDeV3sp6WSWLLJZQn39QsRQ6",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1MqsEnrHdptQBvtnAiEL4Nsy4coSGjtShq",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1Nnjh1J36H8McMzgSDQHkme8kywCisL8h6",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1BLiSSPmWt7pKbkxB6kHcM1HVhnr5unTNB",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1HCeFuUmWdAxPL19HC9usECkahQneoQPNo",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1EnXqjLU5isdZnb4EaUXHmwKzEHzqBNnF8",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1ArgkBcDwiFgyh4yCnhrWL79DzwZmBK68r",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1CTk2vx8rKoFFSV4V3XAK7UTbssKzdKVFe",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1KKng5GEQviJuNdKVwiuwLCXbdAaWtP1sV",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1MeK8nXqBGyexBXNJ4FHz519TMTrV1qXb2",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "17C3y2FEjfWypcx1txhsZrMYcdgxH17eyv",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "13d6DcfvKGTh9E8vcbtaJKDnpoZ965YKmA",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1Ga3Nkq9cUDSQqbZ2MMa69g8Ejxdkwusr2",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "18YfA72fh1G3tHRxu35evnRNuSdFM1eTH9",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1HxtJPYJ7J1hwE2ps6DtnarcD8MNsggNUv",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "16Tq7i7HRyDPQHnxDhbZ767Nj8mu62nd9P",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1GPKTtWRAj2TNNyxwNq5pCEuJGLCcXoHW8",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1C7sTQtcJSqww1vcMNByPCzN6YMohpfV9J",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1Kbem3ecwFgPo7E8mgnZskGTt6cXn6bwpu",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1AHZEGgjXUA1dGrd86RHHuwSR6hGAzo5Y8",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1JEsYUAkzEM5F2zXnKaVfdorYPpYsy7nco",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "1KmozGgy44XxzcPZzTH7ntM1SLiiat1EaW",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 8862,
+          "from_address": "16d3tu3fupnSpeUMYRA34YDmz3gm2WJiQz",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238080902
+        },
+        {
+          "txid": 9445,
+          "from_address": "14VUQZESW6Udz9aVxgwhxz1QeV4HT5biEG",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1G2qyVU6dYm4i4YHBKj2PjwhhpPpuhcNU6",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1F9C6XvdF5yWCnizqxNa6h96r3npJTLn5k",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1Apogsw3ne1uyccG5EGiraTL6y12KTYQcn",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1GsA8fMqX7AcXuXjvmyMMDBHEWXHwD5yfQ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1HJ3T1Ewqss2GKMfyk22zXGoFt7n4c6TBB",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "19eVNQeqcgyaznTaUkkNrd8649VASMxsQH",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1YgwN1ZG3yvkeN6HYNGLbqkWzDcKT6HtR",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "18FanWHhdsHXYyoL7zyzV7zWhEnynsg41U",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "12iXGm1K65JzhLoiARaozTHmgrf2ShecjU",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "16HJWkkwsi7hvUXEj4jrct8mxbKJQuYbpD",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1317NgcmZKVEQ9EbsntabLyDiZn8Uyis4b",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1A7ZEYLTKtmJ1Vmo5o6YdS7dnzNKsx8U7G",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1AeeKQ194esGLA4GjhyexcubE4cxooUC5B",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "17JX1hpXBNrJiwhNdHqvpZxdkooyap94hK",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1jtXN5bWRBBX7gC1bcSpUTudAT7G8u7Wd",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1Ps31U24sJ8j7YnND2UCnBmn1h2etqE6kd",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "19mij3FNdLkkMLESq8DXpPQ28KZ55sf6rg",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "16VK6eXjc5uWRfpuVFoQVma3HW9RjEq23z",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "19GYuexwn72fxaFFj59sSZfCVyicgFVPNn",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1JkA6LspktUAYB59s4t71fDDSqp4kYLw6P",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1AZ7bPNni7EtoYW8SszrnKQDYgQSDwHFZ5",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1KeMc3xj88Kn3zTJeimyWX4Xb3x7f2nn57",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1LSRu7qsr2XWvbHKjL7EGtD5qYfKJ9UEdh",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1AtMUUQkLqcBKChQMEdqrwgV3RqafQcusm",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1FfoDKC9dYxSp3A25PjuFcnDNQ9hf6mst5",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1KuydsZxvazHcYhcMbBx2bzcNM8P2wqjCT",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "12rqpYCL3hoX8a5P9ucdQcnbc5JniqH69W",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1B9RFRQgASmJXsNKDSd5Bae8KFUjCHUHWP",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "15xc5vSSPFzKawKuEPZuNb4a65ZM8M3NUZ",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1L4qDYxUv6KatGuauZYfHZ89AznLdDTvaM",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        },
+        {
+          "txid": 9445,
+          "from_address": "1FZwCoA5Sf6ASZjVQhBZZni1baX817qqKR",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 50.0,
+          "time": 1238514389
+        }
+      ]
+    },
+    {
+      "address": "1C16qVq3kZpfjCXAKvrrppqxNmRcnfbFdu",
+      "anomaly_score": 0.21343,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 3,
+        "in_sum": 150.0
+      },
+      "edges": [
+        {
+          "txid": 963,
+          "from_address": "1BGnWwafsPsHo11opJGVbJdLADxakwZoAD",
+          "to_address": "1C16qVq3kZpfjCXAKvrrppqxNmRcnfbFdu",
+          "flow_amount": 50.0,
+          "time": 1232308979
+        },
+        {
+          "txid": 963,
+          "from_address": "1NyD2gM5qcGCRKmuJK7gUUqcQMrUFQRZQz",
+          "to_address": "1C16qVq3kZpfjCXAKvrrppqxNmRcnfbFdu",
+          "flow_amount": 50.0,
+          "time": 1232308979
+        },
+        {
+          "txid": 963,
+          "from_address": "1CpZmPEGBbH7gUsM1xS31CvaKDE92EiiKg",
+          "to_address": "1C16qVq3kZpfjCXAKvrrppqxNmRcnfbFdu",
+          "flow_amount": 50.0,
+          "time": 1232308979
+        }
+      ]
+    },
+    {
+      "address": "15oUEZFKAC8E8BTLt1s1jx4fPxumwB3ecr",
+      "anomaly_score": 0.821976,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 10,
+        "in_sum": 500.0
+      },
+      "edges": [
+        {
+          "txid": 1076,
+          "from_address": "15fLMPJUAyiuc28gscdmRnVu1zUC1TXHtz",
+          "to_address": "15oUEZFKAC8E8BTLt1s1jx4fPxumwB3ecr",
+          "flow_amount": 50.0,
+          "time": 1232391642
+        },
+        {
+          "txid": 1076,
+          "from_address": "17jkFTQuYaGssazzqZ6CTHgRVQYRgLmf34",
+          "to_address": "15oUEZFKAC8E8BTLt1s1jx4fPxumwB3ecr",
+          "flow_amount": 50.0,
+          "time": 1232391642
+        },
+        {
+          "txid": 1076,
+          "from_address": "1DayUvccL8WV7zjkn26aC3M4hwGwJFyFw4",
+          "to_address": "15oUEZFKAC8E8BTLt1s1jx4fPxumwB3ecr",
+          "flow_amount": 50.0,
+          "time": 1232391642
+        },
+        {
+          "txid": 1076,
+          "from_address": "1PxUJBokfT8Cn1pizWYeJpbpm9To4HwRHr",
+          "to_address": "15oUEZFKAC8E8BTLt1s1jx4fPxumwB3ecr",
+          "flow_amount": 50.0,
+          "time": 1232391642
+        },
+        {
+          "txid": 1076,
+          "from_address": "1L9kYwPr6SWvp8zsxvJARHt4UUVk51WQcf",
+          "to_address": "15oUEZFKAC8E8BTLt1s1jx4fPxumwB3ecr",
+          "flow_amount": 50.0,
+          "time": 1232391642
+        },
+        {
+          "txid": 1076,
+          "from_address": "1CrnUia9wfeNFbdwKJNj89YqA6qetvYTTE",
+          "to_address": "15oUEZFKAC8E8BTLt1s1jx4fPxumwB3ecr",
+          "flow_amount": 50.0,
+          "time": 1232391642
+        },
+        {
+          "txid": 1076,
+          "from_address": "17k3Gr1KM16X5cQ5VCp7sBmw12Gh9bpL6m",
+          "to_address": "15oUEZFKAC8E8BTLt1s1jx4fPxumwB3ecr",
+          "flow_amount": 50.0,
+          "time": 1232391642
+        },
+        {
+          "txid": 1076,
+          "from_address": "1LtEkbFPkXouhn9uUyYbaGwUEF4AUazuR5",
+          "to_address": "15oUEZFKAC8E8BTLt1s1jx4fPxumwB3ecr",
+          "flow_amount": 50.0,
+          "time": 1232391642
+        },
+        {
+          "txid": 1076,
+          "from_address": "17c6L9JUGVenn6CfqXuB93L3Tk8Tbzefui",
+          "to_address": "15oUEZFKAC8E8BTLt1s1jx4fPxumwB3ecr",
+          "flow_amount": 50.0,
+          "time": 1232391642
+        },
+        {
+          "txid": 1076,
+          "from_address": "1xgLCvWYJGuCxqPunbBiUxmSKLDwxZeu5",
+          "to_address": "15oUEZFKAC8E8BTLt1s1jx4fPxumwB3ecr",
+          "flow_amount": 50.0,
+          "time": 1232391642
+        }
+      ]
+    },
+    {
+      "address": "1FBgZPF9ceV7JFDgvWzwJdPjdn6VFJqc5s",
+      "anomaly_score": 0.68682,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 8,
+        "in_sum": 400.0
+      },
+      "edges": [
+        {
+          "txid": 1207,
+          "from_address": "1LH3y6VPnF1KcPhxLSJ3eJ3NHvXWSaysAr",
+          "to_address": "1FBgZPF9ceV7JFDgvWzwJdPjdn6VFJqc5s",
+          "flow_amount": 50.0,
+          "time": 1232488392
+        },
+        {
+          "txid": 1207,
+          "from_address": "12oAMNsu5qmzpcafSKJMYxnPCyaYxui4sp",
+          "to_address": "1FBgZPF9ceV7JFDgvWzwJdPjdn6VFJqc5s",
+          "flow_amount": 50.0,
+          "time": 1232488392
+        },
+        {
+          "txid": 1207,
+          "from_address": "1JjyaJhj7gM1BDPjkKvNPp6zGQodneSRzW",
+          "to_address": "1FBgZPF9ceV7JFDgvWzwJdPjdn6VFJqc5s",
+          "flow_amount": 50.0,
+          "time": 1232488392
+        },
+        {
+          "txid": 1207,
+          "from_address": "1MxQgXvgUuSj7ScRwuJ3p4t9rstnd3NqFv",
+          "to_address": "1FBgZPF9ceV7JFDgvWzwJdPjdn6VFJqc5s",
+          "flow_amount": 50.0,
+          "time": 1232488392
+        },
+        {
+          "txid": 1207,
+          "from_address": "1JV9ZQX6cCd4YrUtHHQm9iDL6cMxP3oQ3J",
+          "to_address": "1FBgZPF9ceV7JFDgvWzwJdPjdn6VFJqc5s",
+          "flow_amount": 50.0,
+          "time": 1232488392
+        },
+        {
+          "txid": 1207,
+          "from_address": "1PmxdAq9UdYqB8TL45asUeV4PxTLiTuNiw",
+          "to_address": "1FBgZPF9ceV7JFDgvWzwJdPjdn6VFJqc5s",
+          "flow_amount": 50.0,
+          "time": 1232488392
+        },
+        {
+          "txid": 1207,
+          "from_address": "1ajo3LNjjNWK7GMJwa71tcR3Mk6roeaS9",
+          "to_address": "1FBgZPF9ceV7JFDgvWzwJdPjdn6VFJqc5s",
+          "flow_amount": 50.0,
+          "time": 1232488392
+        },
+        {
+          "txid": 1207,
+          "from_address": "1PD7u8S27HS3PcY6ZKAM897RQLK5rx87wq",
+          "to_address": "1FBgZPF9ceV7JFDgvWzwJdPjdn6VFJqc5s",
+          "flow_amount": 50.0,
+          "time": 1232488392
+        }
+      ]
+    },
+    {
+      "address": "1EQkvhEsewdmDuvNTSgvYafu79F8Q4B3CW",
+      "anomaly_score": 0.21343,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 3,
+        "in_sum": 150.0
+      },
+      "edges": [
+        {
+          "txid": 1415,
+          "from_address": "19oF5fxNiUDMr7FyZzyZhz9TxDdKGGkqUW",
+          "to_address": "1EQkvhEsewdmDuvNTSgvYafu79F8Q4B3CW",
+          "flow_amount": 50.0,
+          "time": 1232682580
+        },
+        {
+          "txid": 1415,
+          "from_address": "1GHH9T1zinmfy8VqYcSuZP7qtCkGSPR44V",
+          "to_address": "1EQkvhEsewdmDuvNTSgvYafu79F8Q4B3CW",
+          "flow_amount": 50.0,
+          "time": 1232682580
+        },
+        {
+          "txid": 1415,
+          "from_address": "12VKdj1La4fnqX7qTQPfPwm9McBxtmtSsG",
+          "to_address": "1EQkvhEsewdmDuvNTSgvYafu79F8Q4B3CW",
+          "flow_amount": 50.0,
+          "time": 1232682580
+        }
+      ]
+    },
+    {
+      "address": "1PxeCXMZBuXHt4CqWWEQ7Kwgdyob9P955L",
+      "anomaly_score": 0.821976,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 10,
+        "in_sum": 500.0
+      },
+      "edges": [
+        {
+          "txid": 1614,
+          "from_address": "1JNoSuNB7PVtMyeAy6nkNNcbubo4cDPPAS",
+          "to_address": "1PxeCXMZBuXHt4CqWWEQ7Kwgdyob9P955L",
+          "flow_amount": 50.0,
+          "time": 1232805403
+        },
+        {
+          "txid": 1614,
+          "from_address": "1CLK9m1s3D9Lc2oQprZ3jNdz9ikcdbH6vb",
+          "to_address": "1PxeCXMZBuXHt4CqWWEQ7Kwgdyob9P955L",
+          "flow_amount": 50.0,
+          "time": 1232805403
+        },
+        {
+          "txid": 1614,
+          "from_address": "15dnC28mA2tnbSbyjtqVRVtcmXwroDSrJQ",
+          "to_address": "1PxeCXMZBuXHt4CqWWEQ7Kwgdyob9P955L",
+          "flow_amount": 50.0,
+          "time": 1232805403
+        },
+        {
+          "txid": 1614,
+          "from_address": "12BpQhir1LnPLoENAGAqwfW2X82kP1PCtw",
+          "to_address": "1PxeCXMZBuXHt4CqWWEQ7Kwgdyob9P955L",
+          "flow_amount": 50.0,
+          "time": 1232805403
+        },
+        {
+          "txid": 1614,
+          "from_address": "1Ewy2mCVfDwGRBEDbFzHTMsDiCxTGLx72A",
+          "to_address": "1PxeCXMZBuXHt4CqWWEQ7Kwgdyob9P955L",
+          "flow_amount": 50.0,
+          "time": 1232805403
+        },
+        {
+          "txid": 1614,
+          "from_address": "1MDDHENF1xDvN2C1a2HzvC3nuthsjXyLjL",
+          "to_address": "1PxeCXMZBuXHt4CqWWEQ7Kwgdyob9P955L",
+          "flow_amount": 50.0,
+          "time": 1232805403
+        },
+        {
+          "txid": 1614,
+          "from_address": "1J6AgPccDGJ9NdGD9RjnMM8zPvWmcMRpEX",
+          "to_address": "1PxeCXMZBuXHt4CqWWEQ7Kwgdyob9P955L",
+          "flow_amount": 50.0,
+          "time": 1232805403
+        },
+        {
+          "txid": 1614,
+          "from_address": "1675n6xp1aQ53w8kPJaghB749v5ekeyVGb",
+          "to_address": "1PxeCXMZBuXHt4CqWWEQ7Kwgdyob9P955L",
+          "flow_amount": 50.0,
+          "time": 1232805403
+        },
+        {
+          "txid": 1614,
+          "from_address": "15aLEm1J4nZiLBEd5MmdRSj34MnF5GCaky",
+          "to_address": "1PxeCXMZBuXHt4CqWWEQ7Kwgdyob9P955L",
+          "flow_amount": 50.0,
+          "time": 1232805403
+        },
+        {
+          "txid": 1614,
+          "from_address": "1AZBpyYUSWApQkKqsEDZ9mriWCZMArrgzR",
+          "to_address": "1PxeCXMZBuXHt4CqWWEQ7Kwgdyob9P955L",
+          "flow_amount": 50.0,
+          "time": 1232805403
+        }
+      ]
+    },
+    {
+      "address": "1C3J4uWTdpc3NoJWsCqdpqEjSViyxRXkF",
+      "anomaly_score": 0.181782,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 3,
+        "in_sum": 150.0
+      },
+      "edges": [
+        {
+          "txid": 1998,
+          "from_address": "1XWbD7hRJfAUmdrVg7pTdCEr7tcrjCzEi",
+          "to_address": "1C3J4uWTdpc3NoJWsCqdpqEjSViyxRXkF",
+          "flow_amount": 50.0,
+          "time": 1233021449
+        },
+        {
+          "txid": 1998,
+          "from_address": "1CG7YVf2msVU8on6zrAUpfoqzD3avUDiWS",
+          "to_address": "1C3J4uWTdpc3NoJWsCqdpqEjSViyxRXkF",
+          "flow_amount": 50.0,
+          "time": 1233021449
+        },
+        {
+          "txid": 1998,
+          "from_address": "1KR2fsrzrU7FeBs8opYJmWwdi4SkgCorff",
+          "to_address": "1C3J4uWTdpc3NoJWsCqdpqEjSViyxRXkF",
+          "flow_amount": 50.0,
+          "time": 1233021449
+        }
+      ]
+    },
+    {
+      "address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+      "anomaly_score": 1.335965,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        },
+        {
+          "label": "Exchange / service wallet",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 1000.0,
+        "in_degree": 20,
+        "in_sum": 1000.0
+      },
+      "edges": [
+        {
+          "txid": 2551,
+          "from_address": "1DdhxvYwVrnUP4xcWaquUnmZ177HVeUT2L",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "13evwJtdkEp2wcmv5xtqE7mF6pr5bFrbxw",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "12oRSUW6UVYNCUk8yyrFvbpbJw7uia31sA",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1BoBh9JKnHVj1JAy2GS4LeA3yHyN6ra2qE",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "19CkFSEiHB5UVah3fvZD17qk48m82TfAp8",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1ADTuxdhYePCW9PEvkCKnib6jmbg6mKXdz",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "18QQUbHJhyzFDVKhEHPhHFZF3qdBmp74eB",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "14DFY3RsdrJ5U6CCgatYssM2gKAiyBm4mE",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1NdLg6FNKyFXyRfmFssW4DSgaWRzscYXUg",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1BSgXqBzNHFfdqRHBPzLD23CFXpzhqpRrb",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1DCcZbNtttndh6tvoK8xRTB5BUMdfL51aL",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1AoWi2xSyQoWuxrYrdr1PPVi5PxA8caNGC",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1B2EqNLFj7hoSWJupZLQrGMd2unu8doTjc",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1GSAXEQEW7st7prSuz89x6DjKEcLUFSDCJ",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1CbDYwNDp5aA5FVmCf2Z95kjkMCgoBr2X8",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1HQkgckTBytqaGmwyQgqTU5aptuZ7qFiyp",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "17LDnEt8ggVjH43QdjhZ4FhkXC9zXgk48b",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1AHJbmcNpaxrgwDc12XFXnUSfpED5ksSiH",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "14nELEgJL95NU3BKi5D734ysFuVUCEjLWg",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 2551,
+          "from_address": "1Jy5dQmet2xg1Pk5VYZE2hSWu8StK6aQWZ",
+          "to_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "flow_amount": 50.0,
+          "time": 1233428912
+        },
+        {
+          "txid": 3566,
+          "from_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "to_address": "1PZwWEJe5YGx9bzJbEpgXiWLuWnyD2rjLA",
+          "flow_amount": 1000.0,
+          "time": 1234108300
+        }
+      ]
+    },
+    {
+      "address": "1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6",
+      "anomaly_score": 0.343514,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 3,
+        "in_sum": 119.01
+      },
+      "edges": [
+        {
+          "txid": 2650,
+          "from_address": "14pJ6BfHiPdYK6D7YMrqTJc6Y4KeXgRA8c",
+          "to_address": "1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6",
+          "flow_amount": 50.0,
+          "time": 1233505512
+        },
+        {
+          "txid": 2650,
+          "from_address": "1M7EFYL39BSxuHWmzTMpamyDZ3j2yAbmvK",
+          "to_address": "1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6",
+          "flow_amount": 50.0,
+          "time": 1233505512
+        },
+        {
+          "txid": 2965,
+          "from_address": "18jANvQ6AuVGJnea4EhmXiAf6bHR5qKjPB",
+          "to_address": "1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6",
+          "flow_amount": 19.01,
+          "time": 1233702292
+        }
+      ]
+    },
+    {
+      "address": "18jANvQ6AuVGJnea4EhmXiAf6bHR5qKjPB",
+      "anomaly_score": 0.210532,
+      "reasons": [
+        {
+          "label": "Self-churn / cyclic",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 2,
+        "out_sum": 50.0,
+        "in_degree": 2,
+        "in_sum": 80.99
+      },
+      "edges": [
+        {
+          "txid": 2789,
+          "from_address": "1GEhNKRWcePnKDhAieuAAcW6FkwDNZqKX7",
+          "to_address": "18jANvQ6AuVGJnea4EhmXiAf6bHR5qKjPB",
+          "flow_amount": 50.0,
+          "time": 1233598896
+        },
+        {
+          "txid": 2965,
+          "from_address": "18jANvQ6AuVGJnea4EhmXiAf6bHR5qKjPB",
+          "to_address": "1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6",
+          "flow_amount": 19.01,
+          "time": 1233702292
+        },
+        {
+          "txid": 2965,
+          "from_address": "18jANvQ6AuVGJnea4EhmXiAf6bHR5qKjPB",
+          "to_address": "18jANvQ6AuVGJnea4EhmXiAf6bHR5qKjPB",
+          "flow_amount": 30.99,
+          "time": 1233702292
+        }
+      ]
+    },
+    {
+      "address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+      "anomaly_score": 3.05846,
+      "reasons": [
+        {
+          "label": "Exchange / service wallet",
+          "score": 1.0
+        },
+        {
+          "label": "Mixer-like behavior",
+          "score": 0.639
+        },
+        {
+          "label": "Self-churn / cyclic",
+          "score": 0.533
+        }
+      ],
+      "stats": {
+        "out_degree": 27,
+        "out_sum": 534.51,
+        "in_degree": 20,
+        "in_sum": 569.44
+      },
+      "edges": [
+        {
+          "txid": 2848,
+          "from_address": "1BEAp84rY4U2MJNmUkaF9BNavTEEG3ZSfd",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 50.0,
+          "time": 1233636459
+        },
+        {
+          "txid": 2849,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 50.0,
+          "time": 1233636459
+        },
+        {
+          "txid": 2850,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1Fmjwt8172FZT5XdKnzTUcEEzc1T2MCg2a",
+          "flow_amount": 0.01,
+          "time": 1233636459
+        },
+        {
+          "txid": 2850,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 49.99,
+          "time": 1233636459
+        },
+        {
+          "txid": 2851,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1CbAopr7sNMKjsJa8dAS6P5sM788kmMooo",
+          "flow_amount": 0.01,
+          "time": 1233636459
+        },
+        {
+          "txid": 2851,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 49.98,
+          "time": 1233636459
+        },
+        {
+          "txid": 2852,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1Hr2Pj6p984sZ8eC9333vZTkfZhASTEMPN",
+          "flow_amount": 0.01,
+          "time": 1233636459
+        },
+        {
+          "txid": 2852,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 49.97,
+          "time": 1233636459
+        },
+        {
+          "txid": 2854,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "12BiYB811ywaQMYxP6uW8HzbJ8UjYhFLHC",
+          "flow_amount": 0.01,
+          "time": 1233636834
+        },
+        {
+          "txid": 2854,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 49.96,
+          "time": 1233636834
+        },
+        {
+          "txid": 2855,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1NwUjqNdrfkz5nrZZ1FYEHtidex1Xart95",
+          "flow_amount": 0.01,
+          "time": 1233636834
+        },
+        {
+          "txid": 2855,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 49.95,
+          "time": 1233636834
+        },
+        {
+          "txid": 2856,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1DvEeksZiy8cxfWhC9j1mHYSo9eeXk1KUZ",
+          "flow_amount": 0.01,
+          "time": 1233636834
+        },
+        {
+          "txid": 2856,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 49.94,
+          "time": 1233636834
+        },
+        {
+          "txid": 2857,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1ACHpxEQg9hWgqFiBGu6r6g7Bgbtgrsr4p",
+          "flow_amount": 15.0,
+          "time": 1233636834
+        },
+        {
+          "txid": 2857,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 34.94,
+          "time": 1233636834
+        },
+        {
+          "txid": 2858,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1ACHpxEQg9hWgqFiBGu6r6g7Bgbtgrsr4p",
+          "flow_amount": 0.01,
+          "time": 1233636834
+        },
+        {
+          "txid": 2858,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 34.93,
+          "time": 1233636834
+        },
+        {
+          "txid": 2863,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 1.0,
+          "time": 1233638202
+        },
+        {
+          "txid": 2863,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 32.93,
+          "time": 1233638202
+        },
+        {
+          "txid": 2864,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 0.9705275567344532,
+          "time": 1233638202
+        },
+        {
+          "txid": 2864,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 0.029472443265546714,
+          "time": 1233638202
+        },
+        {
+          "txid": 2864,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 30.988944886531094,
+          "time": 1233638202
+        },
+        {
+          "txid": 2864,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 0.9410551134689066,
+          "time": 1233638202
+        },
+        {
+          "txid": 2865,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 0.009696325539022168,
+          "time": 1233638202
+        },
+        {
+          "txid": 2865,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 0.0003036744609778318,
+          "time": 1233638202
+        },
+        {
+          "txid": 2865,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 31.910607348921957,
+          "time": 1233638202
+        },
+        {
+          "txid": 2865,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "flow_amount": 0.9993926510780443,
+          "time": 1233638202
+        }
+      ]
+    },
+    {
+      "address": "1Fmjwt8172FZT5XdKnzTUcEEzc1T2MCg2a",
+      "anomaly_score": 6.471539,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 0.01,
+        "in_degree": 1,
+        "in_sum": 0.01
+      },
+      "edges": [
+        {
+          "txid": 2850,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1Fmjwt8172FZT5XdKnzTUcEEzc1T2MCg2a",
+          "flow_amount": 0.01,
+          "time": 1233636459
+        },
+        {
+          "txid": 3941,
+          "from_address": "1Fmjwt8172FZT5XdKnzTUcEEzc1T2MCg2a",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 0.01,
+          "time": 1234355314
+        }
+      ]
+    },
+    {
+      "address": "1CbAopr7sNMKjsJa8dAS6P5sM788kmMooo",
+      "anomaly_score": 6.471539,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 0.01,
+        "in_degree": 1,
+        "in_sum": 0.01
+      },
+      "edges": [
+        {
+          "txid": 2851,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1CbAopr7sNMKjsJa8dAS6P5sM788kmMooo",
+          "flow_amount": 0.01,
+          "time": 1233636459
+        },
+        {
+          "txid": 3941,
+          "from_address": "1CbAopr7sNMKjsJa8dAS6P5sM788kmMooo",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 0.01,
+          "time": 1234355314
+        }
+      ]
+    },
+    {
+      "address": "1Hr2Pj6p984sZ8eC9333vZTkfZhASTEMPN",
+      "anomaly_score": 6.480634,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 0.01
+      },
+      "edges": [
+        {
+          "txid": 2852,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1Hr2Pj6p984sZ8eC9333vZTkfZhASTEMPN",
+          "flow_amount": 0.01,
+          "time": 1233636459
+        }
+      ]
+    },
+    {
+      "address": "12BiYB811ywaQMYxP6uW8HzbJ8UjYhFLHC",
+      "anomaly_score": 6.480634,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 0.01
+      },
+      "edges": [
+        {
+          "txid": 2854,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "12BiYB811ywaQMYxP6uW8HzbJ8UjYhFLHC",
+          "flow_amount": 0.01,
+          "time": 1233636834
+        }
+      ]
+    },
+    {
+      "address": "1NwUjqNdrfkz5nrZZ1FYEHtidex1Xart95",
+      "anomaly_score": 6.480634,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 0.01
+      },
+      "edges": [
+        {
+          "txid": 2855,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1NwUjqNdrfkz5nrZZ1FYEHtidex1Xart95",
+          "flow_amount": 0.01,
+          "time": 1233636834
+        }
+      ]
+    },
+    {
+      "address": "1DvEeksZiy8cxfWhC9j1mHYSo9eeXk1KUZ",
+      "anomaly_score": 6.480634,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 0.01
+      },
+      "edges": [
+        {
+          "txid": 2856,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1DvEeksZiy8cxfWhC9j1mHYSo9eeXk1KUZ",
+          "flow_amount": 0.01,
+          "time": 1233636834
+        }
+      ]
+    },
+    {
+      "address": "1ACHpxEQg9hWgqFiBGu6r6g7Bgbtgrsr4p",
+      "anomaly_score": 8.768567,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 2,
+        "in_sum": 15.01
+      },
+      "edges": [
+        {
+          "txid": 2857,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1ACHpxEQg9hWgqFiBGu6r6g7Bgbtgrsr4p",
+          "flow_amount": 15.0,
+          "time": 1233636834
+        },
+        {
+          "txid": 2858,
+          "from_address": "1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm",
+          "to_address": "1ACHpxEQg9hWgqFiBGu6r6g7Bgbtgrsr4p",
+          "flow_amount": 0.01,
+          "time": 1233636834
+        }
+      ]
+    },
+    {
+      "address": "1KKQHhasw82cjLidcrEFmcXavtXcja3qdH",
+      "anomaly_score": 0.540859,
+      "reasons": [
+        {
+          "label": "Self-churn / cyclic",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 2,
+        "out_sum": 50.0,
+        "in_degree": 1,
+        "in_sum": 31.0
+      },
+      "edges": [
+        {
+          "txid": 2963,
+          "from_address": "1KKQHhasw82cjLidcrEFmcXavtXcja3qdH",
+          "to_address": "1GtkM4wviwohP192tec9g83hd9X5qtbk9j",
+          "flow_amount": 19.0,
+          "time": 1233701758
+        },
+        {
+          "txid": 2963,
+          "from_address": "1KKQHhasw82cjLidcrEFmcXavtXcja3qdH",
+          "to_address": "1KKQHhasw82cjLidcrEFmcXavtXcja3qdH",
+          "flow_amount": 31.0,
+          "time": 1233701758
+        }
+      ]
+    },
+    {
+      "address": "1GtkM4wviwohP192tec9g83hd9X5qtbk9j",
+      "anomaly_score": 0.78748,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 19.0
+      },
+      "edges": [
+        {
+          "txid": 2963,
+          "from_address": "1KKQHhasw82cjLidcrEFmcXavtXcja3qdH",
+          "to_address": "1GtkM4wviwohP192tec9g83hd9X5qtbk9j",
+          "flow_amount": 19.0,
+          "time": 1233701758
+        }
+      ]
+    },
+    {
+      "address": "1ExF15z6YxFrNZHcnH2sYohbKBh47b1aow",
+      "anomaly_score": 0.540859,
+      "reasons": [
+        {
+          "label": "Peeling chain behavior",
+          "score": 1.0
+        },
+        {
+          "label": "Self-churn / cyclic",
+          "score": 0.625
+        }
+      ],
+      "stats": {
+        "out_degree": 2,
+        "out_sum": 50.0,
+        "in_degree": 1,
+        "in_sum": 49.98
+      },
+      "edges": [
+        {
+          "txid": 2973,
+          "from_address": "1ExF15z6YxFrNZHcnH2sYohbKBh47b1aow",
+          "to_address": "13UPd24YLT8n9obxESWxVskCFpJidWd459",
+          "flow_amount": 0.02,
+          "time": 1233704929
+        },
+        {
+          "txid": 2973,
+          "from_address": "1ExF15z6YxFrNZHcnH2sYohbKBh47b1aow",
+          "to_address": "1ExF15z6YxFrNZHcnH2sYohbKBh47b1aow",
+          "flow_amount": 49.98,
+          "time": 1233704929
+        }
+      ]
+    },
+    {
+      "address": "13UPd24YLT8n9obxESWxVskCFpJidWd459",
+      "anomaly_score": 0.753491,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 0.02,
+        "in_degree": 1,
+        "in_sum": 0.02
+      },
+      "edges": [
+        {
+          "txid": 2973,
+          "from_address": "1ExF15z6YxFrNZHcnH2sYohbKBh47b1aow",
+          "to_address": "13UPd24YLT8n9obxESWxVskCFpJidWd459",
+          "flow_amount": 0.02,
+          "time": 1233704929
+        },
+        {
+          "txid": 3941,
+          "from_address": "13UPd24YLT8n9obxESWxVskCFpJidWd459",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 0.02,
+          "time": 1234355314
+        }
+      ]
+    },
+    {
+      "address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+      "anomaly_score": 1.151618,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 16,
+        "in_sum": 800.0
+      },
+      "edges": [
+        {
+          "txid": 3359,
+          "from_address": "16jDUSyef27eC876RZ1zURqcwv5X2vF86E",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1EQFwQgRJKrfvUFhbAJa7pMZq5Tn3UqaTo",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "13whfwQ7kyKMnKcMjw28ftYkUo94YD3Qdr",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1EPdNxgmzWjxZTyoFM4qHECT5J8t1WbeiD",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1BeN1XRx8U47qkhXXT8YbGdzR8NNHAbLRB",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1M6GpfJhMPKpxqFYsSUNPxSSMDNAP7xEDQ",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1HaLjSasu5XUGUgRLed7xCpKw7SnYz8KD",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1599xy7gkakVhX3RqXbHMKqnUW3RLeJ5FZ",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "16fv7QfK5dw2J7Kg964CMHWNzsF4xrTsAE",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1AYdT9tPwhLFHLPCvf2TU3WD2vmaFdMN8H",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1J4kd4pf6S8ehW7fZqp7d8aMKmx9uABjU2",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1C4cG3RbuTbsuYxrujm9QMniLD56ECgEtg",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1QFxxoqmVTz7FvbTbX59YXR8ftDV337iBQ",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1Hxk7aoayHWXVzBhk2NjoVpJP78Rs5c8Qc",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1FQ1ScppkG8TScu7w23NBezrT8x8Cpsp9r",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        },
+        {
+          "txid": 3359,
+          "from_address": "1GQ8YiKA5LdmHtFHpboma5CFKoYe27oxN4",
+          "to_address": "1P2ZAuW9nUrFfwgVjfL2SA9sPXSruCfzp8",
+          "flow_amount": 50.0,
+          "time": 1233973867
+        }
+      ]
+    },
+    {
+      "address": "1NBNWXmmMCi9ZSNeC6jwCYVw5gKYpfqUZi",
+      "anomaly_score": 0.21343,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 3,
+        "in_sum": 150.0
+      },
+      "edges": [
+        {
+          "txid": 3362,
+          "from_address": "1BHmtnv7XQbYEKtBLdBx3tHGQJ9sXPrGsL",
+          "to_address": "1NBNWXmmMCi9ZSNeC6jwCYVw5gKYpfqUZi",
+          "flow_amount": 50.0,
+          "time": 1233975266
+        },
+        {
+          "txid": 3362,
+          "from_address": "19H1kGT38pPTxPSZbc3qrS7VSkACMY4hmj",
+          "to_address": "1NBNWXmmMCi9ZSNeC6jwCYVw5gKYpfqUZi",
+          "flow_amount": 50.0,
+          "time": 1233975266
+        },
+        {
+          "txid": 3362,
+          "from_address": "1JSnYFMbMbAB9hCT78WWAP32Hhc6EaVBSJ",
+          "to_address": "1NBNWXmmMCi9ZSNeC6jwCYVw5gKYpfqUZi",
+          "flow_amount": 50.0,
+          "time": 1233975266
+        }
+      ]
+    },
+    {
+      "address": "1JjFysiU2h8TmkuTYxQfRhXMSeKwi3dHKQ",
+      "anomaly_score": 0.530092,
+      "reasons": [
+        {
+          "label": "Self-churn / cyclic",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 3,
+        "out_sum": 98.0,
+        "in_degree": 1,
+        "in_sum": 48.0
+      },
+      "edges": [
+        {
+          "txid": 3363,
+          "from_address": "1JjFysiU2h8TmkuTYxQfRhXMSeKwi3dHKQ",
+          "to_address": "19huNZcrTUiHeZCjYhkXTYTx2K48j8h7ka",
+          "flow_amount": 2.0,
+          "time": 1233975266
+        },
+        {
+          "txid": 3363,
+          "from_address": "1JjFysiU2h8TmkuTYxQfRhXMSeKwi3dHKQ",
+          "to_address": "1JjFysiU2h8TmkuTYxQfRhXMSeKwi3dHKQ",
+          "flow_amount": 48.0,
+          "time": 1233975266
+        },
+        {
+          "txid": 3364,
+          "from_address": "1JjFysiU2h8TmkuTYxQfRhXMSeKwi3dHKQ",
+          "to_address": "1E87cVPLZ938w7vYEA1e9RWSc8mESPA3J5",
+          "flow_amount": 48.0,
+          "time": 1233975266
+        }
+      ]
+    },
+    {
+      "address": "19huNZcrTUiHeZCjYhkXTYTx2K48j8h7ka",
+      "anomaly_score": 0.670812,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 2.0
+      },
+      "edges": [
+        {
+          "txid": 3363,
+          "from_address": "1JjFysiU2h8TmkuTYxQfRhXMSeKwi3dHKQ",
+          "to_address": "19huNZcrTUiHeZCjYhkXTYTx2K48j8h7ka",
+          "flow_amount": 2.0,
+          "time": 1233975266
+        }
+      ]
+    },
+    {
+      "address": "1E87cVPLZ938w7vYEA1e9RWSc8mESPA3J5",
+      "anomaly_score": 0.529468,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 4,
+        "in_sum": 198.0
+      },
+      "edges": [
+        {
+          "txid": 3364,
+          "from_address": "15ujSgyjRLp3vgiwiN4CLgYDfC1TJRhTa3",
+          "to_address": "1E87cVPLZ938w7vYEA1e9RWSc8mESPA3J5",
+          "flow_amount": 50.0,
+          "time": 1233975266
+        },
+        {
+          "txid": 3364,
+          "from_address": "1Ej46bsDk7PdQe86QpjrUPCksmxStzL3dx",
+          "to_address": "1E87cVPLZ938w7vYEA1e9RWSc8mESPA3J5",
+          "flow_amount": 50.0,
+          "time": 1233975266
+        },
+        {
+          "txid": 3364,
+          "from_address": "1Bwuz8F4U4cZvsHopezPHaCkxvAJjXiPsv",
+          "to_address": "1E87cVPLZ938w7vYEA1e9RWSc8mESPA3J5",
+          "flow_amount": 50.0,
+          "time": 1233975266
+        },
+        {
+          "txid": 3364,
+          "from_address": "1JjFysiU2h8TmkuTYxQfRhXMSeKwi3dHKQ",
+          "to_address": "1E87cVPLZ938w7vYEA1e9RWSc8mESPA3J5",
+          "flow_amount": 48.0,
+          "time": 1233975266
+        }
+      ]
+    },
+    {
+      "address": "1PZwWEJe5YGx9bzJbEpgXiWLuWnyD2rjLA",
+      "anomaly_score": 1.140355,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 1,
+        "in_sum": 1000.0
+      },
+      "edges": [
+        {
+          "txid": 3566,
+          "from_address": "17afxUJouat3fkaaQ9tZrDThxdkXGL4WrM",
+          "to_address": "1PZwWEJe5YGx9bzJbEpgXiWLuWnyD2rjLA",
+          "flow_amount": 1000.0,
+          "time": 1234108300
+        }
+      ]
+    },
+    {
+      "address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+      "anomaly_score": 3.003828,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 10,
+        "in_sum": 350.03999999999996
+      },
+      "edges": [
+        {
+          "txid": 3941,
+          "from_address": "13UPd24YLT8n9obxESWxVskCFpJidWd459",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 0.02,
+          "time": 1234355314
+        },
+        {
+          "txid": 3941,
+          "from_address": "14UZTYQzKZ4LHDP5bxD94aApWtmHRVibod",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 50.0,
+          "time": 1234355314
+        },
+        {
+          "txid": 3941,
+          "from_address": "1EpWZ62CYvxw3K9gG7Wv48QZ5md5B7Hrtm",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 50.0,
+          "time": 1234355314
+        },
+        {
+          "txid": 3941,
+          "from_address": "1BJhbhBP2ukfAoSCKDHJu2VVv2NCLjUnNf",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 50.0,
+          "time": 1234355314
+        },
+        {
+          "txid": 3941,
+          "from_address": "1NyTe72c6HfyUqeAkRNM298fg2JnJCfJda",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 50.0,
+          "time": 1234355314
+        },
+        {
+          "txid": 3941,
+          "from_address": "19Vc3ZbCA6UQqWfY5CqJHPHDSK3LMAaKYD",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 50.0,
+          "time": 1234355314
+        },
+        {
+          "txid": 3941,
+          "from_address": "1CbAopr7sNMKjsJa8dAS6P5sM788kmMooo",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 0.01,
+          "time": 1234355314
+        },
+        {
+          "txid": 3941,
+          "from_address": "15awJKFXytdjdK9fw2So1rXkpqHetYJ9m6",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 50.0,
+          "time": 1234355314
+        },
+        {
+          "txid": 3941,
+          "from_address": "1L6gcb5NaXUMT19bBUMrzEWXh24bg6ZuxD",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 50.0,
+          "time": 1234355314
+        },
+        {
+          "txid": 3941,
+          "from_address": "1Fmjwt8172FZT5XdKnzTUcEEzc1T2MCg2a",
+          "to_address": "1JSxDnLYD4XKTQ73N7in2M9XRovw5LANiu",
+          "flow_amount": 0.01,
+          "time": 1234355314
+        }
+      ]
+    },
+    {
+      "address": "1JCeMgVeDzLdxz3G5vRin2ydNxUp6E5yFf",
+      "anomaly_score": 0.333865,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 4,
+        "in_sum": 200.0
+      },
+      "edges": [
+        {
+          "txid": 3995,
+          "from_address": "13ru42wAiKYb1n9QDJER6BGrFWvLqreP8d",
+          "to_address": "1JCeMgVeDzLdxz3G5vRin2ydNxUp6E5yFf",
+          "flow_amount": 50.0,
+          "time": 1234395168
+        },
+        {
+          "txid": 3995,
+          "from_address": "12xHgpw4n8Rsqj81CqLEFV5SyBF747dbXd",
+          "to_address": "1JCeMgVeDzLdxz3G5vRin2ydNxUp6E5yFf",
+          "flow_amount": 50.0,
+          "time": 1234395168
+        },
+        {
+          "txid": 3995,
+          "from_address": "1MXwHZReY4GmH2jzyWU4wL1Szmaq9ZxaCB",
+          "to_address": "1JCeMgVeDzLdxz3G5vRin2ydNxUp6E5yFf",
+          "flow_amount": 50.0,
+          "time": 1234395168
+        },
+        {
+          "txid": 3995,
+          "from_address": "1PVsczT6YHsaoeXDdkUGiPYVyvzRZkvhw8",
+          "to_address": "1JCeMgVeDzLdxz3G5vRin2ydNxUp6E5yFf",
+          "flow_amount": 50.0,
+          "time": 1234395168
+        }
+      ]
+    },
+    {
+      "address": "13u3u1tRYmrm11nZG7bbCkp6QaWKMa5tCq",
+      "anomaly_score": 0.449499,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 250.0,
+        "in_degree": 5,
+        "in_sum": 250.0
+      },
+      "edges": [
+        {
+          "txid": 4466,
+          "from_address": "1NXcksMx7G1UjZEZLpa68Zew8nL7RPxrkD",
+          "to_address": "13u3u1tRYmrm11nZG7bbCkp6QaWKMa5tCq",
+          "flow_amount": 50.0,
+          "time": 1234716812
+        },
+        {
+          "txid": 4466,
+          "from_address": "15vY2SV4xxxbbnQsHM26tiWSHM623a3uKq",
+          "to_address": "13u3u1tRYmrm11nZG7bbCkp6QaWKMa5tCq",
+          "flow_amount": 50.0,
+          "time": 1234716812
+        },
+        {
+          "txid": 4466,
+          "from_address": "1JDpR14QZzvQE4rU6F7GcqeDFZEXwLqpVy",
+          "to_address": "13u3u1tRYmrm11nZG7bbCkp6QaWKMa5tCq",
+          "flow_amount": 50.0,
+          "time": 1234716812
+        },
+        {
+          "txid": 4466,
+          "from_address": "1KW6LBxsFm5ifJs1pvvenMsYhVJmJ4vhKX",
+          "to_address": "13u3u1tRYmrm11nZG7bbCkp6QaWKMa5tCq",
+          "flow_amount": 50.0,
+          "time": 1234716812
+        },
+        {
+          "txid": 4466,
+          "from_address": "1G4nNVTcyGUbKdaumRMWYQLutJ16oqEsB5",
+          "to_address": "13u3u1tRYmrm11nZG7bbCkp6QaWKMa5tCq",
+          "flow_amount": 50.0,
+          "time": 1234716812
+        },
+        {
+          "txid": 4471,
+          "from_address": "13u3u1tRYmrm11nZG7bbCkp6QaWKMa5tCq",
+          "to_address": "15BKWJjL5YWXtaP449WAYqVYZQE1szicTn",
+          "flow_amount": 250.0,
+          "time": 1234718841
+        }
+      ]
+    },
+    {
+      "address": "15BKWJjL5YWXtaP449WAYqVYZQE1szicTn",
+      "anomaly_score": 0.325097,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 6,
+        "in_sum": 550.0
+      },
+      "edges": [
+        {
+          "txid": 4471,
+          "from_address": "1NkKrBN2S7WwXkv2nkz9QumtCXBsZ9Ve5T",
+          "to_address": "15BKWJjL5YWXtaP449WAYqVYZQE1szicTn",
+          "flow_amount": 50.0,
+          "time": 1234718841
+        },
+        {
+          "txid": 4471,
+          "from_address": "1PWZUkjSpSTVhBSUyMX8ZQnL8SvM6Cxvxf",
+          "to_address": "15BKWJjL5YWXtaP449WAYqVYZQE1szicTn",
+          "flow_amount": 50.0,
+          "time": 1234718841
+        },
+        {
+          "txid": 4471,
+          "from_address": "16GEmWE6dM3p4THTsjhebno9HtfH3neuXP",
+          "to_address": "15BKWJjL5YWXtaP449WAYqVYZQE1szicTn",
+          "flow_amount": 50.0,
+          "time": 1234718841
+        },
+        {
+          "txid": 4471,
+          "from_address": "1MkPGMTj2GWkAnNdaSuHjxVkNinigt7mBT",
+          "to_address": "15BKWJjL5YWXtaP449WAYqVYZQE1szicTn",
+          "flow_amount": 100.0,
+          "time": 1234718841
+        },
+        {
+          "txid": 4471,
+          "from_address": "13u3u1tRYmrm11nZG7bbCkp6QaWKMa5tCq",
+          "to_address": "15BKWJjL5YWXtaP449WAYqVYZQE1szicTn",
+          "flow_amount": 250.0,
+          "time": 1234718841
+        },
+        {
+          "txid": 4471,
+          "from_address": "13CmHLef7xsSmshnLytsWNE7J1fQSPVCGZ",
+          "to_address": "15BKWJjL5YWXtaP449WAYqVYZQE1szicTn",
+          "flow_amount": 50.0,
+          "time": 1234718841
+        }
+      ]
+    },
+    {
+      "address": "1KNbLi88guJMmEjDfi2bfRu7paKJvKUo5A",
+      "anomaly_score": 0.350256,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 200.0,
+        "in_degree": 4,
+        "in_sum": 200.0
+      },
+      "edges": [
+        {
+          "txid": 5282,
+          "from_address": "1JarbYXHxTCwYZGSbzSib4Gfyp3VZnZusF",
+          "to_address": "1KNbLi88guJMmEjDfi2bfRu7paKJvKUo5A",
+          "flow_amount": 50.0,
+          "time": 1235298745
+        },
+        {
+          "txid": 5282,
+          "from_address": "1BxMsLrkfxgWqAWPzB9oWbhNHcjdNEZZzB",
+          "to_address": "1KNbLi88guJMmEjDfi2bfRu7paKJvKUo5A",
+          "flow_amount": 50.0,
+          "time": 1235298745
+        },
+        {
+          "txid": 5282,
+          "from_address": "1CunnTGVXASBSYFSFDauzMGq7s2EP73Kg9",
+          "to_address": "1KNbLi88guJMmEjDfi2bfRu7paKJvKUo5A",
+          "flow_amount": 50.0,
+          "time": 1235298745
+        },
+        {
+          "txid": 5282,
+          "from_address": "1N2n4QmwvN7XVtvo1r5diNiKKdudBWXTFt",
+          "to_address": "1KNbLi88guJMmEjDfi2bfRu7paKJvKUo5A",
+          "flow_amount": 50.0,
+          "time": 1235298745
+        },
+        {
+          "txid": 5286,
+          "from_address": "1KNbLi88guJMmEjDfi2bfRu7paKJvKUo5A",
+          "to_address": "1G2Sbv2oDGPiSWQ8XammxBSiFRukwrAah7",
+          "flow_amount": 200.0,
+          "time": 1235299853
+        }
+      ]
+    },
+    {
+      "address": "1G2Sbv2oDGPiSWQ8XammxBSiFRukwrAah7",
+      "anomaly_score": 0.287102,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 400.0,
+        "in_degree": 5,
+        "in_sum": 400.0
+      },
+      "edges": [
+        {
+          "txid": 5286,
+          "from_address": "1GcEifCQ8QJ5j9vzbNuhDHyBdNxTgieSio",
+          "to_address": "1G2Sbv2oDGPiSWQ8XammxBSiFRukwrAah7",
+          "flow_amount": 50.0,
+          "time": 1235299853
+        },
+        {
+          "txid": 5286,
+          "from_address": "16B4L9Cr5U5jvTPtXWSBB9F96pETrkgRcL",
+          "to_address": "1G2Sbv2oDGPiSWQ8XammxBSiFRukwrAah7",
+          "flow_amount": 50.0,
+          "time": 1235299853
+        },
+        {
+          "txid": 5286,
+          "from_address": "1AtEFkW7v3XvsAsqoKrvoE1zi8edfmLETK",
+          "to_address": "1G2Sbv2oDGPiSWQ8XammxBSiFRukwrAah7",
+          "flow_amount": 50.0,
+          "time": 1235299853
+        },
+        {
+          "txid": 5286,
+          "from_address": "19kZpHcrFUMgfT3Gdv6VP5PWDsko6WB1GX",
+          "to_address": "1G2Sbv2oDGPiSWQ8XammxBSiFRukwrAah7",
+          "flow_amount": 50.0,
+          "time": 1235299853
+        },
+        {
+          "txid": 5286,
+          "from_address": "1KNbLi88guJMmEjDfi2bfRu7paKJvKUo5A",
+          "to_address": "1G2Sbv2oDGPiSWQ8XammxBSiFRukwrAah7",
+          "flow_amount": 200.0,
+          "time": 1235299853
+        },
+        {
+          "txid": 5287,
+          "from_address": "1G2Sbv2oDGPiSWQ8XammxBSiFRukwrAah7",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 400.0,
+          "time": 1235299853
+        }
+      ]
+    },
+    {
+      "address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+      "anomaly_score": 3.531063,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 0,
+        "out_sum": 0.0,
+        "in_degree": 110,
+        "in_sum": 6200.0
+      },
+      "edges": [
+        {
+          "txid": 5287,
+          "from_address": "1G2Sbv2oDGPiSWQ8XammxBSiFRukwrAah7",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 400.0,
+          "time": 1235299853
+        },
+        {
+          "txid": 5987,
+          "from_address": "16W92UXf4Ate1cSKo1X8AvuBoqKgC6pJgH",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1235859214
+        },
+        {
+          "txid": 5987,
+          "from_address": "1AttsCkpM4nRgBfxfnYNma3hioCThGaoY",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1235859214
+        },
+        {
+          "txid": 5987,
+          "from_address": "1J5tM9vbX1VGMxQKX9Pi8HBLP72qWKXgow",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1235859214
+        },
+        {
+          "txid": 5987,
+          "from_address": "1FWMqCravjFJKsN4SpCGUgCyNUfWdsSRaj",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1235859214
+        },
+        {
+          "txid": 5987,
+          "from_address": "1F2pJPVbpF8ZS6eEA9pme7jko1o3Xugji8",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1235859214
+        },
+        {
+          "txid": 5987,
+          "from_address": "16yv9zYi4msBCf35uWoGtAZD4mbyzRKCWr",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1235859214
+        },
+        {
+          "txid": 5987,
+          "from_address": "1AcrnRZEa2XFBkihsW7aGfQ9J8DKY4mUmX",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1235859214
+        },
+        {
+          "txid": 6227,
+          "from_address": "1FNoDLf1JAExBqqUbrH26Urax763jVqTu6",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236054265
+        },
+        {
+          "txid": 6227,
+          "from_address": "1FK4tAyRr2VzanoGCFZf5mYfKjiYZzzKj9",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236054265
+        },
+        {
+          "txid": 6227,
+          "from_address": "1CH2Zdxs5mEvreoexcaJCBTkfkTFDtpPFi",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236054265
+        },
+        {
+          "txid": 6227,
+          "from_address": "1PqLpZjTj5MAYU85qvdK5xHH92bpdXgx34",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236054265
+        },
+        {
+          "txid": 6227,
+          "from_address": "15XCNtifYkTMW5KqNU877MHtaB5YpbzFnd",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236054265
+        },
+        {
+          "txid": 6228,
+          "from_address": "16QJWbGGa5gCJqiph4XD9UQtb9XZ5nA9bA",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236054265
+        },
+        {
+          "txid": 6228,
+          "from_address": "1MQMXHK4orB9Qdc976md9BpkWwatfBgDDh",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236054265
+        },
+        {
+          "txid": 6228,
+          "from_address": "182VpquAsnVE2Y69Ac89gTBT46VePargZ4",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236054265
+        },
+        {
+          "txid": 6844,
+          "from_address": "13s7UCrW2KU1j4G4mtSBkJrzpTrQ9ynxt8",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "1F1AA2WUeLHSZAzREmkcdDjRxcgMaGu1hR",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "15ZyZuu8iGp4cst2681pNt3R53bMnNnRFr",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "12fHiiG24civ3vX78qkQEmVJAHAGUe3Da8",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "14L38V84w4vcHWbDrwcmKMmx6Q79cRWz9f",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "1MvNXELrMwEKNpk8qQJtW6HNJHofHbpyYh",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "13dmmNEWD4n52e5Hr5Vhqpeg55PKiw63bd",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "1AVEc4JwQrooF8zhJCsMaAM6TrjGFdRcJi",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "1DiyZZS37c3mVsrF5Bjxkkm7njp7cxMkqg",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "1HaDTJX59KFUbofSoULvwQ9b9poaxqTxA1",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "12VvDR4VkhvbReFgCazkW1VpVVcBX87Kbo",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "1FkF7W9DdrPYXpqDWpX8idhC4YGq5pgak2",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "1L55MZRkGSmKJH9XLsHxEyaY2ndWERmwps",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "1An84DZvBkeJ5kziQakU81MRWXLBU4MzVm",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "1BCpP6Q4W2zLFaJZYteKGF4WsYpg4FbmaL",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "1FyLtpZ9qfBWrA2YnTSaFsbKaLezboaMWZ",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "1PaWtL4Nqm7VkVy6VHnEFujD2EXL3XugN",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "18K6hkAui3ZQqQudbFmRHyTXycF3wEBuDE",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 6844,
+          "from_address": "16NB2rGfdV8sq12oBC3bXTvvVzZiqvzo8Y",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 300.0,
+          "time": 1236534402
+        },
+        {
+          "txid": 7389,
+          "from_address": "1owpW684XstANsSFEkiDZRQwULgdu39B4",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "1CECPFgz4fJSEndbFT1QyR8hKyt5RitL2k",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 150.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "1LBwkC5tuJry3KVHMbaPXf13aRwBNf3hxh",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "1C8oWxg4bPmf2gzUHsvFHMYAczDXvb6MJg",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "16re4c6LXg3m2KHt5xzUHCj2r7fnPRkW74",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "14ceG7gRh3vnX7BySt2WbkyhVTJ6BK8E6z",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "18rMLgN8HgKrJgr1yxaRNByjDiCFek1jdU",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "13e23fxfAnDmXP6vknoN5ZxzW7E4rNHufb",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "18AJPiNcegAw8m7UBhCRYVqqbEEoArx5Te",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "1FAJUTm67VFhNYnQuAihd2wJfusZQQ9ZH6",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "12MTt77Vfo9rPc4qckaWy1pekMG2j6oPLg",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "179BnMzy6rmN5dwLQSQKsW1TMtXRUEUVii",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 7389,
+          "from_address": "1P6KEX85cKThzRVzE3chKu7pbBguQWVrUk",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1236954375
+        },
+        {
+          "txid": 8021,
+          "from_address": "1HB4s6LYddQVNQHkhfgcSCNhN47PBbztPA",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8021,
+          "from_address": "1CFf1ShZSLpKi3f7SkR8DSrYty4h9XkTH3",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8021,
+          "from_address": "16dx8wzF2D7SYRhR2bzkzeepDSU2RW3w3q",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8021,
+          "from_address": "1F4f6kgKm84DdG5a2FsjgUvpAxDmGaQmR9",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8021,
+          "from_address": "16Sbt34KYrPPHLAJttTLfYKHDyStD7FJG9",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8021,
+          "from_address": "1Jaw5ZgXH9eQEUFRsBvV4r9HK6ayXB1uu2",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8021,
+          "from_address": "1PK2sc3acUyXcoUCUDDKck6Nrq8L4kE8gk",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8021,
+          "from_address": "12rVs6Y3yypb9TrCY91mWZ88vaWaxRshBC",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8021,
+          "from_address": "17xqo85PztCMz8PadEhXfi7n2r2CpM7AJW",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8021,
+          "from_address": "1EhJARLpa58xZrNkmwBK3cAqbkZ8tUhhkT",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8021,
+          "from_address": "15o55Tgc352rmdopstMDHQE1s5skrvkM65",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8022,
+          "from_address": "1DdtAffwNSQEQHTvmY2iMiy1G1wpqWao1n",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8022,
+          "from_address": "16iRWj73m3wN788iLRwEnUkMtP8p8p6wkC",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8022,
+          "from_address": "15fgF9LywYyxHrjCjcjLjL4vXK8AhCMHAG",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237419496
+        },
+        {
+          "txid": 8400,
+          "from_address": "1GFmAHTChrgtoxsLbYxnr6csw3vr1S3iBV",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237739482
+        },
+        {
+          "txid": 8400,
+          "from_address": "1NrKjkof6CvFvDgeio3mie62DBHMumiuMD",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237739482
+        },
+        {
+          "txid": 8400,
+          "from_address": "1JHgtd1DQaVgvdXbbd4Ko4TVpxgVu4wncs",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237739482
+        },
+        {
+          "txid": 8400,
+          "from_address": "1N8aRF9RZQ6ZrSCnrQCaJwEnSGxqRqToSi",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237739482
+        },
+        {
+          "txid": 8400,
+          "from_address": "1GxiWc7y25E4DoFyiCRa8sPHVCNSgDiZ8",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237739482
+        },
+        {
+          "txid": 8400,
+          "from_address": "16AMPEZRUzqqr8SmUqWaykfihrt4vWAqfb",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237739482
+        },
+        {
+          "txid": 8401,
+          "from_address": "14ePDxfEeLanjaWoWa7ro7JrupigmC3sC9",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237739482
+        },
+        {
+          "txid": 8401,
+          "from_address": "1GaZbjmYjiYHJZ1asxAsMu8LNjzHAghKhm",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237739482
+        },
+        {
+          "txid": 8401,
+          "from_address": "1H8HegRbLdkhTfnpvbhY5FFjjBwUWn8fDK",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237739482
+        },
+        {
+          "txid": 8401,
+          "from_address": "1BbKNNU73TPDfEgyPy6KMJACtTUZR3af22",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237739482
+        },
+        {
+          "txid": 8401,
+          "from_address": "14caFiBvCDsHFZEFLCg21GfiNdDLQ75Xud",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1237739482
+        },
+        {
+          "txid": 9094,
+          "from_address": "1JF8KCuSB9BGNVrSpjp8752w6f2RcD2qPz",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1JEJ6tb1wf5PJxmJih7f7gqVVibFtvH9AJ",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "15CzUuMKY9wBi8smyxUJbMV9188XWrTKsj",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1FQZn6paUWGDX9CJP284VNKquXHnaSXZhw",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1LffD6E1xmrxAch1oVCZVmknuV2Np4zfRb",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1JfkUrV1kWtpb3RTftBULzkdqv2CLsERAF",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1APh41X1g1yTuoC2gqKeivCamAtG3MjZsz",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "17jiJsoeWUW6zX3CwAnrXXoeThugvVUcgz",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1Bm55PiCwoKMzeW1wYsjvzGZZHr8dWiQUD",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1LnwtynrPZKZrLfMHatGk7WcEhwGPfqYXq",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1Q4aJUoShWDQSGiryGiFmN8xmgFzb9Yp43",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1Pgn7bVXFEJKYVmk8ACTuJxMaRzSfAXFrr",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1BHJ8AVzM21pcKeEUzcV8WCjU5PUYfPdJQ",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1EViizXKt5EcbfmoudrSGqhRsuzeVfEj1G",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1LuUaBqNDC1PGarwH4rCDKJjfVmaryycMF",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "1GT1BcBH4CeFFaqV8kzzwBL88tWSigYYto",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9095,
+          "from_address": "14uTer5n9RTEDBnnsqiMdkrV8Wa8qePfFq",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9096,
+          "from_address": "18GTbjRF7jGt9wsakUa2EQGsAVJVZoLp81",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9096,
+          "from_address": "16kUCCZq6Rm73vLUPqnyww5hyhBjukM8Kz",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 9096,
+          "from_address": "1BM9J3EB35qc47b76qaF3xKZPevPaDwMDd",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238256409
+        },
+        {
+          "txid": 10054,
+          "from_address": "14P9Bj4cMj5MxPLk5AqXi9F66DmxtnT8ec",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10054,
+          "from_address": "1u8BxzeQiC6x1tYdPxK1i8thUhRYRXbrb",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1FHRKL9w7aAudy1QB19RbsuzeGeUQQkCLw",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1B72gYHoGVoFfqiDRGL2V5jdz1Svqtd43e",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1MU6maEWWkELvk9GQ1i2mXgow9Z9Bmurmi",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1B939jbcHG4zF5RjXHhwMRyK2T7v3wvbaM",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1KASBVn39iwE8h5WEUJbmjvViPbz1ZW1zh",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1Ctso625ksoobGnQCWGzFNgvi3qe1mCEqj",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "16x9xnP2fDSN7h61XNLQVEmw2txp2mDZSe",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1BtvdSfPQ6Loj6yvZQBWk28dmi6Nb9A8kJ",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1DMgKZ6WvxKNM6kntTKZeWXejHvNm9XmPo",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "19JLPk7DPuJqHBA2j4UCMwpgWDkwfUwL2M",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1MBEnZ9Vx2UX5PjGm9VYbeg6vWz65FBiZR",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1DwV969FbHcsTPbKjzGH3fAUVCN3x43kTG",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1CGZgKK4e15fTD6zi9S6qu7Yy3UERGbVE1",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1L7Bv1vrzcdsYZZwCxqKNx5GHcLWRYkaM7",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        },
+        {
+          "txid": 10055,
+          "from_address": "1D1CcFSYy24jS69NHsaDBMuAn2gN8zqbv8",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 50.0,
+          "time": 1238964216
+        }
+      ]
+    },
+    {
+      "address": "124wRWVmAkRejjv6aPuF3B4qi5ww4uYKLy",
+      "anomaly_score": 0.540859,
+      "reasons": [
+        {
+          "label": "Peeling chain behavior",
+          "score": 1.0
+        },
+        {
+          "label": "Self-churn / cyclic",
+          "score": 0.625
+        }
+      ],
+      "stats": {
+        "out_degree": 2,
+        "out_sum": 50.0,
+        "in_degree": 1,
+        "in_sum": 49.67
+      },
+      "edges": [
+        {
+          "txid": 6417,
+          "from_address": "124wRWVmAkRejjv6aPuF3B4qi5ww4uYKLy",
+          "to_address": "12higDjoCCNXSA95xZMWUdPvXNmkAduhWv",
+          "flow_amount": 0.33,
+          "time": 1236209362
+        },
+        {
+          "txid": 6417,
+          "from_address": "124wRWVmAkRejjv6aPuF3B4qi5ww4uYKLy",
+          "to_address": "124wRWVmAkRejjv6aPuF3B4qi5ww4uYKLy",
+          "flow_amount": 49.67,
+          "time": 1236209362
+        }
+      ]
+    },
+    {
+      "address": "16NB2rGfdV8sq12oBC3bXTvvVzZiqvzo8Y",
+      "anomaly_score": 0.537761,
+      "reasons": [
+        {
+          "label": "Fund aggregation node",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 300.0,
+        "in_degree": 6,
+        "in_sum": 300.0
+      },
+      "edges": [
+        {
+          "txid": 6841,
+          "from_address": "174ucaqYNYWGwwSwwXRrK5E4MX7KnNCsWg",
+          "to_address": "16NB2rGfdV8sq12oBC3bXTvvVzZiqvzo8Y",
+          "flow_amount": 50.0,
+          "time": 1236532492
+        },
+        {
+          "txid": 6841,
+          "from_address": "1K5D92GiZhn1QHWvvKwtzaRWVmYWbpfJaJ",
+          "to_address": "16NB2rGfdV8sq12oBC3bXTvvVzZiqvzo8Y",
+          "flow_amount": 50.0,
+          "time": 1236532492
+        },
+        {
+          "txid": 6841,
+          "from_address": "1KeSxBmdeY6p7vimVKcYzUsVViDjzx3qDZ",
+          "to_address": "16NB2rGfdV8sq12oBC3bXTvvVzZiqvzo8Y",
+          "flow_amount": 50.0,
+          "time": 1236532492
+        },
+        {
+          "txid": 6841,
+          "from_address": "19P1ynmHA67Ss9kiVcG7z2oppnoQ7r9VQG",
+          "to_address": "16NB2rGfdV8sq12oBC3bXTvvVzZiqvzo8Y",
+          "flow_amount": 50.0,
+          "time": 1236532492
+        },
+        {
+          "txid": 6841,
+          "from_address": "1PcVSf9U9mYKPYxtkVU6LRXLDBeqB3JUuC",
+          "to_address": "16NB2rGfdV8sq12oBC3bXTvvVzZiqvzo8Y",
+          "flow_amount": 50.0,
+          "time": 1236532492
+        },
+        {
+          "txid": 6841,
+          "from_address": "1Lx1JLY9JYCc5JSAqKABmtX2msJWXRGMJp",
+          "to_address": "16NB2rGfdV8sq12oBC3bXTvvVzZiqvzo8Y",
+          "flow_amount": 50.0,
+          "time": 1236532492
+        },
+        {
+          "txid": 6844,
+          "from_address": "16NB2rGfdV8sq12oBC3bXTvvVzZiqvzo8Y",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 300.0,
+          "time": 1236534402
+        }
+      ]
+    },
+    {
+      "address": "1CECPFgz4fJSEndbFT1QyR8hKyt5RitL2k",
+      "anomaly_score": 0.237141,
+      "reasons": [
+        {
+          "label": "Irregular / anomalous behavior",
+          "score": 1.0
+        }
+      ],
+      "stats": {
+        "out_degree": 1,
+        "out_sum": 150.0,
+        "in_degree": 3,
+        "in_sum": 150.0
+      },
+      "edges": [
+        {
+          "txid": 7257,
+          "from_address": "1FPLNH389uu81V11em7sknNJQ4yqaJykQD",
+          "to_address": "1CECPFgz4fJSEndbFT1QyR8hKyt5RitL2k",
+          "flow_amount": 50.0,
+          "time": 1236854934
+        },
+        {
+          "txid": 7257,
+          "from_address": "1PeuSubs2kUjZCngC2Lm8RWtZsP9hGoCas",
+          "to_address": "1CECPFgz4fJSEndbFT1QyR8hKyt5RitL2k",
+          "flow_amount": 50.0,
+          "time": 1236854934
+        },
+        {
+          "txid": 7257,
+          "from_address": "1Cay6m8mMu5xMHEmpacGQ4jPDZyxDotN3g",
+          "to_address": "1CECPFgz4fJSEndbFT1QyR8hKyt5RitL2k",
+          "flow_amount": 50.0,
+          "time": 1236854934
+        },
+        {
+          "txid": 7389,
+          "from_address": "1CECPFgz4fJSEndbFT1QyR8hKyt5RitL2k",
+          "to_address": "198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi",
+          "flow_amount": 150.0,
+          "time": 1236954375
+        }
+      ]
+    }
+  ]
+}
