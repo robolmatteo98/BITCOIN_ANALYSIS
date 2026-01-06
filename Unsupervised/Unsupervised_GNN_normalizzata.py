@@ -1,8 +1,23 @@
+# =====================================================================
+# Qual è la struttura NORMALE del grafo Bitcoin
+# i nodi che non si ricostruiscono bene --> anomali
+# LE DETECTION CHE VENGONO UTILIZZATE IN QUESTO PUNTO:
+# - structural anomaly detection
+# - behavioral anomaly detection
+# - NOT rule-based
+
+# =====================================================================
+# DA SISTEMARE:
+# - GCNConv non usa le features (flow_amount, time)
+# - feature nodi troppo povere [in, out]
+# - non viene utilizzato il tempo come dinamica
+
+
 import numpy as np
 import torch
 import pandas as pd
 from torch_geometric.data import Data
-from torch_geometric.nn import GCNConv, VGAE
+from torch_geometric.nn import GCNConv, VGAE, GINEConv
 
 from Generatore_da_db import load_bitcoin_edges_from_db, load_bitcoin_edges_from_db_without_warning
 from Anomaly_classification import classify_suspicious_node, classify_node_with_scores
@@ -16,12 +31,21 @@ df_edges, addresses = load_bitcoin_edges_from_db_without_warning()
 print(df_edges)
 
 # =====================================================================
-# 2) NORMALIZZAZIONE FLOW_AMOUNT
+# 2) NORMALIZZAZIONE FLOW_AMOUNT e TIME
 # =====================================================================
 # Log-transform + min-max scaling
 df_edges["flow_amount_log"] = np.log1p(df_edges["flow_amount"])
 flow_mean = df_edges["flow_amount_log"].mean()
 flow_std = df_edges["flow_amount_log"].std()
+
+t_min = df_edges["time"].min()
+t_max = df_edges["time"].max()
+
+df_edges["time_norm"] = (df_edges["time"] - t_min) / (t_max - t_min)
+
+df_edges["time_rel"] = df_edges.groupby("from_address")["time"].transform(
+  lambda x: (x - x.min()) / (x.max() - x.min() + 1e-9)
+)
 
 # =====================================================================
 # 3) MAPPA INDIRIZZI → NODE INDEX
@@ -47,7 +71,7 @@ edge_index = torch.tensor(
 
 # edge features: [flow_amount_log, time]
 edge_attr = torch.tensor(
-  df_edges[["flow_amount_log", "time"]].values,
+  df_edges[["flow_amount_log", "time_norm"]].values,
   dtype=torch.float
 )
 
@@ -67,32 +91,40 @@ data = Data(
   edge_attr=edge_attr
 )
 
+edge_dim = edge_attr.shape[1]  # = 2
+
 # =====================================================================
 # 5) VGAE MODELLO
 # =====================================================================
+nn_edge = torch.nn.Sequential(
+  torch.nn.Linear(edge_dim, 64),
+  torch.nn.ReLU(),
+  torch.nn.Linear(64, 64)
+)
+
 class Encoder(torch.nn.Module):
     def __init__(self, in_channels, out_channels):
         super().__init__()
-        self.conv1 = GCNConv(in_channels, 64)
+        self.conv1 = GINEConv(nn_edge)
         self.conv_mu = GCNConv(64, out_channels)
         self.conv_logstd = GCNConv(64, out_channels)
 
-    def forward(self, x, edge_index):
-        x = torch.relu(self.conv1(x, edge_index))
-        return self.conv_mu(x, edge_index), self.conv_logstd(x, edge_index)
+    def forward(self, x, edge_index, edge_attr):
+      x = torch.relu(self.conv1(x, edge_index, edge_attr))
+      return self.conv_mu(x, edge_index), self.conv_logstd(x, edge_index)
 
 model = VGAE(Encoder(data.num_features, 16))
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
 def train():
-    model.train()
-    optimizer.zero_grad()
-    z = model.encode(data.x, data.edge_index)
-    loss = model.recon_loss(z, data.edge_index)
-    loss += (1 / data.num_nodes) * model.kl_loss()
-    loss.backward()
-    optimizer.step()
-    return loss.item()
+  model.train()
+  optimizer.zero_grad()
+  z = model.encode(data.x, data.edge_index, data.edge_attr)
+  loss = model.recon_loss(z, data.edge_index)
+  loss += (1 / data.num_nodes) * model.kl_loss()
+  loss.backward()
+  optimizer.step()
+  return loss.item()
 
 print("Inizio training VGAE…")
 for epoch in range(1, 201):
@@ -105,7 +137,7 @@ for epoch in range(1, 201):
 # ========================================================================================
 
 model.eval()
-z = model.encode(data.x, data.edge_index).detach()
+z = model.encode(data.x, data.edge_index, data.edge_attr).detach()
 
 norms = torch.norm(z - z.mean(dim=0), dim=1)
 
@@ -152,7 +184,7 @@ for i in indices_sospetti:
     print(node_edges[['txid', 'from_address','to_address','flow_amount','time']])
     print("---------------------------------------------------")
 
-report_path = save_anomaly_report(
+"""report_path = save_anomaly_report(
   addresses=addresses,
   norms=norms,
   indices_sospetti=indices_sospetti,
@@ -163,4 +195,4 @@ report_path = save_anomaly_report(
   output_path="./REPORTS"
 )
 
-print(f"\n✔ Report salvato in {report_path}")
+print(f"\n✔ Report salvato in {report_path}")"""
