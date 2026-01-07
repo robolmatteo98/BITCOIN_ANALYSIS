@@ -20,14 +20,14 @@ conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host
 cursor = conn.cursor()
 
 ## Recupera tutte le regioni dal DB
-cursor.execute("SELECT id, utc_start, utc_end FROM region")
+cursor.execute("SELECT name, utc_start, utc_end FROM region")
 regions = cursor.fetchall()
 
-def guess_region_id(utc_offset):
+def guess_region_name(utc_offset):
     for r in regions:
-        rid, start, end = r
+        name, start, end = r
         if start <= utc_offset <= end:
-            return rid
+            return name
     return None
 
 
@@ -39,9 +39,9 @@ for address in addresses:
     # Prendiamo tutte le transazioni di quell'indirizzo
     cursor.execute("""
         SELECT b.time
-        FROM bitcoin_tx_output o
-        JOIN bitcoin_transaction t ON t.id = o.fk_transaction_id
-        JOIN bitcoin_block b ON b.id = t.fk_block_id
+        FROM tx_output o
+        JOIN transaction t ON t.id = o.fk_transaction_id
+        JOIN block b ON b.id = t.fk_block_id
         WHERE o.fk_address_code = %s
     """, (address,))
     timestamps = [row[0] for row in cursor.fetchall()]
@@ -69,16 +69,8 @@ for address in addresses:
             best_offset = offset
 
     # Stima area geografica
-    region = guess_region_id(best_offset)
+    region = guess_region_name(best_offset)
 
     print(f"Address: {address} | Tx: {n_tx} | UTC offset: {best_offset:+} | Region: {region}")
-
-    # Aggiorna la tabella bitcoin_address
-    cursor.execute("""
-        UPDATE bitcoin_address
-        SET region_id = %s
-        WHERE code = %s
-    """, (region, address))
-    conn.commit()
 
 conn.close()
