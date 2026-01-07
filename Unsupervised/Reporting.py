@@ -86,10 +86,7 @@ def save_anomaly_report(
 
         output["anomalies"].append(anomaly_entry)
 
-    filename = f"{prefix}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-    full_path = f"{output_path}/{filename}"
-
-    with open(full_path, "w", encoding="utf-8") as f:
+    with open("anomalies.json", "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    return full_path
+    return "anomalies.json"

@@ -192,7 +192,7 @@ for i in indices_sospetti:
   classify_fn=classify_node_with_scores,
   threshold=threshold,
   num_nodes=num_nodes,
-  output_path="./REPORTS"
+  output_path="./WEBAPP/backend/data"
 )
 
 print(f"\n✔ Report salvato in {report_path}")"""
