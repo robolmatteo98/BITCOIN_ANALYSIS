@@ -42,7 +42,7 @@ def main():
             rpc.getblockchaininfo()
             break
         except:
-            print("In attesa che Bitcoin Core sia disponibile...")
+            print("In attesa che RPC sia disponibile...")
             time.sleep(5)
 
     print("RPC connesso!")
@@ -54,6 +54,7 @@ def main():
 
             print(f"[INFO] Nodo: {node_height} | Salvato: {last_saved}")
 
+            # Attende di sincronizzarsi con l'ultimo blocco disponibile
             if last_saved >= node_height:
                 time.sleep(POLL_INTERVAL)
                 continue
