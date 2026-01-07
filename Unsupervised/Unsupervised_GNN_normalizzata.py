@@ -19,7 +19,7 @@ import pandas as pd
 from torch_geometric.data import Data
 from torch_geometric.nn import GCNConv, VGAE, GINEConv
 
-from Generatore_da_db import load_bitcoin_edges_from_db, load_bitcoin_edges_from_db_without_warning
+from Generatore_da_db import load_bitcoin_edges_from_db_without_warning
 from Anomaly_classification import classify_suspicious_node, classify_node_with_scores
 
 from Reporting import save_anomaly_report
@@ -196,3 +196,10 @@ for i in indices_sospetti:
 )
 
 print(f"\n✔ Report salvato in {report_path}")"""
+
+"""plot_graph_with_anomalies(
+    df_edges=df_edges,
+    suspicious_indices=indices_sospetti,
+    addr_to_idx=addr_to_idx,
+    filename="bitcoin_graph.png"
+)"""
