@@ -9,7 +9,8 @@ from torch_geometric.data import Data
 from torch_geometric.nn import GCNConv, VGAE, GINEConv
 
 from Generatore_da_db import load_bitcoin_edges_from_db_without_warning
-from Anomaly_classification import classify_suspicious_node, classify_node_with_scores
+from Anomaly_classification import classify_suspicious_node
+from Anomaly_classification_with_scores import classify_node_with_scores
 
 from Reporting import save_anomaly_report
 
