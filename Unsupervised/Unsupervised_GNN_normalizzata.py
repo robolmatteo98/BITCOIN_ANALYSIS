@@ -1,17 +1,6 @@
 # =====================================================================
-# Qual è la struttura NORMALE del grafo Bitcoin
+# Questa unsupervised GNN calcola qual è la struttura NORMALE del grafo Bitcoin
 # i nodi che non si ricostruiscono bene --> anomali
-# LE DETECTION CHE VENGONO UTILIZZATE IN QUESTO PUNTO:
-# - structural anomaly detection
-# - behavioral anomaly detection
-# - NOT rule-based
-
-# =====================================================================
-# DA SISTEMARE:
-# - GCNConv non usa le features (flow_amount, time)
-# - feature nodi troppo povere [in, out]
-# - non viene utilizzato il tempo come dinamica
-
 
 import numpy as np
 import torch
@@ -28,37 +17,41 @@ from Reporting import save_anomaly_report
 # 1) CARICAMENTO DATI
 # =====================================================================
 df_edges, addresses = load_bitcoin_edges_from_db_without_warning()
-print(df_edges)
 
 # =====================================================================
 # 2) NORMALIZZAZIONE FLOW_AMOUNT e TIME
 # =====================================================================
-# Log-transform + min-max scaling
-df_edges["flow_amount_log"] = np.log1p(df_edges["flow_amount"])
-flow_mean = df_edges["flow_amount_log"].mean()
-flow_std = df_edges["flow_amount_log"].std()
 
+# Normalizzazione del flow_amount tramite logaritmo
+df_edges["flow_amount_log"] = np.log1p(df_edges["flow_amount"])
+
+# CAPIRE QUALE DELLE DUE NORMALIZZAZIONI è MEGLIO USARE
+# 1. Normalizzazione del tempo tramite (min-max)
 t_min = df_edges["time"].min()
 t_max = df_edges["time"].max()
-
 df_edges["time_norm"] = (df_edges["time"] - t_min) / (t_max - t_min)
 
-df_edges["time_rel"] = df_edges.groupby("from_address")["time"].transform(
-  lambda x: (x - x.min()) / (x.max() - x.min() + 1e-9)
-)
+# 2. Normalizzazione temporale relativa per nodo sorgente
+grp = df_edges.groupby("from_address")["time"]
+df_edges["time_rel"] = (df_edges["time"] - grp.transform("min")) / (grp.transform("max") - grp.transform("min") + 1e-9)
 
 # =====================================================================
 # 3) MAPPA INDIRIZZI → NODE INDEX
 # =====================================================================
+
+# Creazione mappatura indirizzi → indice
 addr_to_idx = {addr: i for i, addr in enumerate(addresses)}
-df_edges["src"] = df_edges["from_address"].map(addr_to_idx)
-df_edges["dst"] = df_edges["to_address"].map(addr_to_idx)
-df_edges["time"] = pd.to_numeric(df_edges["time"], errors='coerce')
+
+# Mappatura colonne 'from' e 'to'
+df_edges[["src", "dst"]] = df_edges[["from_address", "to_address"]].applymap(addr_to_idx.get)
+
+# Assicurati che 'time' sia numerico
+df_edges["time"] = pd.to_numeric(df_edges["time"], errors="coerce")
 
 num_nodes = len(addresses)
 
-print("Num nodes:", num_nodes)
-print("Num edges:", len(df_edges))
+print(f"Num nodes: {num_nodes}")
+print(f"Num edges: {len(df_edges)}")
 print(df_edges.head())
 
 # =====================================================================
@@ -96,22 +89,16 @@ edge_dim = edge_attr.shape[1]  # = 2
 # =====================================================================
 # 5) VGAE MODELLO
 # =====================================================================
-nn_edge = torch.nn.Sequential(
-  torch.nn.Linear(edge_dim, 64),
-  torch.nn.ReLU(),
-  torch.nn.Linear(64, 64)
-)
-
 class Encoder(torch.nn.Module):
-    def __init__(self, in_channels, out_channels):
-        super().__init__()
-        self.conv1 = GINEConv(nn_edge)
-        self.conv_mu = GCNConv(64, out_channels)
-        self.conv_logstd = GCNConv(64, out_channels)
-
-    def forward(self, x, edge_index, edge_attr):
-      x = torch.relu(self.conv1(x, edge_index, edge_attr))
-      return self.conv_mu(x, edge_index), self.conv_logstd(x, edge_index)
+  def __init__(self, in_channels, out_channels):
+    super().__init__()
+    self.conv1 = GINEConv(torch.nn.Sequential(
+      torch.nn.Linear(in_channels, 64),
+      torch.nn.ReLU(),
+      torch.nn.Linear(64, 64)
+    ))
+    self.conv_mu = GCNConv(64, out_channels)
+    self.conv_logstd = GCNConv(64, out_channels)
 
 model = VGAE(Encoder(data.num_features, 16))
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)

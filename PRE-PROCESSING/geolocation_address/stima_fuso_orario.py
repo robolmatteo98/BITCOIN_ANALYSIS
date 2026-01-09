@@ -32,7 +32,7 @@ def guess_region_name(utc_offset):
 
 
 # Recupera tutti gli indirizzi
-cursor.execute("SELECT address FROM count_tx")
+cursor.execute("SELECT from_address FROM count_tx")
 addresses = [row[0] for row in cursor.fetchall()]
 
 for address in addresses:
