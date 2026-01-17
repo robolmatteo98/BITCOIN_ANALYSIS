@@ -66,14 +66,17 @@ for height in range(0, 10000):
         # LOOP TRANSAZIONI
         for tx in block['tx']:
             txid = tx['txid']
+            n_inputs = len(tx['vin'])
+            n_outputs = len(tx['vout'])
+            total_output = sum(vout["value"] for vout in tx["vout"])
 
             cur.execute(
                 """
-                INSERT INTO transaction (txid, fk_block_id)
-                VALUES (%s, %s)
+                INSERT INTO transaction (txid, fk_block_id, n_inputs, n_outputs, total_amount)
+                VALUES (%s, %s, %s, %s, %s)
                 RETURNING id
                 """,
-                (txid, height)
+                (txid, height, n_inputs, n_outputs, total_output)
             )
             result = cur.fetchone()
             transaction_id = result[0] if result else None
