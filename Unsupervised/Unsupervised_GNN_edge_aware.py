@@ -80,76 +80,39 @@ edge_attr = torch.tensor(
 edge_attr = torch.clamp(edge_attr, min=-10, max=10)
 
 # --- NODE FEATURES ---
-# Inizializziamo contenitori per statistiche aggregate
 node_stats = pd.DataFrame(index=np.arange(num_nodes))
 
-# -----------------------
-# DEGREE (strutturale)
-# -----------------------
-node_stats['in_degree'] = (
-    df_edges.groupby('dst').size()
-    .reindex(node_stats.index, fill_value=0)
-)
+# gradi
+node_stats["in_degree"] = df_edges.groupby("dst").size().reindex(node_stats.index, fill_value=0)
+node_stats["out_degree"] = df_edges.groupby("src").size().reindex(node_stats.index, fill_value=0)
 
-node_stats['out_degree'] = (
-    df_edges.groupby('src').size()
-    .reindex(node_stats.index, fill_value=0)
-)
+for col in ["in_degree", "out_degree"]:
+    node_stats[f"log_{col}"] = np.log1p(node_stats[col])
 
-node_stats['log_in_degree']  = np.log1p(node_stats['in_degree'])
-node_stats['log_out_degree'] = np.log1p(node_stats['out_degree'])
+# volumi
+node_stats["total_out"] = df_edges.groupby("src")["flow_amount"].sum().reindex(node_stats.index, fill_value=0)
+node_stats["total_in"]  = df_edges.groupby("dst")["flow_amount"].sum().reindex(node_stats.index, fill_value=0)
 
-# -----------------------
-# VOLUME ECONOMICO
-# -----------------------
-node_stats['total_out'] = (
-    df_edges.groupby('src')['flow_amount']
-    .sum()
-    .reindex(node_stats.index, fill_value=0)
-)
+for col in ["total_out", "total_in"]:
+    node_stats[f"log_{col}"] = np.log1p(node_stats[col])
 
-node_stats['total_in'] = (
-    df_edges.groupby('dst')['flow_amount']
-    .sum()
-    .reindex(node_stats.index, fill_value=0)
-)
-
-node_stats['log_total_out'] = np.log1p(node_stats['total_out'])
-node_stats['log_total_in']  = np.log1p(node_stats['total_in'])
-
-# -----------------------
-# COMPLESSITÀ TRANSAZIONALE
-# -----------------------
-node_stats['avg_log_n_inputs'] = (
-    df_edges.groupby('dst')['n_inputs']
-    .mean()
-    .reindex(node_stats.index, fill_value=0)
-)
-
-node_stats['avg_log_n_outputs'] = (
-    df_edges.groupby('src')['n_outputs']
-    .mean()
-    .reindex(node_stats.index, fill_value=0)
-)
+# complessità
+node_stats["avg_log_n_inputs"] = df_edges.groupby("dst")["n_inputs"].mean().reindex(node_stats.index, fill_value=0)
+node_stats["avg_log_n_outputs"] = df_edges.groupby("src")["n_outputs"].mean().reindex(node_stats.index, fill_value=0)
 
 x = torch.tensor(
     node_stats[
         [
-            'log_in_degree',
-            'log_out_degree',
-            'log_total_in',
-            'log_total_out',
-            'avg_log_n_inputs',
-            'avg_log_n_outputs'
+            "log_in_degree",
+            "log_out_degree",
+            "log_total_in",
+            "log_total_out",
+            "avg_log_n_inputs",
+            "avg_log_n_outputs",
         ]
     ].values,
-    dtype=torch.float
+    dtype=torch.float,
 )
-
-edge_index, edge_attr = remove_self_loops(edge_index, edge_attr)
-
-x = (x - x.mean(dim=0)) / (x.std(dim=0) + 1e-6)
-data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr)
 
 # check
 assert x.shape[0] == num_nodes

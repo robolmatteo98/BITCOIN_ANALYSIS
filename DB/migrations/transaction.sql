@@ -1,11 +1,11 @@
 ALTER TABLE transaction
 ADD COLUMN n_inputs INTEGER,
 ADD COLUMN n_outputs INTEGER,
-ADD COLUMN total_amount BIGINT,
+ADD COLUMN total_amount BIGINT;
 
 UPDATE transaction t
 SET
-    n_inputs = i.cnt,
+    n_inputs = i.cnt
 FROM (
     SELECT
         prev.fk_transaction_id AS txid,
@@ -32,3 +32,19 @@ FROM (
     GROUP BY fk_transaction_id
 ) o
 WHERE t.id = o.txid;
+
+-- default
+ALTER TABLE transaction
+ALTER COLUMN n_inputs SET DEFAULT 1;
+
+ALTER TABLE transaction
+ALTER COLUMN n_outputs SET DEFAULT 1;
+
+-- set inputs and outputs NULL
+UPDATE transaction
+SET n_inputs = 1
+WHERE n_inputs IS NULL;
+
+UPDATE transaction
+SET n_outputs = 1
+WHERE n_outputs IS NULL;
