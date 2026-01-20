@@ -21,12 +21,6 @@ model, z = train_vgae(data)
 indices_sospetti, scores, norms, threshold = detect_anomalies_latent_normalized(z)
 #indices_sospetti, scores, norms, threshold = detect_anomalies_cluster_distance(z)
 
-# fix dei nodi che hanno in > 0 e out = 0
-indices_sospetti = [
-    i for i in indices_sospetti
-    if not (node_stats.loc[i, "in_degree"] > 0 and node_stats.loc[i, "out_degree"] == 0)
-]
-
 print_results(indices_sospetti, df_edges, addresses)
 
 # Salvataggio report
