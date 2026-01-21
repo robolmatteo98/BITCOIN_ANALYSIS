@@ -1,6 +1,8 @@
+# con questa detection, vengono catturati i nodi che si differenziano dai comportamenti normali, exchange, mixer
+# ogni tipologia di indirizzi formano un cluster, i nodi che sono fuori da essi o sono a metà, vengono riportati come sospetti.
+
 import torch
 from sklearn.cluster import KMeans
-
 
 def detect_anomalies_cluster_distance(z, k=3, n_clusters=6, eps=1e-6):
     # 1. Standardizzazione del latent space
