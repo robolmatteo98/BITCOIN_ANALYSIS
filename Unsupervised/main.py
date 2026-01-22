@@ -5,10 +5,10 @@ from utility.anomaly_detection import detect_anomalies_latent
 from utility.anomaly_detection_normalized import detect_anomalies_latent_normalized
 from utility.anomaly_detection_Kmeans import detect_anomalies_cluster_distance
 from classification.Anomaly_classification_with_scores import classify_node_with_scores
-from utility.Reporting import save_anomaly_report
-from utility.print_output import print_results
-from utility.visualize_latent import visualize_latent_space
-from utility.explain_outlier import explain_outlier
+from print_results.Reporting import save_anomaly_report
+from print_results.print_output import print_results
+from print_results.visualize_latent import visualize_latent_space
+from print_results.explain_outlier import explain_outlier
 
 import torch
 import numpy as np
@@ -24,8 +24,6 @@ def set_seed(seed=42):
 set_seed(42)
 
 df_edges, addresses = load_data()
-
-print(df_edges)
 
 data, addr_to_idx, node_stats = build_graph(df_edges, addresses, use_relative_time=False)
 
