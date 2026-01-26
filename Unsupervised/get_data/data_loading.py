@@ -1,9 +1,12 @@
 import numpy as np
 import pandas as pd
 from get_data.Generatore_da_db import load_bitcoin_edges_from_db_without_warning
+from get_data.Generatore_fake import fake_load_data
+from get_data.Generatore_fake_dynamic import fake_load_data
 
 def load_data():
-  df_edges, addresses = load_bitcoin_edges_from_db_without_warning()
+  #df_edges, addresses = load_bitcoin_edges_from_db_without_warning()
+  df_edges, addresses = fake_load_data()
 
   # Normalizzazione flow_amount
   df_edges["flow_amount_log"] = np.log1p(df_edges["flow_amount"])

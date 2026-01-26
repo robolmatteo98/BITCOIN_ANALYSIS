@@ -40,7 +40,7 @@ class EdgeAwareEncoder(torch.nn.Module):
         return mu, logstd
 
 
-def train_vgae(data, epochs=200, lr=0.001, latent_dim=8):
+def train_vgae(data, epochs=300, lr=0.005, latent_dim=8, beta=5.0):
     model = VGAE(
         EdgeAwareEncoder(
             in_channels=data.num_features,
@@ -51,21 +51,20 @@ def train_vgae(data, epochs=200, lr=0.001, latent_dim=8):
 
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
-    for epoch in range(1, epochs + 1):
+    for epoch in range(epochs):
         model.train()
         optimizer.zero_grad()
 
         z = model.encode(data.x, data.edge_index, data.edge_attr)
         loss = model.recon_loss(z, data.edge_index)
-        loss += (1 / data.num_nodes) * model.kl_loss()
+        loss += beta * model.kl_loss() / data.num_nodes
 
         loss.backward()
         optimizer.step()
 
-        if epoch % 20 == 0:
-            print(f"Epoch {epoch}: Loss = {loss:.4f}")
+        if epoch % 50 == 0:
+            print(f"Epoch {epoch} | Loss {loss:.4f}")
 
     model.eval()
     z = model.encode(data.x, data.edge_index, data.edge_attr).detach()
-
     return model, z
