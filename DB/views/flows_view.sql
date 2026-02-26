@@ -31,7 +31,7 @@ JOIN tx_output o ON o.fk_transaction_id = i.txid
 JOIN transaction tra ON tra.id = i.txid
 JOIN block b     ON b.id = tra.fk_block_id;
 
-----
+---- con COINBASE
 CREATE OR REPLACE VIEW flows_view AS
 WITH input_values AS (
     SELECT
