@@ -4,6 +4,7 @@ from utility.model_vgae import train_vgae
 from utility.anomaly_detection import detect_anomalies_latent
 from utility.anomaly_detection_normalized import detect_anomalies_latent_normalized
 from utility.anomaly_detection_Kmeans import detect_anomalies_cluster_distance
+from utility.anomaly_detection_adavance import detect_anomalies_latent_advanced
 from classification.Anomaly_classification_with_scores import classify_node_with_scores
 from print_results.Reporting import save_anomaly_report
 from print_results.print_output import print_results
@@ -37,6 +38,7 @@ print("Edge attr:\n", data.edge_attr)
 
 model, z = train_vgae(data)
 
+<<<<<<< HEAD
 indices_sospetti, norms, threshold = detect_anomalies_latent(z)
 #indices_sospetti, scores, norms, threshold = detect_anomalies_latent_normalized(z)
 #indices_sospetti, scores, norms, threshold = detect_anomalies_cluster_distance(z)
@@ -45,6 +47,21 @@ print("Anomalie rilevate:", indices_sospetti)
 print("Indirizzi:", [addresses[i] for i in indices_sospetti])
 
 #print_results(indices_sospetti, df_edges, addresses)
+=======
+#indices_sospetti, scores, norms, threshold = detect_anomalies_latent(z)
+#indices_sospetti, scores, norms, threshold = detect_anomalies_latent_normalized(z)
+#indices_sospetti, scores, norms, threshold = detect_anomalies_cluster_distance(z)
+
+results = detect_anomalies_latent_advanced(z)
+
+indices_sospetti = results["indices"]
+scores = results["combined_scores"]
+threshold = results["threshold"]
+norms = results["combined_scores"]
+
+
+print_results(indices_sospetti, df_edges, addresses)
+>>>>>>> 2920652 (add some functions)
 
 # Salvataggio report
 """save_anomaly_report(

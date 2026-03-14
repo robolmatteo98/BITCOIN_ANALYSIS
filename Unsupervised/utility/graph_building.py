@@ -66,8 +66,47 @@ def build_graph(df_edges, addresses, use_relative_time=False):
 
   # Complessità transazionale
   node_stats["avg_log_n_inputs"] = (df_edges.groupby("dst")["n_inputs"].mean().reindex(node_stats.index, fill_value=0))
-
   node_stats["avg_log_n_outputs"] = (df_graph_edges.groupby("src")["n_outputs"].mean().reindex(node_stats.index, fill_value=0))
+
+
+  # ------------------- Aggiunta features
+  node_stats["in_out_ratio"] = node_stats["total_in"] / (node_stats["total_out"] + 1e-9)
+  node_stats["log_in_out_ratio"] = np.log1p(node_stats["in_out_ratio"])
+
+  # misura la dispersione dei flussi
+  def entropy(series):
+    counts = series.value_counts()
+    p = counts / counts.sum()
+    return -(p * np.log(p + 1e-9)).sum()
+
+  # Entropia dei destinatari (per ogni nodo come sorgente)
+  entropy_out = df_edges.groupby("src")["dst"].apply(entropy)
+  node_stats["entropy_out"] = entropy_out.reindex(node_stats.index, fill_value=0)
+
+  # Entropia delle fonti (per ogni nodo come destinatario)
+  entropy_in = df_edges.groupby("dst")["src"].apply(entropy)
+  node_stats["entropy_in"] = entropy_in.reindex(node_stats.index, fill_value=0)
+
+  # cattura attività improvvise o bot-like
+  def burstiness(times):
+    if len(times) < 2:
+        return 0
+    diffs = np.diff(np.sort(times))
+    mu = diffs.mean()
+    sigma = diffs.std()
+    return (sigma - mu) / (sigma + mu + 1e-9)
+
+  burst = df_edges.groupby("src")["time"].apply(burstiness)
+  node_stats["burstiness"] = burst.reindex(node_stats.index, fill_value=0)
+
+  node_stats["unique_out"] = df_edges.groupby("src")["dst"].nunique().reindex(node_stats.index, fill_value=0)
+  node_stats["unique_in"] = df_edges.groupby("dst")["src"].nunique().reindex(node_stats.index, fill_value=0)
+
+  node_stats["max_in"] = df_edges.groupby("dst")["flow_amount"].max().reindex(node_stats.index, fill_value=0)
+  node_stats["max_out"] = df_edges.groupby("src")["flow_amount"].max().reindex(node_stats.index, fill_value=0)
+
+  node_stats["median_in"] = df_edges.groupby("dst")["flow_amount"].median().reindex(node_stats.index, fill_value=0)
+  node_stats["median_out"] = df_edges.groupby("src")["flow_amount"].median().reindex(node_stats.index, fill_value=0)
 
   # Tensor finale
   x = torch.tensor(
@@ -79,6 +118,16 @@ def build_graph(df_edges, addresses, use_relative_time=False):
         "log_total_out",
         "avg_log_n_inputs",
         "avg_log_n_outputs",
+        "log_in_out_ratio",
+        "entropy_in",
+        "entropy_out",
+        "burstiness",
+        "unique_in",
+        "unique_out",
+        "max_in",
+        "max_out",
+        "median_in",
+        "median_out"
       ]
     ].values.astype(np.float32),
     dtype=torch.float

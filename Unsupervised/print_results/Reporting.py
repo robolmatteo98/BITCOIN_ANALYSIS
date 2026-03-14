@@ -38,6 +38,8 @@ def save_anomaly_report(
         Prefisso nome file
     """
 
+    print(output_path)
+
     output = {
         "model": {
             "type": "VGAE",

@@ -1,16 +1,9 @@
 import pandas as pd
 import numpy as np
 
+# Restituisce una classifica delle possibili categorie con score normalizzati (0–1).
 def classify_node_with_scores(address: str, df_edges: pd.DataFrame, top_k=3):
-    """
-    Restituisce una classifica delle possibili categorie
-    con score normalizzati (0–1).
-    """
-
-    node_edges = df_edges[
-        (df_edges["from_address"] == address) |
-        (df_edges["to_address"] == address)
-    ]
+    node_edges = df_edges[(df_edges["from_address"] == address) | (df_edges["to_address"] == address)]
 
     if len(node_edges) == 0:
         return [("Inactive / no observed behavior", 1.0)]
@@ -45,9 +38,10 @@ def classify_node_with_scores(address: str, df_edges: pd.DataFrame, top_k=3):
     # --------------------------------------------------
     # Exchange-like
     # --------------------------------------------------
-    if in_deg >= 10:
-        balance_ratio = abs(in_sum - out_sum) / max(in_sum, 1e-9)
-        scores["Exchange / service wallet"] += max(0, 1 - balance_ratio)
+    if in_deg >= 10 and out_deg >= 5:
+        balance_ratio = abs(in_sum - out_sum) / max(in_sum + out_sum, 1e-9)
+        activity_score = min(1.0, (in_deg + out_deg) / 50)
+        scores["Exchange / service wallet"] += (1 - balance_ratio) * activity_score
 
     # --------------------------------------------------
     # Peeling chain
