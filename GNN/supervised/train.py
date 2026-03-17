@@ -2,6 +2,8 @@ import torch
 import torch.nn.functional as F
 
 def train_model(model, data):
+  model.train() # di default è già in modalità train
+
   # ottimizzatore Adam
   optimizer = torch.optim.Adam(
     model.parameters(),
@@ -25,5 +27,8 @@ def train_model(model, data):
 
     loss.backward() # calcola quanto ogni parte del modello ha sbagliato
     optimizer.step() # sistema i pesi
+
+    if epoch % 10 == 0:
+      print(f"Epoch {epoch}, Loss: {loss.item()}")
 
   return model

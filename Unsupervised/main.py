@@ -38,17 +38,10 @@ print("Edge attr:\n", data.edge_attr)
 
 model, z = train_vgae(data)
 
-<<<<<<< HEAD
-indices_sospetti, norms, threshold = detect_anomalies_latent(z)
-#indices_sospetti, scores, norms, threshold = detect_anomalies_latent_normalized(z)
-#indices_sospetti, scores, norms, threshold = detect_anomalies_cluster_distance(z)
 
+"""indices_sospetti, scores, norms, threshold = detect_anomalies_latent(z)
 print("Anomalie rilevate:", indices_sospetti)
-print("Indirizzi:", [addresses[i] for i in indices_sospetti])
-
-#print_results(indices_sospetti, df_edges, addresses)
-=======
-#indices_sospetti, scores, norms, threshold = detect_anomalies_latent(z)
+print("Indirizzi:", [addresses[i] for i in indices_sospetti])"""
 #indices_sospetti, scores, norms, threshold = detect_anomalies_latent_normalized(z)
 #indices_sospetti, scores, norms, threshold = detect_anomalies_cluster_distance(z)
 
@@ -59,9 +52,7 @@ scores = results["combined_scores"]
 threshold = results["threshold"]
 norms = results["combined_scores"]
 
-
 print_results(indices_sospetti, df_edges, addresses)
->>>>>>> 2920652 (add some functions)
 
 # Salvataggio report
 """save_anomaly_report(
