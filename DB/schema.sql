@@ -43,3 +43,4 @@ ALTER TABLE tx_input ADD CONSTRAINT FK_prev_transaction_tx_in FOREIGN KEY (prev_
 ALTER TABLE tx_output ADD CONSTRAINT FK_tx_out_transaction FOREIGN KEY (fk_transaction_id) REFERENCES transaction (id);
 
 ALTER TABLE tx_output ADD CONSTRAINT FK_address_tx_out FOREIGN KEY (fk_address_code) REFERENCES address (code);
+ALTER TABLE address ADD CONSTRAINT FK_region_address FOREIGN KEY (region_id) REFERENCES region (id);

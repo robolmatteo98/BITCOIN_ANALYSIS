@@ -51,21 +51,3 @@ def train_model(model, data):
         optimizer.step() # aggiorna i pesi secondo Adam usando i gradienti calcolati
 
     return model
-
-
-def evaluate_model(model, data):
-    model.eval()
-
-    cutoff = data.edge_time.median()
-    _, test_edges = temporal_edge_split(data, cutoff)
-
-    with torch.no_grad():
-        z = model(data.x, data.edge_index)
-
-        src = test_edges[0]
-        dst = test_edges[1]
-
-        # normalizzo lo score del modello
-        score = F.sigmoid((z[src] * z[dst]).sum(dim=1))
-
-        return score.mean().item()
