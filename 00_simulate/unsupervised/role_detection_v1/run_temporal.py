@@ -124,7 +124,7 @@ def main() -> int:
     model = train_model(history_data)
     model.eval()
 
-    # I pesi appresi sullo storico vengono applicati sia allo storico sia al grafo della finestra. 
+    # Faccio l'encode finale dello storico e della finestra, con i valori dei pesi aggiornati grazie al training effettuato sullo storico
     # Questo permette di calcolare embedding anche per indirizzi nuovi.
     with torch.no_grad():
         history_embeddings = model.encode(history_data.X, history_data.P)
@@ -133,6 +133,7 @@ def main() -> int:
     # trova indici storici che non sono coinbase
     history_regular_indices = torch.where(history_data.coinbase_nodes == False)[0]
 
+    # tramite gli embeddings calcolo a quale kmeans appartengono
     # Il numero di centroidi dipende dai cluster che dovranno essere restituiti
     # nella finestra: se la finestra contiene coinbase, uno dei cluster è riservato a coinbase-like.
     regular_clusters = (
