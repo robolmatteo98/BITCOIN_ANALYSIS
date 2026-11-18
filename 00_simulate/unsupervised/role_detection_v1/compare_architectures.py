@@ -21,6 +21,7 @@ from role_detection.gae_autoencoder.config import set_seed  # noqa: E402
 from role_detection.gae_autoencoder.training import train_model  # noqa: E402
 
 from kmeans.analysis.cluster_analysis_v1 import assign_roles  # noqa: E402
+from measure import silhouette_score  # noqa: E402
 from .data_from_db import load_scoped_features, load_v1_dataset  # noqa: E402
 from .graph_builder import build_graph_data  # noqa: E402
 from .verify_stability import _distance_correlation  # noqa: E402
@@ -129,6 +130,9 @@ def _run_architecture(
             "cluster_sizes": cluster_sizes,
             "role_counts": role_counts,
             "role_node_counts": role_node_counts,
+            "silhouette_score": silhouette_score(
+                analysis_embeddings, assignments
+            ),
             "roles": {str(cluster_id): result for cluster_id, result in roles.items()},
         },
         "_history_embeddings": history_embeddings,

@@ -22,6 +22,7 @@ from kmeans.print_graph import (  # noqa: E402
     plot_clustered_graph,
     plot_embedding_clusters,
 )
+from measure import silhouette_score  # noqa: E402
 
 from kmeans.analysis.cluster_analysis_v1 import assign_roles, describe_v1_clusters  # noqa: E402
 from .data_from_db import load_scoped_features, load_v1_dataset  # noqa: E402
@@ -187,6 +188,8 @@ def main() -> int:
         title="Role detection v1 temporale - cluster degli embedding",
     )
     print(f"Visualizzazione cluster salvata in: {cluster_output}")
+    silhouette = silhouette_score(analysis_embeddings, assignments)
+    print(f"Silhouette score finestra: {silhouette:.4f}")
     describe_v1_clusters(analysis_data, assignments)
     roles = assign_roles(analysis_data, assignments)
 
@@ -215,6 +218,7 @@ def main() -> int:
             "analysis_num_edges": int(analysis_data.positive_edges.shape[1]),
             "analysis_coinbase_nodes": int(analysis_data.coinbase_nodes.sum()),
             "embedding_dim": int(analysis_embeddings.shape[1]),
+            "silhouette_score": silhouette,
         },
         "analysis_nodes": analysis_data.node_names,
         "analysis_embeddings": analysis_embeddings.cpu().tolist(),
