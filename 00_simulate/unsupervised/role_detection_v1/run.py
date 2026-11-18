@@ -16,11 +16,15 @@ UNSUPERVISED_ROOT = PACKAGE_ROOT.parent
 if str(UNSUPERVISED_ROOT) not in sys.path:
     sys.path.insert(0, str(UNSUPERVISED_ROOT))
 
-from role_detection.kmeans import kmeans_assignments  # noqa: E402
+from kmeans import kmeans_assignments  # noqa: E402
 from role_detection.gae_autoencoder.config import set_seed  # noqa: E402
 from role_detection.gae_autoencoder.training import train_model  # noqa: E402
+from kmeans.print_graph import (  # noqa: E402
+    plot_clustered_graph,
+    plot_embedding_clusters,
+)
 
-from .analysis import assign_roles, describe_clusters  # noqa: E402
+from kmeans.analysis.cluster_analysis_v1 import assign_roles, describe_v1_clusters  # noqa: E402
 from .data_from_db import load_v1_dataset  # noqa: E402
 from .graph_builder import build_graph_data  # noqa: E402
 
@@ -42,8 +46,22 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument(
+        "--architecture", choices=("gcn", "gat"), default="gcn",
+        help="encoder da usare (default: gcn)",
+    )
+    parser.add_argument(
         "--output", type=Path, default=Path("07_reports/role_detection_v1.json"),
         help="report JSON con embedding e metriche",
+    )
+    parser.add_argument(
+        "--graph-output", type=Path,
+        default=Path("07_reports/role_detection_v1_graph.png"),
+        help="PNG del grafo colorato per cluster",
+    )
+    parser.add_argument(
+        "--cluster-output", type=Path,
+        default=Path("07_reports/role_detection_v1_clusters.png"),
+        help="PNG della proiezione 2D degli embedding clusterizzati",
     )
     return parser.parse_args()
 
@@ -108,7 +126,7 @@ def main() -> int:
     print("\nAvvio training role detection v1...")
 
     # Riutilizzo il GAE della baseline: cambia la rappresentazione dei nodi, non l'architettura di apprendimento, così il confronto resta controllato.
-    model = train_model(data)
+    model = train_model(data, architecture=args.architecture)
     model.eval()
     with torch.no_grad():
         embeddings = model.encode(data.X, data.P)
@@ -140,7 +158,22 @@ def main() -> int:
             regular_embeddings, n_clusters=regular_clusters
         )
         assignments[regular_indices] = regular_assignments
-    describe_clusters(data, assignments)
+    graph_output = plot_clustered_graph(
+        data,
+        assignments,
+        args.graph_output,
+        title="Role detection v1 - grafo clusterizzato",
+        seed=args.seed,
+    )
+    print(f"Grafo clusterizzato salvato in: {graph_output}")
+    cluster_output = plot_embedding_clusters(
+        embeddings,
+        assignments,
+        args.cluster_output,
+        title="Role detection v1 - cluster degli embedding",
+    )
+    print(f"Visualizzazione cluster salvata in: {cluster_output}")
+    describe_v1_clusters(data, assignments)
     roles = assign_roles(data, assignments)
 
     print("\nRuoli assegnati:")
@@ -157,6 +190,7 @@ def main() -> int:
             "history_transaction_ids": history_ids,
             "analysis_transaction_ids": analysis_ids,
             "seed": args.seed,
+            "architecture": args.architecture,
             "clusters": args.clusters,
             "feature_names": data.feature_names,
             "num_nodes": len(data.node_names),

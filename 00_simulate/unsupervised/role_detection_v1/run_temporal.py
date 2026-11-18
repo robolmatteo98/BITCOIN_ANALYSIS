@@ -15,11 +15,15 @@ UNSUPERVISED_ROOT = PACKAGE_ROOT.parent
 if str(UNSUPERVISED_ROOT) not in sys.path:
     sys.path.insert(0, str(UNSUPERVISED_ROOT))
 
-from role_detection.kmeans import kmeans_fit, kmeans_predict  # noqa: E402
+from kmeans import kmeans_fit, kmeans_predict  # noqa: E402
 from role_detection.gae_autoencoder.config import set_seed  # noqa: E402
 from role_detection.gae_autoencoder.training import train_model  # noqa: E402
+from kmeans.print_graph import (  # noqa: E402
+    plot_clustered_graph,
+    plot_embedding_clusters,
+)
 
-from .analysis import assign_roles, describe_clusters  # noqa: E402
+from kmeans.analysis.cluster_analysis_v1 import assign_roles, describe_v1_clusters  # noqa: E402
 from .data_from_db import load_scoped_features, load_v1_dataset  # noqa: E402
 from .graph_builder import build_graph_data  # noqa: E402
 
@@ -41,9 +45,23 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument(
+        "--architecture", choices=("gcn", "gat"), default="gcn",
+        help="encoder da usare (default: gcn)",
+    )
+    parser.add_argument(
         "--output", type=Path,
         default=Path("07_reports/role_detection_v1_temporal.json"),
         help="report JSON della pipeline temporale",
+    )
+    parser.add_argument(
+        "--graph-output", type=Path,
+        default=Path("07_reports/role_detection_v1_temporal_graph.png"),
+        help="PNG del grafo della finestra, colorato per cluster",
+    )
+    parser.add_argument(
+        "--cluster-output", type=Path,
+        default=Path("07_reports/role_detection_v1_temporal_clusters.png"),
+        help="PNG della proiezione 2D degli embedding clusterizzati",
     )
     return parser.parse_args()
 
@@ -121,7 +139,7 @@ def main() -> int:
     print("\nTraining esclusivamente sullo storico...")
 
     # Il modello impara i pesi solo dal grafo storico.
-    model = train_model(history_data)
+    model = train_model(history_data, architecture=args.architecture)
     model.eval()
 
     # Faccio l'encode finale dello storico e della finestra, con i valori dei pesi aggiornati grazie al training effettuato sullo storico
@@ -154,7 +172,22 @@ def main() -> int:
     assignments = _temporal_assignments(
         analysis_data, analysis_embeddings, args.clusters, historical_centroids
     )
-    describe_clusters(analysis_data, assignments)
+    graph_output = plot_clustered_graph(
+        analysis_data,
+        assignments,
+        args.graph_output,
+        title="Role detection v1 temporale - grafo clusterizzato",
+        seed=args.seed,
+    )
+    print(f"Grafo clusterizzato salvato in: {graph_output}")
+    cluster_output = plot_embedding_clusters(
+        analysis_embeddings,
+        assignments,
+        args.cluster_output,
+        title="Role detection v1 temporale - cluster degli embedding",
+    )
+    print(f"Visualizzazione cluster salvata in: {cluster_output}")
+    describe_v1_clusters(analysis_data, assignments)
     roles = assign_roles(analysis_data, assignments)
 
     print("\nRuoli assegnati nella finestra:")
@@ -172,6 +205,7 @@ def main() -> int:
             "history_limit": args.history_limit,
             "analysis_limit": args.limit,
             "seed": args.seed,
+            "architecture": args.architecture,
             "clusters": args.clusters,
             "history_num_nodes": len(history_data.node_names),
             "analysis_num_nodes": len(analysis_data.node_names),

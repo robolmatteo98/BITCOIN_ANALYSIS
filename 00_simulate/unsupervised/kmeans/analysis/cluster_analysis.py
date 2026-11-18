@@ -1,4 +1,4 @@
-"""Analisi e interpretazione descrittiva dei cluster dei wallet."""
+"""Analisi descrittiva dei cluster della role detection originale."""
 
 import torch
 
@@ -22,18 +22,15 @@ def describe_clusters(data, assignments):
         mean_values = features[mask].mean(dim=0)
         summaries[cluster_id] = mean_values
         print(f"\nCluster {cluster_id}")
-        print(
-            "  "
-            + " | ".join(
-                f"{name}: {value:.2f}"
-                for name, value in zip(FEATURE_NAMES, mean_values)
-            )
-        )
+        print("  " + " | ".join(
+            f"{name}: {value:.2f}"
+            for name, value in zip(FEATURE_NAMES, mean_values)
+        ))
     return summaries
 
 
 def interpret_clusters(data, assignments):
-    """Assegna un ruolo debole ai cluster usando le statistiche strutturali."""
+    """Assegna un ruolo debole ai cluster usando le feature strutturali."""
     features = data.structural_features
     cluster_ids = sorted(set(assignments.tolist()))
     cluster_means = torch.stack([
@@ -41,7 +38,6 @@ def interpret_clusters(data, assignments):
         for cluster_id in cluster_ids
     ])
 
-    # Portiamo le sei statistiche su scale confrontabili tra loro.
     feature_max = cluster_means.max(dim=0, keepdim=True).values
     feature_max = torch.where(feature_max > 0, feature_max, torch.ones_like(feature_max))
     normalized = cluster_means / feature_max
@@ -64,16 +60,12 @@ def interpret_clusters(data, assignments):
 
     print("\nInterpretazione debole dei cluster:")
     for cluster_id in cluster_ids:
-        members = [
-            name
-            for name, assigned_cluster in zip(data.node_names, assignments.tolist())
-            if assigned_cluster == cluster_id
+        member_indices = torch.where(assignments == cluster_id)[0]
+        members = [data.node_names[index] for index in member_indices.tolist()]
+        cluster_features = features[member_indices]
+        representative = data.node_names[
+            member_indices[(cluster_features[:, 0] + cluster_features[:, 1]).argmax()].item()
         ]
-        cluster_features = features[assignments == cluster_id]
-        # Il wallet rappresentativo è quello con maggiore attività strutturale.
-        wallet_activity = cluster_features[:, 0] + cluster_features[:, 1]
-        representative_index = wallet_activity.argmax().item()
-        representative = members[representative_index]
         print(f"  Cluster {cluster_id}: {roles[cluster_id]}")
         print(f"    Wallet: {', '.join(members)}")
         print(f"    Wallet più rappresentativo: {representative}")

@@ -1,17 +1,30 @@
 """Training unsupervised del GAE per ottenere embedding dei wallet."""
 
+from __future__ import annotations
+
 import torch
 import torch.nn as nn
 
 from .config import EPOCHS, HIDDEN_DIM, LATENT_DIM, LEARNING_RATE
-from .data import GraphData
+from .graph_builder import GraphData
 from .GCN_model import GraphAutoencoder
+from .GAT_model import GraphAttentionAutoencoder
 
 
-def train_model(data: GraphData) -> GraphAutoencoder:
+def train_model(
+    data: GraphData,
+    architecture: str = "gcn",
+) -> GraphAutoencoder | GraphAttentionAutoencoder:
 
     # shape[0] = righe, shape[1] = colonne
-    model = GraphAutoencoder(data.X.shape[1], HIDDEN_DIM, LATENT_DIM)
+    if architecture == "gcn":
+        model = GraphAutoencoder(data.X.shape[1], HIDDEN_DIM, LATENT_DIM)
+    elif architecture == "gat":
+        model = GraphAttentionAutoencoder(
+            data.X.shape[1], HIDDEN_DIM, LATENT_DIM
+        )
+    else:
+        raise ValueError("architecture deve essere 'gcn' oppure 'gat'")
 
     # Prepara l'oggetto che verrà richiamato da optimizer.step() che avrà il compito di
     # aggiornare i parametri apprendibili del modello dopo ogni calcolo del gradiente.

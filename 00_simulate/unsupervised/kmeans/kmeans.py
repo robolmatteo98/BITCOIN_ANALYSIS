@@ -1,29 +1,17 @@
-"""K-Means condiviso dalle versioni della role detection."""
+"""Implementazione PyTorch di K-Means per gli embedding dei nodi."""
 
 from __future__ import annotations
 
 import torch
 
 
-def kmeans_assignments(
-    embeddings: torch.Tensor,
-    n_clusters: int,
-    iterations: int = 100,
-) -> torch.Tensor:
+def kmeans_assignments(embeddings: torch.Tensor, n_clusters: int, iterations: int = 100) -> torch.Tensor:
     """Assegna ogni embedding a un cluster K-Means."""
-    assignments, _ = kmeans_fit(
-        embeddings,
-        n_clusters=n_clusters,
-        iterations=iterations,
-    )
+    assignments, _ = kmeans_fit(embeddings, n_clusters=n_clusters, iterations=iterations)
     return assignments
 
 
-def kmeans_fit(
-    embeddings: torch.Tensor,
-    n_clusters: int,
-    iterations: int = 100,
-) -> tuple[torch.Tensor, torch.Tensor]:
+def kmeans_fit(embeddings: torch.Tensor, n_clusters: int, iterations: int = 100) -> tuple[torch.Tensor, torch.Tensor]:
     """Apprende centroidi e assegnamenti K-Means sugli embedding forniti."""
     if embeddings.ndim != 2:
         raise ValueError("embeddings deve essere una matrice 2D")
@@ -32,26 +20,19 @@ def kmeans_fit(
     if iterations < 1:
         raise ValueError("iterations deve essere positivo")
 
-    # Il generatore locale rende la scelta dei centroidi riproducibile senza
-    # modificare lo stato casuale globale usato dal training.
     generator = torch.Generator(device=embeddings.device).manual_seed(42)
-    initial_indices = torch.randperm(
-        embeddings.shape[0], generator=generator
-    )[:n_clusters]
+    initial_indices = torch.randperm(embeddings.shape[0], generator=generator)[:n_clusters]
     centroids = embeddings[initial_indices].clone()
 
     for _ in range(iterations):
         distances = torch.cdist(embeddings, centroids)
         assignments = distances.argmin(dim=1)
         updated_centroids = []
-
         for cluster_id in range(n_clusters):
             members = embeddings[assignments == cluster_id]
-            if len(members) == 0:
-                updated_centroids.append(centroids[cluster_id])
-            else:
-                updated_centroids.append(members.mean(dim=0))
-
+            updated_centroids.append(
+                centroids[cluster_id] if len(members) == 0 else members.mean(dim=0)
+            )
         new_centroids = torch.stack(updated_centroids)
         if torch.allclose(new_centroids, centroids):
             break
