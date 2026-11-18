@@ -17,8 +17,10 @@ PIPELINE:
 2. modello i dati, stabilendo quali feature sono importanti
 3. creo il grafo
 4. eseguo il modello GAE
-   1. GCN per encode
-   2. Bilinear per decode/score
+   1. TRAINING
+      1. encode: GCN
+      2. decode: Bilinear
+   2. Encode finale con pesi allenati
    3. Embedding Z
 5. Cluster per capire quali indirizzi sono simili
 6. Analizzo i risultati assegnando etichette

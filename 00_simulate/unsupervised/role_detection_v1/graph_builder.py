@@ -118,13 +118,11 @@ def build_graph_data(
             + ", ".join(sorted(missing_scoped_columns))
         )
 
-    # Queste feature arrivano dalla funzione SQL parametrica e sono già
-    # limitate agli stessi transaction_id del campione.
+    # Queste feature arrivano dalla funzione SQL parametrica e sono già limitate agli stessi transaction_id del campione.
     scoped = address_features.copy()
     scoped["address"] = scoped["address"].astype(str)
 
-    # I flussi coinbase vengono usati per le feature SQL, ma non sono archi
-    # address → address e quindi vengono esclusi dalla costruzione del grafo.
+    # I flussi coinbase vengono usati per le feature SQL, ma non sono archi address → address e quindi vengono esclusi dalla costruzione del grafo.
     # converte flow_amount in numerico
     # converte time in numerico
     flows = flows.dropna(subset=["from_address", "to_address"]).copy()

@@ -56,14 +56,12 @@ def _temporal_assignments(
 ) -> torch.Tensor:
     """Crea il cluster coinbase e assegna gli altri nodi ai centroidi storici."""
     coinbase_count = int(data.coinbase_nodes.sum())
-    regular_indices = torch.where(~data.coinbase_nodes)[0]
+    regular_indices = torch.where(data.coinbase_nodes == False)[0]
 
     if not len(regular_indices) and not coinbase_count:
         raise ValueError("la finestra temporale non contiene nodi utilizzabili")
     if coinbase_count and clusters < 2 and len(regular_indices):
-        raise ValueError(
-            "con nodi coinbase e nodi normali servono almeno 2 cluster"
-        )
+        raise ValueError("con nodi coinbase e nodi normali servono almeno 2 cluster")
 
     # -1 identifica il gruppo esplicito degli indirizzi che hanno ricevuto
     # ricompense coinbase; non viene incluso nell'assegnazione ai centroidi.
@@ -106,6 +104,7 @@ def main() -> int:
     history_features = load_scoped_features(args.database, history_ids)
     analysis_features = load_scoped_features(args.database, analysis_ids)
 
+    # Graphs Data
     history_data = build_graph_data(
         history_flows, history_features, seed=args.seed
     )
@@ -125,17 +124,17 @@ def main() -> int:
     model = train_model(history_data)
     model.eval()
 
-    # I pesi appresi sullo storico vengono applicati sia allo storico sia al
-    # grafo della finestra. Questo permette di calcolare embedding anche per
-    # indirizzi nuovi.
+    # I pesi appresi sullo storico vengono applicati sia allo storico sia al grafo della finestra. 
+    # Questo permette di calcolare embedding anche per indirizzi nuovi.
     with torch.no_grad():
         history_embeddings = model.encode(history_data.X, history_data.P)
         analysis_embeddings = model.encode(analysis_data.X, analysis_data.P)
 
-    history_regular_indices = torch.where(~history_data.coinbase_nodes)[0]
+    # trova indici storici che non sono coinbase
+    history_regular_indices = torch.where(history_data.coinbase_nodes == False)[0]
+
     # Il numero di centroidi dipende dai cluster che dovranno essere restituiti
-    # nella finestra: se la finestra contiene coinbase, uno dei cluster è
-    # riservato a coinbase-like.
+    # nella finestra: se la finestra contiene coinbase, uno dei cluster è riservato a coinbase-like.
     regular_clusters = (
         args.clusters - 1
         if int(analysis_data.coinbase_nodes.sum())
