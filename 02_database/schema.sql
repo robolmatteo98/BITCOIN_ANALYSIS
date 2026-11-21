@@ -12,7 +12,9 @@ CREATE TABLE IF NOT EXISTS transaction (
   fk_block_id INTEGER NOT NULL,
   n_inputs INTEGER NOT NULL DEFAULT 1,
   n_outputs INTEGER NOT NULL DEFAULT 1,
-  total_amount BIGINT NOT NULL DEFAULT 0
+  total_amount BIGINT NOT NULL DEFAULT 0,
+  -- Score euristico CoinJoin calcolato in fase di preprocessing.
+  coinjoin_score NUMERIC(6,5)
 );
 
 CREATE TABLE IF NOT EXISTS address_cluster (
