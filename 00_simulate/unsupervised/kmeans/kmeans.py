@@ -20,22 +20,44 @@ def kmeans_fit(embeddings: torch.Tensor, n_clusters: int, iterations: int = 100)
     if iterations < 1:
         raise ValueError("iterations deve essere positivo")
 
+    # vengono scelti i centroidi iniziali per K-Means
     generator = torch.Generator(device=embeddings.device).manual_seed(42)
+
+    # embedding.shaep[0] è il numero di nodi, viene creata una permutazione casuale degli indici
     initial_indices = torch.randperm(embeddings.shape[0], generator=generator)[:n_clusters]
+
+    # seleziona gli embedding da quei nodi e li usa come centroidi iniziali
     centroids = embeddings[initial_indices].clone()
 
     for _ in range(iterations):
+
+        # calcola la distanza tra ogni embedding e ogni centroide
         distances = torch.cdist(embeddings, centroids)
+
+        # assegna ogni nodo al centroide più vicino
         assignments = distances.argmin(dim=1)
         updated_centroids = []
+
+        # vengono ricalcolati i centroidi
         for cluster_id in range(n_clusters):
+
+            # seleziona gli embedding assegnati a quei cluster
             members = embeddings[assignments == cluster_id]
+
+            # calcola il punto medio dei membri del cluster. Questo diventa il nuovo centroide.
+            # se il cluster è vuoto mantiene il vecchio centroide
             updated_centroids.append(
                 centroids[cluster_id] if len(members) == 0 else members.mean(dim=0)
             )
+
+        # ricostruisce la matrice dei centroidi
         new_centroids = torch.stack(updated_centroids)
+
+        # se i centroidi nuovi sono praticamente uguali ai precedenti, l’algoritmo è convergente e il ciclo termina
         if torch.allclose(new_centroids, centroids):
             break
+
+        # altrimenti, usa i nuovi centroidi per l’iterazione successiva
         centroids = new_centroids
 
     return assignments, centroids

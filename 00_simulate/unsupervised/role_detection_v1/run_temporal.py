@@ -9,7 +9,6 @@ from pathlib import Path
 
 import torch
 
-
 PACKAGE_ROOT = Path(__file__).resolve().parent
 UNSUPERVISED_ROOT = PACKAGE_ROOT.parent
 if str(UNSUPERVISED_ROOT) not in sys.path:
@@ -73,17 +72,21 @@ def _temporal_assignments(
     clusters: int,
     centroids: torch.Tensor,
 ) -> torch.Tensor:
-    """Crea il cluster coinbase e assegna gli altri nodi ai centroidi storici."""
+    """Assegna i nodi della finestra temporale ai cluster storici."""
+
+    # conta quanti nodi hanno ricevuto almeno una ricompensa coinbase
     coinbase_count = int(data.coinbase_nodes.sum())
+
+    # ottiene gli indici dei nodi normali, non coinbase
     regular_indices = torch.where(data.coinbase_nodes == False)[0]
 
+    # controlli
     if not len(regular_indices) and not coinbase_count:
         raise ValueError("la finestra temporale non contiene nodi utilizzabili")
     if coinbase_count and clusters < 2 and len(regular_indices):
         raise ValueError("con nodi coinbase e nodi normali servono almeno 2 cluster")
 
-    # -1 identifica il gruppo esplicito degli indirizzi che hanno ricevuto
-    # ricompense coinbase; non viene incluso nell'assegnazione ai centroidi.
+    # assegno -1 di default per i nodi coinbase e successivamente do una predizione solo ai nodi normali
     assignments = torch.full(
         (len(data.node_names),), -1, dtype=torch.long, device=embeddings.device
     )
@@ -102,15 +105,21 @@ def main() -> int:
     set_seed(args.seed)
 
     print("Caricamento storico e finestra di analisi dal database...", flush=True)
+
+    # carico tutti i flussi senza le features
     all_flows, _ = load_v1_dataset(
         args.database,
         args.limit,
         history_limit=args.history_limit,
         include_features=False,
     )
+
+    # estraggo i valori ID dei flussi
     transaction_ids = sorted(
         all_flows.transaction_id.dropna().astype(int).unique().tolist()
     )
+
+    # divido in ID storici e ID di analisi
     history_ids = transaction_ids[:args.history_limit]
     analysis_ids = transaction_ids[args.history_limit:]
 
@@ -118,12 +127,14 @@ def main() -> int:
         raise ValueError("servono sia transazioni storiche sia transazioni nella finestra di analisi")
 
     # Separa fisicamente i flussi: il grafo storico non vede la finestra futura.
+    # poi con il load_scoped_features carico le features di ogni nodo appartenente al flusso
     history_flows = all_flows[all_flows["transaction_id"].isin(history_ids)].copy()
     analysis_flows = all_flows[all_flows["transaction_id"].isin(analysis_ids)].copy()
     history_features = load_scoped_features(args.database, history_ids)
     analysis_features = load_scoped_features(args.database, analysis_ids)
 
     # Graphs Data
+    # costruisco i due grafi separati
     history_data = build_graph_data(
         history_flows, history_features, seed=args.seed
     )
@@ -164,6 +175,8 @@ def main() -> int:
         raise ValueError("serve almeno un cluster per gli indirizzi non coinbase")
     if regular_clusters > len(history_regular_indices):
         raise ValueError("i cluster superano il numero di nodi non coinbase storici")
+
+    # calcolo i centroidi (dati storici)
     _, historical_centroids = kmeans_fit(
         history_embeddings[history_regular_indices],
         n_clusters=regular_clusters,
@@ -173,6 +186,8 @@ def main() -> int:
     assignments = _temporal_assignments(
         analysis_data, analysis_embeddings, args.clusters, historical_centroids
     )
+
+    # Stampo il grafo
     graph_output = plot_clustered_graph(
         analysis_data,
         assignments,
