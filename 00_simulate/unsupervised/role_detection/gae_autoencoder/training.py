@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 import torch
 import torch.nn as nn
 
 from .config import EPOCHS, HIDDEN_DIM, LATENT_DIM, LEARNING_RATE
-from .graph_builder import GraphData
 from .GCN_model import GraphAutoencoder
 from .GAT_model import GraphAttentionAutoencoder
 
 
 def train_model(
-    data: GraphData,
+    data: Any,
     architecture: str = "gcn",
 ) -> GraphAutoencoder | GraphAttentionAutoencoder:
 

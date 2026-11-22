@@ -6,7 +6,7 @@ from pathlib import Path
 import torch
 
 
-UNSUPERVISED_ROOT = Path(__file__).resolve().parent.parent
+UNSUPERVISED_ROOT = Path(__file__).resolve().parents[2]
 if str(UNSUPERVISED_ROOT) not in sys.path:
     sys.path.insert(0, str(UNSUPERVISED_ROOT))
 
@@ -20,7 +20,7 @@ from role_detection.gae_autoencoder.config import (  # noqa: E402
     TRANSACTIONS,
     set_seed,
 )
-from role_detection.gae_autoencoder.graph_builder import build_graph_data  # noqa: E402
+from role_detection.base.graph_builder import build_graph_data  # noqa: E402
 from role_detection.gae_autoencoder.training import train_model  # noqa: E402
 
 

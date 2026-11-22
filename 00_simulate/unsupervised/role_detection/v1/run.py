@@ -12,7 +12,7 @@ import torch.nn.functional as F
 
 
 PACKAGE_ROOT = Path(__file__).resolve().parent
-UNSUPERVISED_ROOT = PACKAGE_ROOT.parent
+UNSUPERVISED_ROOT = PACKAGE_ROOT.parent.parent
 if str(UNSUPERVISED_ROOT) not in sys.path:
     sys.path.insert(0, str(UNSUPERVISED_ROOT))
 
@@ -23,7 +23,7 @@ from kmeans.print_graph import (  # noqa: E402
     plot_clustered_graph,
     plot_embedding_clusters,
 )
-from measure import silhouette_score  # noqa: E402
+from measure_algo import silhouette_score  # noqa: E402
 
 from kmeans.analysis.cluster_analysis_v1 import assign_roles, describe_v1_clusters  # noqa: E402
 from .data_from_db import load_v1_dataset  # noqa: E402

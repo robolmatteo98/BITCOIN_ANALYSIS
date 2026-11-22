@@ -42,19 +42,25 @@ def load_transactions(database: str | None = None, limit: int = 1000) -> pd.Data
 
     query = """
         WITH selected_transactions AS (
-            SELECT DISTINCT txid
-            FROM flows_view
-            WHERE from_address IS NOT NULL
-              AND to_address IS NOT NULL
-            ORDER BY txid
+            SELECT DISTINCT t.id AS transaction_id
+            FROM transaction t
+            JOIN flows_view f
+              ON f.txid = t.txid
+            WHERE f.from_address IS NOT NULL
+              AND f.to_address IS NOT NULL
+            ORDER BY t.id
             LIMIT %s
         )
-        SELECT f.from_address, f.to_address, f.flow_amount, f.time, f.txid
+        SELECT f.from_address, f.to_address, f.flow_amount, f.time,
+               t.id AS transaction_id, t.txid
         FROM flows_view f
-        JOIN selected_transactions s USING (txid)
+        JOIN transaction t
+          ON t.txid = f.txid
+        JOIN selected_transactions s
+          ON s.transaction_id = t.id
         WHERE f.from_address IS NOT NULL
           AND f.to_address IS NOT NULL
-        ORDER BY f.txid, f.from_address, f.to_address
+        ORDER BY t.id, f.from_address, f.to_address
     """
 
     with _database_connection(database) as connection:

@@ -52,10 +52,10 @@ L'anomalia al momento viene indicata come una relazione tra i due nodi che è in
 
 #### role_detection
 
-Versione base per individuare automaticamente i possibili ruoli dei wallet nella rete Bitcoin.
+Versione base (utilizza le feature locali dei nodi) per individuare automaticamente i possibili ruoli dei wallet nella rete Bitcoin.
 Utilizza una GCN con Graph Autoencoder per creare embedding degli indirizzi, che vengono poi raggruppati tramite clustering.
 
-#### role_detection_v1
+#### role_detection/v1
 
 Studio più approfondito sulle possibili feature da assegnare ai nodi.
 
