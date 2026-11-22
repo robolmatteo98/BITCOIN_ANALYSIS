@@ -29,6 +29,23 @@ CREATE TABLE IF NOT EXISTS address (
   cluster_id BIGINT REFERENCES address_cluster (id)
 );
 
+-- Tabella di appoggio con il risultato PageRank corrente per address.
+-- I record vengono sostituiti a ogni esecuzione; non conserva lo storico dei
+-- dataset o delle elaborazioni precedenti.
+CREATE TABLE IF NOT EXISTS address_pagerank (
+  id BIGSERIAL PRIMARY KEY,
+  mode TEXT NOT NULL CHECK (mode IN ('basic', 'combined', 'paper')),
+  iterations INTEGER NOT NULL CHECK (iterations > 0),
+  damping NUMERIC(5,4) NOT NULL CHECK (damping >= 0 AND damping <= 1),
+  graph_start_time BIGINT,
+  graph_end_time BIGINT,
+  node_count BIGINT NOT NULL CHECK (node_count >= 0),
+  fk_address_id BIGINT NOT NULL REFERENCES address (id),
+  rank_value DOUBLE PRECISION NOT NULL CHECK (rank_value >= 0),
+  rank_position BIGINT,
+  UNIQUE (mode, fk_address_id)
+);
+
 -- Snapshot delle statistiche calcolate sui blocchi JSON. Il report completo
 -- resta disponibile in JSONB, mentre le colonne principali permettono query
 -- rapide e confronti tra importazioni successive.
@@ -115,6 +132,9 @@ CREATE INDEX idx_tx_input_prev_outpoint ON tx_input (prev_transaction_id, prev_v
 CREATE INDEX idx_tx_output_tx_n ON tx_output (fk_transaction_id, n);
 CREATE INDEX idx_tx_output_address_id ON tx_output (fk_address_id);
 CREATE INDEX idx_address_cluster ON address (cluster_id);
+CREATE INDEX idx_address_pagerank_mode ON address_pagerank (mode);
+CREATE INDEX idx_address_pagerank_address ON address_pagerank (fk_address_id);
+CREATE INDEX idx_address_pagerank_rank ON address_pagerank (mode, rank_value DESC);
 CREATE INDEX idx_block_time ON block (time);
 CREATE INDEX idx_blockchain_statistics_dataset_time
   ON blockchain_statistics (dataset_name, computed_at DESC);
