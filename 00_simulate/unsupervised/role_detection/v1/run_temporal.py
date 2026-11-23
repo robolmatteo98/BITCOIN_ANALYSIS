@@ -50,17 +50,17 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output", type=Path,
-        default=Path("07_reports/role_detection_v1_temporal.json"),
+        default=Path("07_reports/unsupervised/role_detection/v1/temporal.json"),
         help="report JSON della pipeline temporale",
     )
     parser.add_argument(
         "--graph-output", type=Path,
-        default=Path("07_reports/role_detection_v1_temporal_graph.png"),
+        default=Path("07_reports/unsupervised/role_detection/v1/temporal_graph.png"),
         help="PNG del grafo della finestra, colorato per cluster",
     )
     parser.add_argument(
         "--cluster-output", type=Path,
-        default=Path("07_reports/role_detection_v1_temporal_clusters.png"),
+        default=Path("07_reports/unsupervised/role_detection/v1/temporal_clusters.png"),
         help="PNG della proiezione 2D degli embedding clusterizzati",
     )
     return parser.parse_args()

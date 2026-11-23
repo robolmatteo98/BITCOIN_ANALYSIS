@@ -15,12 +15,14 @@ prova di CoinJoin: `coinjoin_score` è uno score compreso tra `0` e `1`.
 La soglia e gli altri segnali possono essere calcolati al momento dell'analisi,
 senza duplicarli nel database.
 
-## Database
+## Output
 
-Lo script aggiunge alla tabella `transaction`:
+Lo script non modifica il database. Legge le transazioni e salva i risultati
+in file intermedi:
 
 ```text
-coinjoin_score   NUMERIC(6,5)
+07_reports/pre-processing/coinjoin/coinjoin_scores.csv
+07_reports/pre-processing/coinjoin/summary.json
 ```
 
 Per eseguire il calcolo dalla root:
@@ -29,8 +31,9 @@ Per eseguire il calcolo dalla root:
 python3 00_simulate/pre-processing/coinjoin_detection/run.py --threshold 0.75
 ```
 
-La soglia non modifica lo score: serve solo per contare le candidate durante
-l'esecuzione o per filtrare i risultati nelle analisi successive.
+La soglia non modifica lo score: serve solo per valorizzare la colonna
+`candidate` e contare le candidate nel riepilogo. È possibile modificare la
+cartella di output con `--output-dir`.
 
 ## Motivazione metodologica
 

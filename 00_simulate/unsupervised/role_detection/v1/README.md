@@ -69,7 +69,7 @@ utilizzate, le statistiche medie dei cluster e un solo wallet rappresentativo
 per ogni ruolo.
 
 Il report con embedding, assegnamenti e controllo di ricostruzione viene
-salvato di default in `07_reports/role_detection_v1.json`.
+salvato di default in `07_reports/unsupervised/role_detection/v1/report.json`.
 
 ## Pipeline temporale
 

@@ -51,17 +51,18 @@ def parse_args() -> argparse.Namespace:
         help="encoder da usare (default: gcn)",
     )
     parser.add_argument(
-        "--output", type=Path, default=Path("07_reports/role_detection_v1.json"),
+        "--output", type=Path,
+        default=Path("07_reports/unsupervised/role_detection/v1/report.json"),
         help="report JSON con embedding e metriche",
     )
     parser.add_argument(
         "--graph-output", type=Path,
-        default=Path("07_reports/role_detection_v1_graph.png"),
+        default=Path("07_reports/unsupervised/role_detection/v1/graph.png"),
         help="PNG del grafo colorato per cluster",
     )
     parser.add_argument(
         "--cluster-output", type=Path,
-        default=Path("07_reports/role_detection_v1_clusters.png"),
+        default=Path("07_reports/unsupervised/role_detection/v1/clusters.png"),
         help="PNG della proiezione 2D degli embedding clusterizzati",
     )
     return parser.parse_args()
