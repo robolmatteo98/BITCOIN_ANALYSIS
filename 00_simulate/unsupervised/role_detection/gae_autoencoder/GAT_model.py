@@ -63,9 +63,14 @@ class GATEncoder(nn.Module):
     def forward(self, X: torch.Tensor, P: torch.Tensor) -> torch.Tensor:
         # P resta invariata durante il training; riutilizziamo gli archi tra
         # i due layer e tra le epoche, ricalcolandoli solo per un nuovo grafo.
-        p_data_ptr = P.data_ptr()
+        if P.is_sparse:
+            p_data_ptr = P.values().data_ptr()
+            graph_edges = P.coalesce().indices()
+        else:
+            p_data_ptr = P.data_ptr()
+            graph_edges = (P > 0).nonzero(as_tuple=True)
         if self._cached_p_data_ptr != p_data_ptr:
-            self._cached_edges = (P > 0).nonzero(as_tuple=True)
+            self._cached_edges = tuple(graph_edges)
             self._cached_p_data_ptr = p_data_ptr
 
         hidden = self._attention_layer(

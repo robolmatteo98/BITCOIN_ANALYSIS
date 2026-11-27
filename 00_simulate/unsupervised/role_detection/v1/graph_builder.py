@@ -11,7 +11,7 @@ import torch
 from .data import GraphData
 
 
-FEATURE_NAMES = [
+BASE_FEATURE_NAMES = [
     "incoming_degree",
     "outgoing_degree",
     "incoming_counterparties",
@@ -30,7 +30,38 @@ FEATURE_NAMES = [
     "active_span_days",
     "active_days",
     "activity_count",
+    "coinjoin_score_sum",
+    "coinjoin_score_avg",
+    "coinjoin_candidate_count",
+    "geolocation_utc_offset",
+    "geolocation_activity_score",
 ]
+
+WALLET_FEATURE_NAMES = [
+    "wallet_cluster_size", "wallet_confidence", "wallet_is_singleton",
+    "wallet_internal_transaction_count", "wallet_internal_amount",
+    "wallet_internal_activity_ratio",
+    "wallet_pagerank_basic", "wallet_pagerank_combined", "wallet_pagerank_paper",
+]
+
+ADDRESS_PAGERANK_FEATURE_NAMES = [
+    "address_pagerank_basic", "address_pagerank_combined", "address_pagerank_paper",
+]
+
+
+def feature_names_for_mode(graph_mode: str) -> list[str]:
+    """Restituisce le feature coerenti con la granularità del grafo."""
+    if graph_mode == "address_wallet_feature":
+        graph_mode = "address_wallet"
+    if graph_mode == "address":
+        return BASE_FEATURE_NAMES + ADDRESS_PAGERANK_FEATURE_NAMES
+    if graph_mode == "address_wallet":
+        return BASE_FEATURE_NAMES + WALLET_FEATURE_NAMES + ADDRESS_PAGERANK_FEATURE_NAMES
+    if graph_mode == "wallet":
+        return BASE_FEATURE_NAMES + WALLET_FEATURE_NAMES
+    raise ValueError(
+        "graph_mode deve essere 'address', 'address_wallet' oppure 'wallet'"
+    )
 
 
 def _sample_negative_edges(
@@ -41,12 +72,16 @@ def _sample_negative_edges(
 ) -> torch.Tensor:
     """Campiona negativi senza creare tutte le coppie possibili."""
     possible = num_nodes * (num_nodes - 1) - len(positive_edges)
-    if possible < count:
-        raise ValueError("non ci sono abbastanza coppie negative disponibili")
+    # Nei grafi wallet piccoli e densi le coppie negative possono essere meno
+    # dei positivi. Usiamo tutte quelle disponibili invece di interrompere la
+    # costruzione del grafo.
+    target_count = min(count, max(possible, 0))
+    if target_count == 0:
+        return torch.empty((2, 0), dtype=torch.long)
 
     generator = random.Random(seed)
     negative: set[tuple[int, int]] = set()
-    while len(negative) < count:
+    while len(negative) < target_count:
         source = generator.randrange(num_nodes)
         target = generator.randrange(num_nodes)
         pair = (source, target)
@@ -68,10 +103,17 @@ def _standardize(values: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         "spent_output_count",
         "unspent_output_count", "total_received", "total_sent", "estimated_balance",
         "first_seen_days", "last_seen_days", "active_span_days", "active_days",
-        "activity_count",
+        "activity_count", "coinjoin_score_sum", "coinjoin_score_avg",
+        "coinjoin_candidate_count", "geolocation_activity_score",
+        "wallet_cluster_size", "wallet_confidence", "wallet_is_singleton",
+        "wallet_internal_transaction_count", "wallet_internal_amount",
+        "wallet_internal_activity_ratio",
+        "wallet_pagerank_basic", "wallet_pagerank_combined", "wallet_pagerank_paper",
+        "address_pagerank_basic", "address_pagerank_combined", "address_pagerank_paper",
     ]
     for column in non_negative_columns:
-        transformed[column] = np.log1p(transformed[column].clip(lower=0.0))
+        if column in transformed:
+            transformed[column] = np.log1p(transformed[column].clip(lower=0.0))
 
     # Manteniamo il segno del flusso netto, comprimendone la scala.
     transformed["net_flow"] = np.sign(transformed["net_flow"]) * np.log1p(
@@ -84,12 +126,61 @@ def _standardize(values: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     return transformed, standardized
 
 
+def _build_propagation_matrix(
+    pair_weights: dict[tuple[int, int], float],
+    num_nodes: int,
+    matrix_format: str,
+) -> torch.Tensor:
+    """Costruisce la matrice P densa oppure sparse per la GCN."""
+    if matrix_format == "dense":
+        adjacency = torch.zeros(num_nodes, num_nodes, dtype=torch.float32)
+        for (source, target), weight in pair_weights.items():
+            adjacency[source, target] = weight
+        propagation = adjacency.T + torch.eye(num_nodes)
+        return propagation / propagation.sum(dim=1, keepdim=True)
+
+    if matrix_format != "sparse":
+        raise ValueError("matrix_format deve essere 'dense' oppure 'sparse'")
+
+    # P[dest, source] segue la stessa orientazione della matrice densa, ma
+    # conserva soltanto gli archi e i self-loop realmente presenti.
+    rows: list[int] = []
+    columns: list[int] = []
+    values: list[float] = []
+    for (source, target), weight in pair_weights.items():
+        rows.append(target)
+        columns.append(source)
+        values.append(weight)
+    for node in range(num_nodes):
+        rows.append(node)
+        columns.append(node)
+        values.append(1.0)
+
+    indices = torch.tensor([rows, columns], dtype=torch.long)
+    sparse_matrix = torch.sparse_coo_tensor(
+        indices,
+        torch.tensor(values, dtype=torch.float32),
+        size=(num_nodes, num_nodes),
+    ).coalesce()
+    row_sums = torch.sparse.sum(sparse_matrix, dim=1).to_dense()
+    normalized_values = sparse_matrix.values() / row_sums[sparse_matrix.indices()[0]]
+    return torch.sparse_coo_tensor(
+        sparse_matrix.indices(),
+        normalized_values,
+        size=sparse_matrix.shape,
+    ).coalesce()
+
+
 def build_graph_data(
     flows: pd.DataFrame,
     address_features: pd.DataFrame,
     seed: int = 42,
+    graph_mode: str = "address_wallet",
+    matrix_format: str = "dense",
 ) -> GraphData:
     """Costruisce GraphData v1 usando feature SQL dello stesso campione."""
+    if graph_mode == "address_wallet_feature":
+        graph_mode = "address_wallet"
 
     # Controllo
     required_flow_columns = {"from_address", "to_address", "flow_amount", "time"}
@@ -144,14 +235,20 @@ def build_graph_data(
     node_to_id = {address: index for index, address in enumerate(addresses)}
     num_nodes = len(addresses)
 
-    # Creo la matrice di adiacenza pesata con il numero di flussi osservati.
-    # Somma 1 per ogni arco presente
-    adjacency = torch.zeros(num_nodes, num_nodes, dtype=torch.float32)
+    # Accumulo i pesi degli archi in un dizionario. La matrice viene costruita
+    # solo dopo: così la modalità sparse non alloca una matrice N x N.
+    pair_weights: dict[tuple[int, int], float] = {}
     positive_pairs: set[tuple[int, int]] = set()
     for row in flows.itertuples(index=False):
         source = node_to_id[str(row.from_address)]
         target = node_to_id[str(row.to_address)]
-        adjacency[source, target] += 1.0
+        # In wallet mode one row can represent molte transazioni dello stesso
+        # wallet-pair. Manteniamo quel peso invece di contarlo come un solo
+        # evento, così il grafo conserva la frequenza reale dei trasferimenti.
+        pair = (source, target)
+        pair_weights[pair] = pair_weights.get(pair, 0.0) + float(
+            getattr(row, "transaction_count", 1.0)
+        )
         positive_pairs.add((source, target))
 
     # Calcolo le feature strutturali ed economiche direttamente dagli archi
@@ -159,13 +256,15 @@ def build_graph_data(
     # in questo modo una prova sulle prime N transazioni non vede dati futuri.
 
     # Calcola il numero di flussi in uscita e in entrata raggruppando per indirizzo
+    degree_column = "transaction_count" if "transaction_count" in flows else "to_address"
+    degree_aggregation = "sum" if degree_column == "transaction_count" else "size"
     outgoing = flows.groupby("from_address").agg(
-        outgoing_degree=("to_address", "size"),
+        outgoing_degree=(degree_column, degree_aggregation),
         outgoing_counterparties=("to_address", "nunique"),
         total_sent=("flow_amount", "sum"),
     )
     incoming = flows.groupby("to_address").agg(
-        incoming_degree=("from_address", "size"),
+        incoming_degree=(degree_column, degree_aggregation),
         incoming_counterparties=("from_address", "nunique"),
         total_received=("flow_amount", "sum"),
     )
@@ -197,7 +296,8 @@ def build_graph_data(
     ).merge(scoped, on="address", how="left")
 
     # Controllo che tutte le feature esistano e siano numeriche
-    for column in FEATURE_NAMES:
+    feature_names = feature_names_for_mode(graph_mode)
+    for column in feature_names:
         if column not in node_features:
             node_features[column] = 0.0
         node_features[column] = pd.to_numeric(
@@ -229,12 +329,11 @@ def build_graph_data(
     )
 
     # seleziona le feature
-    raw_features = node_features[FEATURE_NAMES].copy()
+    raw_features = node_features[feature_names].copy()
     role_features, standardized = _standardize(raw_features)
 
     # P[dest, source]: propagazione GCN con self-loop e normalizzazione per riga.
-    P = adjacency.T + torch.eye(num_nodes)
-    P = P / P.sum(dim=1, keepdim=True)
+    P = _build_propagation_matrix(pair_weights, num_nodes, matrix_format)
 
     # Gli archi positivi rappresentano relazioni osservate; i negativi sono coppie non osservate usate dal graph autoencoder.
     positive_edges = torch.tensor(
@@ -250,7 +349,7 @@ def build_graph_data(
 
     return GraphData(
         node_names=addresses,
-        feature_names=FEATURE_NAMES,
+        feature_names=feature_names,
         X=torch.tensor(standardized.to_numpy(), dtype=torch.float32),
         P=P,
         positive_edges=positive_edges,

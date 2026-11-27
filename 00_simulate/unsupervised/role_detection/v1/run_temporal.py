@@ -24,43 +24,72 @@ from kmeans.print_graph import (  # noqa: E402
 from measure_algo import silhouette_score  # noqa: E402
 
 from kmeans.analysis.cluster_analysis_v1 import assign_roles, describe_v1_clusters  # noqa: E402
-from .data_from_db import load_scoped_features, load_v1_dataset  # noqa: E402
+from .data_from_db import (  # noqa: E402
+    aggregate_wallet_graph_inputs,
+    load_scoped_features,
+    load_wallet_manifest,
+    load_v1_dataset,
+    summarize_wallet_graph,
+)
 from .graph_builder import build_graph_data  # noqa: E402
+from role_detection.report_paths import (  # noqa: E402
+    analysis_artifact_path,
+    normalize_graph_mode,
+    split_report_paths,
+    write_split_json,
+)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--database", help="database PostgreSQL; default: DB_NAME")
     parser.add_argument(
-        "--limit", type=int, default=500,
-        help="numero di transazioni nella finestra di analisi (default: 500)",
+        "--limit", type=int, default=11000,
+        help="cutoff totale delle transazioni (default: 11000)",
     )
     parser.add_argument(
-        "--history-limit", type=int, default=1000,
-        help="numero di transazioni storiche per il training (default: 1000)",
+        "--history-limit", type=int, default=10000,
+        help="numero di transazioni storiche (default: 10000)",
     )
     parser.add_argument(
-        "--clusters", type=int, default=4,
-        help="numero di cluster finali, incluso coinbase-like (default: 4)",
+        "--clusters", type=int, default=None,
+        help="usa un solo numero di cluster invece della scansione (default: scansione 4-10)",
+    )
+    parser.add_argument(
+        "--cluster-min", type=int, default=4,
+        help="primo numero di cluster provato nella scansione (default: 4)",
+    )
+    parser.add_argument(
+        "--cluster-max", type=int, default=10,
+        help="ultimo numero di cluster provato nella scansione (default: 10)",
     )
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument(
+        "--graph-mode",
+        choices=("address", "address_wallet_feature", "address_wallet", "wallet"),
+        default="address_wallet_feature",
+        help=(
+            "grafo address, address con feature wallet oppure wallet "
+            "(default: address_wallet_feature)"
+        ),
+    )
     parser.add_argument(
         "--architecture", choices=("gcn", "gat"), default="gcn",
         help="encoder da usare (default: gcn)",
     )
     parser.add_argument(
-        "--output", type=Path,
-        default=Path("07_reports/unsupervised/role_detection/v1/temporal.json"),
-        help="report JSON della pipeline temporale",
+        "--matrix-format", choices=("dense", "sparse"), default="dense",
+        help="formato della matrice di propagazione (default: dense)",
     )
     parser.add_argument(
-        "--graph-output", type=Path,
-        default=Path("07_reports/unsupervised/role_detection/v1/temporal_graph.png"),
+        "--output", type=Path, default=None,
+        help="override opzionale; senza override salva in mode/history e mode/analysis",
+    )
+    parser.add_argument(
+        "--graph-output", type=Path, default=None,
         help="PNG del grafo della finestra, colorato per cluster",
     )
     parser.add_argument(
-        "--cluster-output", type=Path,
-        default=Path("07_reports/unsupervised/role_detection/v1/temporal_clusters.png"),
+        "--cluster-output", type=Path, default=None,
         help="PNG della proiezione 2D degli embedding clusterizzati",
     )
     return parser.parse_args()
@@ -99,29 +128,77 @@ def _temporal_assignments(
 
 def main() -> int:
     args = parse_args()
-    if args.limit < 1 or args.history_limit < 1 or args.clusters < 1:
-        raise ValueError("limit, history-limit e clusters devono essere positivi")
+    report_paths = split_report_paths("v1", args.graph_mode, "temporal.json")
+    if args.output is not None:
+        report_paths = {"analysis": args.output}
+    args.graph_output = args.graph_output or analysis_artifact_path(
+        "v1", args.graph_mode, "temporal_graph.png"
+    )
+    args.cluster_output = args.cluster_output or analysis_artifact_path(
+        "v1", args.graph_mode, "temporal_clusters.png"
+    )
+    args.graph_mode = normalize_graph_mode(args.graph_mode)
+    database = None  # Il loader legge DB_NAME e le credenziali dal .env.
+    if (
+        args.limit < 1
+        or args.history_limit < 1
+        or args.history_limit > args.limit
+        or (args.clusters is not None and args.clusters < 1)
+        or args.cluster_min < 1
+        or args.cluster_max < args.cluster_min
+    ):
+        raise ValueError(
+            "limit e clusters devono essere positivi e history-limit non può "
+            "superare limit"
+        )
 
     set_seed(args.seed)
 
     print("Caricamento storico e finestra di analisi dal database...", flush=True)
 
-    # carico tutti i flussi senza le features
+    wallet_manifest = None
+    manifest_transaction_ids = None
+    history_wallet_diagnostics = None
+    analysis_wallet_diagnostics = None
+    if args.graph_mode == "wallet":
+        wallet_manifest = load_wallet_manifest()
+        manifest_limit = int(wallet_manifest["limit"])
+        manifest_history_limit = int(wallet_manifest["history_limit"])
+        if (manifest_limit, manifest_history_limit) != (
+            args.limit, args.history_limit
+        ):
+            raise ValueError(
+                "il manifest wallet non corrisponde a --limit/--history-limit: "
+                f"manifest={manifest_limit}/{manifest_history_limit}, "
+                f"richiesto={args.limit}/{args.history_limit}"
+            )
+        manifest_transaction_ids = [
+            int(value) for value in wallet_manifest["transaction_ids"]
+        ]
+        print("Uso i transaction_id del manifest wallet condiviso.")
+
+    # Carico tutti i flussi senza le feature: il cutoff temporale deve essere
+    # identico per storico e finestra, indipendentemente dal livello del grafo.
     all_flows, _ = load_v1_dataset(
-        args.database,
+        database,
         args.limit,
         history_limit=args.history_limit,
         include_features=False,
+        transaction_ids=manifest_transaction_ids,
     )
 
-    # estraggo i valori ID dei flussi
-    transaction_ids = sorted(
-        all_flows.transaction_id.dropna().astype(int).unique().tolist()
-    )
-
-    # divido in ID storici e ID di analisi
-    history_ids = transaction_ids[:args.history_limit]
-    analysis_ids = transaction_ids[args.history_limit:]
+    if wallet_manifest is not None:
+        # Manteniamo anche gli ID che non producono flussi address -> address:
+        # la divisione history/analysis deve restare quella del clustering.
+        transaction_ids = manifest_transaction_ids
+        history_ids = [int(value) for value in wallet_manifest["history_transaction_ids"]]
+        analysis_ids = [int(value) for value in wallet_manifest["analysis_transaction_ids"]]
+    else:
+        transaction_ids = sorted(
+            all_flows.transaction_id.dropna().astype(int).unique().tolist()
+        )
+        history_ids = transaction_ids[:args.history_limit]
+        analysis_ids = transaction_ids[args.history_limit:args.limit]
 
     if not history_ids or not analysis_ids:
         raise ValueError("servono sia transazioni storiche sia transazioni nella finestra di analisi")
@@ -130,20 +207,48 @@ def main() -> int:
     # poi con il load_scoped_features carico le features di ogni nodo appartenente al flusso
     history_flows = all_flows[all_flows["transaction_id"].isin(history_ids)].copy()
     analysis_flows = all_flows[all_flows["transaction_id"].isin(analysis_ids)].copy()
-    history_features = load_scoped_features(args.database, history_ids)
-    analysis_features = load_scoped_features(args.database, analysis_ids)
+    history_features = load_scoped_features(
+        database, history_ids, flows=history_flows, split="history",
+        include_wallet_features=args.graph_mode != "address",
+    )
+    analysis_features = load_scoped_features(
+        database, analysis_ids, flows=analysis_flows, split="analysis",
+        include_wallet_features=args.graph_mode != "address",
+    )
+
+    if args.graph_mode == "wallet":
+        # Aggrego separatamente storico e finestra. In questo modo la GCN
+        # storica non vede flussi futuri e la finestra mantiene il proprio
+        # insieme di wallet e feature.
+        history_flows, history_features = aggregate_wallet_graph_inputs(
+            history_flows, history_features, split="history"
+        )
+        history_wallet_diagnostics = summarize_wallet_graph(
+            history_flows, history_features
+        )
+        analysis_flows, analysis_features = aggregate_wallet_graph_inputs(
+            analysis_flows, analysis_features, split="analysis"
+        )
+        analysis_wallet_diagnostics = summarize_wallet_graph(
+            analysis_flows, analysis_features
+        )
 
     # Graphs Data
     # costruisco i due grafi separati
     history_data = build_graph_data(
-        history_flows, history_features, seed=args.seed
+        history_flows, history_features, seed=args.seed,
+        graph_mode=args.graph_mode,
+        matrix_format=args.matrix_format,
     )
     analysis_data = build_graph_data(
-        analysis_flows, analysis_features, seed=args.seed
+        analysis_flows, analysis_features, seed=args.seed,
+        graph_mode=args.graph_mode,
+        matrix_format=args.matrix_format,
     )
 
     print(f"Transazioni storiche: {len(history_ids)}")
     print(f"Transazioni nella finestra: {len(analysis_ids)}")
+    print(f"Livello grafo: {args.graph_mode}")
     print(f"Nodi storici: {len(history_data.node_names)}")
     print(f"Nodi nella finestra: {len(analysis_data.node_names)}")
     print("Nuovi indirizzi nella finestra: " f"{len(set(analysis_data.node_names) - set(history_data.node_names))}")
@@ -162,30 +267,73 @@ def main() -> int:
 
     # trova indici storici che non sono coinbase
     history_regular_indices = torch.where(history_data.coinbase_nodes == False)[0]
-
-    # tramite gli embeddings calcolo a quale kmeans appartengono
-    # Il numero di centroidi dipende dai cluster che dovranno essere restituiti
-    # nella finestra: se la finestra contiene coinbase, uno dei cluster è riservato a coinbase-like.
-    regular_clusters = (
-        args.clusters - 1
-        if int(analysis_data.coinbase_nodes.sum())
-        else args.clusters
-    )
-    if regular_clusters < 1:
-        raise ValueError("serve almeno un cluster per gli indirizzi non coinbase")
-    if regular_clusters > len(history_regular_indices):
-        raise ValueError("i cluster superano il numero di nodi non coinbase storici")
-
-    # calcolo i centroidi (dati storici)
-    _, historical_centroids = kmeans_fit(
-        history_embeddings[history_regular_indices],
-        n_clusters=regular_clusters,
-    )
-
     print(f"Embedding finestra: {tuple(analysis_embeddings.shape)}")
-    assignments = _temporal_assignments(
-        analysis_data, analysis_embeddings, args.clusters, historical_centroids
+
+    # Il training GCN è già concluso. Ora proviamo più valori di k sugli stessi
+    # embedding, imparando i centroidi soltanto dallo storico e assegnando la
+    # finestra futura ai centroidi storici.
+    candidate_clusters = (
+        [args.clusters]
+        if args.clusters is not None
+        else list(range(args.cluster_min, args.cluster_max + 1))
     )
+    sweep_results = []
+    candidates = {}
+    analysis_regular_indices = torch.where(analysis_data.coinbase_nodes == False)[0]
+    for cluster_count in candidate_clusters:
+        regular_clusters = (
+            cluster_count - 1
+            if int(analysis_data.coinbase_nodes.sum())
+            else cluster_count
+        )
+        if regular_clusters < 1:
+            raise ValueError("serve almeno un cluster per gli indirizzi non coinbase")
+        if regular_clusters > len(history_regular_indices):
+            raise ValueError("i cluster superano il numero di nodi non coinbase storici")
+
+        _, historical_centroids = kmeans_fit(
+            history_embeddings[history_regular_indices],
+            n_clusters=regular_clusters,
+        )
+        candidate_assignments = _temporal_assignments(
+            analysis_data, analysis_embeddings, cluster_count, historical_centroids
+        )
+        if len(analysis_regular_indices) > 0:
+            candidate_silhouette = silhouette_score(
+                analysis_embeddings[analysis_regular_indices],
+                candidate_assignments[analysis_regular_indices],
+            )
+        else:
+            candidate_silhouette = float("nan")
+        candidate_roles = assign_roles(analysis_data, candidate_assignments)
+        candidates[cluster_count] = (candidate_assignments, candidate_roles)
+        sweep_results.append({
+            "clusters": cluster_count,
+            "silhouette_score": float(candidate_silhouette),
+            "cluster_sizes": {
+                str(cluster_id): int((candidate_assignments == cluster_id).sum())
+                for cluster_id in sorted(set(candidate_assignments.tolist()))
+            },
+            "roles": {
+                str(cluster_id): result["role"]
+                for cluster_id, result in candidate_roles.items()
+            },
+        })
+        print(
+            f"k={cluster_count}: silhouette={candidate_silhouette:.4f} "
+            f"cluster_sizes={sweep_results[-1]['cluster_sizes']}"
+        )
+
+    best_result = max(
+        sweep_results,
+        key=lambda result: result["silhouette_score"]
+        if result["silhouette_score"] == result["silhouette_score"]
+        else float("-inf"),
+    )
+    best_clusters = best_result["clusters"]
+    assignments, roles = candidates[best_clusters]
+    silhouette = best_result["silhouette_score"]
+    print(f"Numero di cluster selezionato: {best_clusters}")
 
     # Stampo il grafo
     graph_output = plot_clustered_graph(
@@ -203,7 +351,6 @@ def main() -> int:
         title="Role detection v1 temporale - cluster degli embedding",
     )
     print(f"Visualizzazione cluster salvata in: {cluster_output}")
-    silhouette = silhouette_score(analysis_embeddings, assignments)
     print(f"Silhouette score finestra: {silhouette:.4f}")
     describe_v1_clusters(analysis_data, assignments)
     roles = assign_roles(analysis_data, assignments)
@@ -216,15 +363,18 @@ def main() -> int:
 
     report = {
         "experiment": {
-            "database": args.database,
+            "database": "from_env",
             "mode": "temporal",
             "history_transaction_ids": history_ids,
             "analysis_transaction_ids": analysis_ids,
             "history_limit": args.history_limit,
-            "analysis_limit": args.limit,
+            "analysis_limit": len(analysis_ids),
             "seed": args.seed,
             "architecture": args.architecture,
-            "clusters": args.clusters,
+            "matrix_format": args.matrix_format,
+            "graph_mode": args.graph_mode,
+            "clusters": best_clusters,
+            "cluster_sweep": sweep_results,
             "history_num_nodes": len(history_data.node_names),
             "analysis_num_nodes": len(analysis_data.node_names),
             "new_analysis_nodes": len(
@@ -234,18 +384,18 @@ def main() -> int:
             "analysis_coinbase_nodes": int(analysis_data.coinbase_nodes.sum()),
             "embedding_dim": int(analysis_embeddings.shape[1]),
             "silhouette_score": silhouette,
+            "history_wallet_graph": history_wallet_diagnostics,
+            "analysis_wallet_graph": analysis_wallet_diagnostics,
         },
         "analysis_nodes": analysis_data.node_names,
         "analysis_embeddings": analysis_embeddings.cpu().tolist(),
         "assignments": assignments.cpu().tolist(),
         "roles": {str(cluster_id): result for cluster_id, result in roles.items()},
     }
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(
-        json.dumps(report, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
-    print(f"\nReport salvato in: {args.output}")
+    write_split_json(report, report_paths)
+    print("\nReport salvati in:")
+    for path in report_paths.values():
+        print(f"  {path}")
     return 0
 
 

@@ -57,6 +57,9 @@ def import_block(cur, block: dict, height: int, txids: dict[str, int]) -> int:
         (height, block["hash"], block["time"]),
     )
 
+    cur.execute("SELECT id, code FROM script_type")
+    script_type_ids = dict(cur.fetchall())
+
     for tx in block["tx"]:
         txid = tx["txid"]
         outputs = tx["vout"]
@@ -89,6 +92,8 @@ def import_block(cur, block: dict, height: int, txids: dict[str, int]) -> int:
 
         for output in outputs:
             address = output["scriptPubKey"].get("address")
+            script_type = output["scriptPubKey"].get("type", "UNKNOWN")
+            script_type_id = script_type_ids.get(script_type, script_type_ids["UNKNOWN"])
             address_id = None
             if address is not None:
                 # Risolvi prima l'id dell'address, poi inserisci il tx_output.
@@ -106,10 +111,16 @@ def import_block(cur, block: dict, height: int, txids: dict[str, int]) -> int:
             cur.execute(
                 """
                 INSERT INTO tx_output
-                    (fk_transaction_id, n, amount, fk_address_id)
-                VALUES (%s, %s, %s, %s)
+                    (fk_transaction_id, n, amount, fk_address_id, fk_script_type_id)
+                VALUES (%s, %s, %s, %s, %s)
                 """,
-                (transaction_id, output["n"], output["value_btc"], address_id),
+                (
+                    transaction_id,
+                    output["n"],
+                    output["value_btc"],
+                    address_id,
+                    script_type_id,
+                ),
             )
     return len(block["tx"])
 

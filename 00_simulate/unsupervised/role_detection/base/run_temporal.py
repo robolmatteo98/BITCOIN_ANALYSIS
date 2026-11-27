@@ -12,6 +12,7 @@ import sys
 from pathlib import Path
 
 import torch
+import pandas as pd
 
 
 PACKAGE_ROOT = Path(__file__).resolve().parent
@@ -26,7 +27,12 @@ from kmeans.print_graph import (  # noqa: E402
 )
 from measure_algo import silhouette_score  # noqa: E402
 from role_detection.gae_autoencoder.config import set_seed  # noqa: E402
-from role_detection.base.data_from_db import load_transactions  # noqa: E402
+from role_detection.base.data_from_db import (  # noqa: E402
+    aggregate_wallet_transactions,
+    complete_wallet_mapping,
+    load_combined_wallet_mapping,
+    load_transactions,
+)
 from role_detection.base.graph_builder import build_graph_data  # noqa: E402
 from role_detection.gae_autoencoder.training import train_model  # noqa: E402
 from kmeans.analysis.cluster_analysis import (  # noqa: E402
@@ -38,6 +44,10 @@ from kmeans.analysis.cluster_analysis import (  # noqa: E402
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--database", help="database PostgreSQL; default: DB_NAME")
+    parser.add_argument(
+        "--entity", choices=("address", "wallet"), default="address",
+        help="entità del grafo: address o wallet (default: address)",
+    )
     parser.add_argument(
         "--limit", type=int, default=500,
         help="numero di transazioni nella finestra di analisi (default: 500)",
@@ -76,8 +86,8 @@ def _split_transactions(rows, history_limit: int):
     transaction_ids = list(rows["transaction_id"].dropna().drop_duplicates())
     history_ids = transaction_ids[:history_limit]
     analysis_ids = transaction_ids[history_limit:]
-    history = rows[rows["txid"].isin(history_ids)].copy()
-    analysis = rows[rows["txid"].isin(analysis_ids)].copy()
+    history = rows[rows["transaction_id"].isin(history_ids)].copy()
+    analysis = rows[rows["transaction_id"].isin(analysis_ids)].copy()
     return history, analysis, history_ids, analysis_ids
 
 
@@ -110,6 +120,18 @@ def main() -> int:
     if history_rows.empty or analysis_rows.empty:
         raise ValueError("servono sia transazioni storiche sia transazioni nella finestra")
 
+    if args.entity == "wallet":
+        # Il co-spending identifica soprattutto gli address degli input.
+        # Gli endpoint non ancora associati vengono mantenuti come singleton.
+        wallet_mapping = complete_wallet_mapping(
+            pd.concat([history_rows, analysis_rows], ignore_index=True),
+            load_combined_wallet_mapping(),
+        )
+        history_rows = aggregate_wallet_transactions(history_rows, wallet_mapping)
+        analysis_rows = aggregate_wallet_transactions(analysis_rows, wallet_mapping)
+        if history_rows.empty or analysis_rows.empty:
+            raise ValueError("i mapping wallet non producono flussi sufficienti")
+
     history_data = _build_data(history_rows, args.seed)
     analysis_data = _build_data(analysis_rows, args.seed)
 
@@ -117,6 +139,7 @@ def main() -> int:
     print(f"Transazioni nella finestra: {len(analysis_ids)}")
     print(f"Nodi storici: {len(history_data.node_names)}")
     print(f"Nodi nella finestra: {len(analysis_data.node_names)}")
+    print(f"Entità analizzata: {args.entity}")
     print("Training esclusivamente sullo storico...")
 
     model = train_model(history_data, architecture=args.architecture)
@@ -155,14 +178,13 @@ def main() -> int:
     describe_clusters(analysis_data, assignments)
     roles = interpret_clusters(analysis_data, assignments)
 
-    print("\nWallet della finestra e cluster assegnato:")
-    for name, cluster_id in zip(analysis_data.node_names, assignments.tolist()):
-        print(f"  Wallet {name} -> Cluster {cluster_id}")
+    print("\nAssegnazioni della finestra salvate nel report JSON.")
 
     report = {
         "experiment": {
             "database": args.database,
             "mode": "temporal",
+            "entity": args.entity,
             "history_transaction_ids": history_ids,
             "analysis_transaction_ids": analysis_ids,
             "history_limit": args.history_limit,

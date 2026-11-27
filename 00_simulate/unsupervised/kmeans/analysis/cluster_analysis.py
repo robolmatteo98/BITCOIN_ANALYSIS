@@ -61,12 +61,6 @@ def interpret_clusters(data, assignments):
     print("\nInterpretazione debole dei cluster:")
     for cluster_id in cluster_ids:
         member_indices = torch.where(assignments == cluster_id)[0]
-        members = [data.node_names[index] for index in member_indices.tolist()]
-        cluster_features = features[member_indices]
-        representative = data.node_names[
-            member_indices[(cluster_features[:, 0] + cluster_features[:, 1]).argmax()].item()
-        ]
         print(f"  Cluster {cluster_id}: {roles[cluster_id]}")
-        print(f"    Wallet: {', '.join(members)}")
-        print(f"    Wallet più rappresentativo: {representative}")
+        print(f"    Nodi assegnati: {len(member_indices)}")
     return roles

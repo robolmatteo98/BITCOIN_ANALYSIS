@@ -13,11 +13,7 @@ latent_fake.png
 
 .venv
 
-TODO_check.md
 TODO_NEXT.md
-
-THESIS_SCIENTIFIC_FRAMEWORK.md
-EXECUTION_GUIDE.md
 
 00_simulate/unsupervised/role_detection_v1/README.md
 00_simulate/IDEA.md
@@ -32,6 +28,8 @@ EXECUTION_GUIDE.md
 02_database/blocks
 02_database/fake
 02_database/views
+02_database/migrations
+02_database/backfill_script_types.py
 
 03_preprocessing/
 04_clustering/
@@ -45,31 +43,20 @@ EXECUTION_GUIDE.md
 07_reports/**/part-*
 07_reports/**/_SUCCESS
 08_webapp/
+09_reports_viewer
+10_doc
+11_script
 
-TITOLI_TESI.md
-README_old.md
-RESEARCH_VALIDATION.md
 docker-compose_old.yml
 
-PageRank/bitcoin_dat_decoder/README.md
-PageRank/bitcoin_dat_decoder/run_ingest_azure.sh
-PageRank/bitcoin_dat_decoder/run_ingest_docker.sh
-
-PageRank/bitcoin_pagerank/results
-PageRank/bitcoin_pagerank/README.md
-PageRank/bitcoin_pagerank/run_azure.sh
-PageRank/bitcoin_pagerank/run_docker.sh
-
-PageRank/DOCKER_BITCOIN/bitcoin_data
-PageRank/DOCKER_BITCOIN/spark_ingest_output
-PageRank/DOCKER_BITCOIN/docker-compose.yml
-
-PageRank/experiment_results
-PageRank/SPARK
-
-PageRank/info.md
-PageRank/docker-compose.yml
-
-PageRank/doc/BigData_P9_Exam.pdf
+00_simulate/pre-processing/pagerank/DOCKER_BITCOIN/bitcoin_data
+00_simulate/pre-processing/pagerank/DOCKER_BITCOIN/spark_ingest_output
+00_simulate/pre-processing/pagerank/DOCKER_BITCOIN/docker-compose.yml
+00_simulate/pre-processing/pagerank/experiment_results
+00_simulate/pre-processing/pagerank/bitcoin_pagerank/results
+00_simulate/pre-processing/pagerank/.DS_Store
+00_simulate/pre-processing/pagerank/**/__pycache__/
 
 IDEA.md
+/legacy
+/00_simulate/wallet_clustering/README.md

@@ -13,8 +13,15 @@ class GCNEncoder(nn.Module):
         self.b2 = nn.Parameter(torch.zeros(latent_dim))
 
     def forward(self, X, P):
-        H1 = F.relu(P @ X @ self.W1 + self.b1)
-        return F.relu(P @ H1 @ self.W2 + self.b2)
+        H1 = F.relu(_propagate(P, X) @ self.W1 + self.b1)
+        return F.relu(_propagate(P, H1) @ self.W2 + self.b2)
+
+
+def _propagate(P, values):
+    """Moltiplica con una matrice dense o sparse senza duplicare la logica GCN."""
+    if P.is_sparse:
+        return torch.sparse.mm(P, values)
+    return P @ values
 
 
 class BilinearDecoder(nn.Module):

@@ -44,9 +44,7 @@ def main() -> None:
     describe_clusters(data, assignments)
     interpret_clusters(data, assignments)
 
-    print("\nWallet e cluster assegnato:")
-    for name, cluster_id in zip(data.node_names, assignments):
-        print(f"  Wallet {name} -> Cluster {cluster_id}")
+    print("\nAssegnazioni dei wallet disponibili nell'output del programma.")
 
     print("\nNota:")
     print("  I ruoli sono euristici e descrittivi, non etichette supervisionate.")

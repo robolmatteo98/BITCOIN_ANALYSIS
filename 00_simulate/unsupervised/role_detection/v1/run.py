@@ -26,13 +26,21 @@ from kmeans.print_graph import (  # noqa: E402
 from measure_algo import silhouette_score  # noqa: E402
 
 from kmeans.analysis.cluster_analysis_v1 import assign_roles, describe_v1_clusters  # noqa: E402
-from .data_from_db import load_v1_dataset  # noqa: E402
+from .data_from_db import (  # noqa: E402
+    aggregate_wallet_graph_inputs,
+    load_v1_dataset,
+)
 from .graph_builder import build_graph_data  # noqa: E402
+from role_detection.report_paths import (  # noqa: E402
+    analysis_artifact_path,
+    normalize_graph_mode,
+    split_report_paths,
+    write_split_json,
+)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--database", help="database PostgreSQL; default: DB_NAME")
     parser.add_argument(
         "--limit", type=int, default=1000,
         help="numero di transazioni da caricare (default: 1000)",
@@ -47,22 +55,32 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument(
+        "--graph-mode",
+        choices=("address", "address_wallet_feature", "address_wallet", "wallet"),
+        default="address_wallet_feature",
+        help=(
+            "grafo address, address con feature wallet oppure wallet "
+            "(default: address_wallet_feature)"
+        ),
+    )
+    parser.add_argument(
         "--architecture", choices=("gcn", "gat"), default="gcn",
         help="encoder da usare (default: gcn)",
     )
     parser.add_argument(
-        "--output", type=Path,
-        default=Path("07_reports/unsupervised/role_detection/v1/report.json"),
-        help="report JSON con embedding e metriche",
+        "--matrix-format", choices=("dense", "sparse"), default="dense",
+        help="formato della matrice di propagazione (default: dense)",
     )
     parser.add_argument(
-        "--graph-output", type=Path,
-        default=Path("07_reports/unsupervised/role_detection/v1/graph.png"),
+        "--output", type=Path, default=None,
+        help="override opzionale; senza override salva in mode/history e mode/analysis",
+    )
+    parser.add_argument(
+        "--graph-output", type=Path, default=None,
         help="PNG del grafo colorato per cluster",
     )
     parser.add_argument(
-        "--cluster-output", type=Path,
-        default=Path("07_reports/unsupervised/role_detection/v1/clusters.png"),
+        "--cluster-output", type=Path, default=None,
         help="PNG della proiezione 2D degli embedding clusterizzati",
     )
     return parser.parse_args()
@@ -70,22 +88,47 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    if args.limit < 1 or args.history_limit < 0 or args.clusters < 1:
-        raise ValueError("limit e clusters devono essere positivi; history-limit non negativo")
+    report_paths = split_report_paths("v1", args.graph_mode, "report.json")
+    if args.output is not None:
+        report_paths = {"analysis": args.output}
+    args.graph_output = args.graph_output or analysis_artifact_path(
+        "v1", args.graph_mode, "graph.png"
+    )
+    args.cluster_output = args.cluster_output or analysis_artifact_path(
+        "v1", args.graph_mode, "clusters.png"
+    )
+    args.graph_mode = normalize_graph_mode(args.graph_mode)
+    database = None  # Il loader legge DB_NAME e le credenziali dal .env.
+    if args.limit < 1 or args.history_limit < 0 or args.history_limit > args.limit or args.clusters < 1:
+        raise ValueError("limit e clusters devono essere positivi e history-limit non può superare limit")
 
     set_seed(args.seed)
 
-    # Data Frames di flusso (address -> address) e features dell'address
+    # Data Frames di flusso e feature. Il livello del grafo viene scelto dopo
+    # il caricamento, così il database resta una sorgente unica.
     print("Caricamento transazioni e feature dal database...", flush=True)
     flows, address_features = load_v1_dataset(
-        args.database,
+        database,
         args.limit,
         history_limit=args.history_limit,
+        include_wallet_features=args.graph_mode != "address",
     )
-    
-    # Il costruttore v1 lavora direttamente sul DataFrame dei flussi e lo
-    # combina con le feature aggregate degli indirizzi.
-    data = build_graph_data(flows, address_features, seed=args.seed)
+
+    if args.graph_mode == "wallet":
+        # Nel wallet mode cambiano sia gli archi sia le feature: il costruttore
+        # riceve già i DataFrame aggregati e crea un vero wallet -> wallet.
+        flows, address_features = aggregate_wallet_graph_inputs(
+            flows, address_features, split="analysis"
+        )
+
+    # Il costruttore v1 crea la matrice P e le feature del livello richiesto.
+    data = build_graph_data(
+        flows,
+        address_features,
+        seed=args.seed,
+        graph_mode=args.graph_mode,
+        matrix_format=args.matrix_format,
+    )
 
     coinbase_count = int(data.coinbase_nodes.sum())
     regular_indices = torch.where(~data.coinbase_nodes)[0]
@@ -105,14 +148,15 @@ def main() -> int:
     history_ids = transaction_ids[:analysis_start]
     analysis_ids = transaction_ids[analysis_start:]
 
-    print(f"Transazioni nella finestra di analisi: {args.limit}")
+    print(f"Cutoff totale transazioni: {args.limit}")
     print(f"Contesto storico richiesto: {args.history_limit}")
     print(f"Transazioni totali caricate: {len(transaction_ids)}")
     print(f"Transazioni di contesto: {len(history_ids)}")
     print(f"Transazioni di analisi: {len(analysis_ids)}")
     print(f"Flussi caricati: {len(flows)}")
     print(f"Righe coinbase nel campione: {int(flows['is_coinbase'].fillna(False).sum())}")
-    print(f"Indirizzi: {len(data.node_names)}")
+    print(f"Livello grafo: {args.graph_mode}")
+    print(f"Nodi: {len(data.node_names)}")
     print(f"Nodi coinbase: {coinbase_count}")
     print(f"Feature per nodo: {len(data.feature_names)}")
     print(f"Archi positivi distinti: {data.positive_edges.shape[1]}")
@@ -188,13 +232,14 @@ def main() -> int:
 
     report = {
         "experiment": {
-            "database": args.database,
+            "database": "from_env",
             "history_limit": args.history_limit,
-            "analysis_limit": args.limit,
+            "analysis_limit": len(analysis_ids),
             "history_transaction_ids": history_ids,
             "analysis_transaction_ids": analysis_ids,
             "seed": args.seed,
             "architecture": args.architecture,
+            "graph_mode": args.graph_mode,
             "clusters": args.clusters,
             "feature_names": data.feature_names,
             "num_nodes": len(data.node_names),
@@ -214,12 +259,10 @@ def main() -> int:
         "assignments": assignments.detach().cpu().tolist(),
         "roles": {str(cluster_id): result for cluster_id, result in roles.items()},
     }
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(
-        json.dumps(report, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
-    print(f"\nReport salvato in: {args.output}")
+    write_split_json(report, report_paths)
+    print("\nReport salvati in:")
+    for path in report_paths.values():
+        print(f"  {path}")
 
     return 0
 

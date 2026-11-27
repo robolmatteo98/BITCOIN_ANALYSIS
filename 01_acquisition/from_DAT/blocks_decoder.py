@@ -101,33 +101,34 @@ def parse_script_pubkey(script):
     result = {
         "address": None,
         "entity": None,
+        "type": "UNKNOWN",
     }
 
     if len(script) == 25 and script[:3] == b"\x76\xa9\x14" and script[-2:] == b"\x88\xac":
         payload = script[3:23]
         address = base58check(b"\x00", payload)
-        result.update({"address": address, "entity": address})
+        result.update({"address": address, "entity": address, "type": "P2PKH"})
         return result
 
     if len(script) == 23 and script[:2] == b"\xa9\x14" and script[-1:] == b"\x87":
         payload = script[2:22]
         address = base58check(b"\x05", payload)
-        result.update({"address": address, "entity": address})
+        result.update({"address": address, "entity": address, "type": "P2SH"})
         return result
 
     if len(script) == 22 and script[0] == 0x00 and script[1] == 0x14:
         address = segwit_address(0, script[2:])
-        result.update({"address": address, "entity": address})
+        result.update({"address": address, "entity": address, "type": "P2WPKH"})
         return result
 
     if len(script) == 34 and script[0] == 0x00 and script[1] == 0x20:
         address = segwit_address(0, script[2:])
-        result.update({"address": address, "entity": address})
+        result.update({"address": address, "entity": address, "type": "P2WSH"})
         return result
 
     if len(script) == 34 and script[0] == 0x51 and script[1] == 0x20:
         address = segwit_address(1, script[2:])
-        result.update({"address": address, "entity": address})
+        result.update({"address": address, "entity": address, "type": "P2TR"})
         return result
 
     if len(script) in (35, 67) and script[-1] == 0xAC:
@@ -136,7 +137,16 @@ def parse_script_pubkey(script):
         result.update({
             "address": address,
             "entity": address,
+            "type": "P2PK",
         })
+        return result
+
+    if script[:1] == b"\x6a":
+        result["type"] = "OP_RETURN"
+        return result
+
+    if script and script[-1:] == b"\xae":
+        result["type"] = "MULTISIG"
         return result
 
     return result

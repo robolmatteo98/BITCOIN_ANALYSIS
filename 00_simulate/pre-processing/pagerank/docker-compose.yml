@@ -1,0 +1,42 @@
+version: "3.8"
+
+x-spark-common: &spark-common
+  build:
+    context: ../../../
+    dockerfile: 00_simulate/pre-processing/pagerank/Dockerfile
+  image: bitcoin-pagerank:local
+  volumes:
+    - ../../../:/opt/spark/work-dir/project
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+
+networks:
+  default:
+    name: pagerank_default
+    external: true
+
+services:
+  spark-master:
+    <<: *spark-common
+    hostname: spark-master
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.master.Master"]
+    ports:
+      - "7077:7077"
+      - "8080:8080"
+
+  spark-worker:
+    <<: *spark-common
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077"]
+    depends_on: [spark-master]
+    environment:
+      SPARK_WORKER_CORES: ${SPARK_WORKER_CORES:-2}
+      SPARK_WORKER_MEMORY: ${SPARK_WORKER_MEMORY:-2G}
+
+  pyspark-client:
+    <<: *spark-common
+    working_dir: /opt/spark/work-dir/project
+    entrypoint: ["tail", "-f", "/dev/null"]
+    env_file:
+      - ../../../.env
+    environment:
+      DB_HOST: ${PAGERANK_DB_HOST:-host.docker.internal}
